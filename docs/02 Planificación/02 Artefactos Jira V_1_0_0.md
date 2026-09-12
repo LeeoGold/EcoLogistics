@@ -62,7 +62,9 @@ Las capturas deben estar recortadas exclusivamente al panel de Jira que demuestr
 
 **Referencia:** captura del Cronograma de Jira con las seis Épicas y ECO Sprint 1 visibles.
 
-> **Archivo sugerido:** `evidencias/01-roadmap.png`
+**Archivo de evidencia:** `evidencias/01-roadmap.png`  
+
+![Roadmap / Cronograma de Jira](evidencias/01-roadmap.png)
 
 ### Evidencia 2 — Backlog priorizado
 
@@ -70,13 +72,17 @@ Las capturas deben estar recortadas exclusivamente al panel de Jira que demuestr
 
 **Referencia:** vista Lista filtrada a Stories + Enablers, 22/22 elementos.
 
-> **Archivo sugerido:** `evidencias/02-backlog-priorizado.png`
+**Archivo de evidencia:** `evidencias/02-backlog-priorizado.png`  
+
+![Backlog priorizado con Principal, Prioridad, Story Points y Componente](evidencias/02-backlog-priorizado.png)
 
 ### Evidencia 3 — Sprint Planning + Sprint Goal
 
 **Qué demuestra:** ECO Sprint 1, fechas, 6 actividades, 20 SP y Meta del sprint.
 
-> **Archivo sugerido:** `evidencias/03-sprint-planning.png`
+**Archivo de evidencia:** `evidencias/03-sprint-planning.png`  
+
+![Sprint Planning y Sprint Goal](evidencias/03-sprint-planning.png)
 
 ### Evidencia 4 — Scrum Board
 
@@ -88,15 +94,33 @@ Configuración observada:
 - En revisión / QA: 1
 - Listo: 0
 
-> **Archivo sugerido:** `evidencias/04-scrum-board.png`
+**Archivo de evidencia:** `evidencias/04-scrum-board.png`  
+
+![Scrum Board de Sprint 1](evidencias/04-scrum-board.png)
 
 ### Evidencia 5 — Release / Publicación
 
 **Qué demuestra:** `v1.0.0 - MVP EcoLogística Huancayo` y su periodo.
 
-> **Archivo sugerido:** `evidencias/05-release.png`
+**Archivo de evidencia:** `evidencias/05-release.png`  
 
-## 6. Resumen de planificación Agile en Jira
+![Release v1.0.0 de EcoLogística Huancayo](evidencias/05-release.png)
+
+## 6. Control de evidencias
+
+Las cinco capturas utilizadas en este documento se almacenan en `evidencias/` y se referencian mediante rutas relativas para que GitHub las renderice directamente.
+
+| Evidencia | Archivo | Estado |
+|---|---|---|
+| 1 — Roadmap / Cronograma | `evidencias/01-roadmap.png` | Preparada |
+| 2 — Backlog priorizado | `evidencias/02-backlog-priorizado.png` | Preparada |
+| 3 — Sprint Planning + Sprint Goal | `evidencias/03-sprint-planning.png` | Preparada |
+| 4 — Scrum Board | `evidencias/04-scrum-board.png` | Preparada |
+| 5 — Release / Publicación | `evidencias/05-release.png` | Preparada |
+
+> **Nota de entrega:** las capturas deben conservar el recorte centrado en el panel de Jira y evitar escritorio, pestañas del navegador, barra de tareas u otros elementos ajenos a la evidencia.
+
+## 7. Resumen de planificación Agile en Jira
 
 | Elemento | Cantidad |
 |---|---:|
@@ -109,6 +133,6 @@ Configuración observada:
 | Story Points de Enablers | 48 |
 | Story Points totales estimados | 99 |
 
-## 7. Relación con GitHub
+## 8. Relación con GitHub
 
 Este documento constituye la evidencia documental de la configuración realizada en Jira. El código, los documentos y las evidencias se consolidan en el repositorio GitHub.
