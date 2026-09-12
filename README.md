@@ -119,6 +119,7 @@ Motor de optimización
 Ruta propuesta
    ↓
 Indicadores
+```
 
 ---
 
