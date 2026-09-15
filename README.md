@@ -6,7 +6,7 @@ EcoLogística Huancayo es un proyecto de desarrollo de software orientado a la g
 
 La propuesta busca apoyar la planificación de rutas considerando diferentes factores operativos y ambientales, entre ellos la distancia recorrida, el tiempo, el consumo de combustible, las emisiones de CO₂, las ventanas de entrega y las restricciones de operación.
 
-> **Estado actual:** Fase de análisis de requisitos y diseño arquitectónico.
+> **Estado actual:** Fase de planificación Agile y preparación del MVP, con Sprint 1 configurado en Jira.
 
 ---
 
