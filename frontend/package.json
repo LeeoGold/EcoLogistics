@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
-    "vite": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "vite": "latest"
   },
-  "devDependencies": {}
+  "optionalDependencies": {
+    "@rolldown/binding-win32-x64-msvc": "^1.2.9"
+  }
 }
