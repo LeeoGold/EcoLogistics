@@ -6,7 +6,7 @@ EcoLogística Huancayo es un proyecto de desarrollo de software orientado a la g
 
 La propuesta busca apoyar la planificación de rutas considerando diferentes factores operativos y ambientales, entre ellos la distancia recorrida, el tiempo, el consumo de combustible, las emisiones de CO₂, las ventanas de entrega y las restricciones de operación.
 
-> **Estado actual:** Fase de planificación Agile y preparación del MVP, con Sprint 1 configurado en Jira.
+> **Estado actual:** Implementación inicial del Sprint 1, con un primer incremento funcional para registrar y consultar vehículos.
 
 ---
 
@@ -133,3 +133,22 @@ La planificación Agile y sus evidencias se encuentran en `docs/02 Planificació
 | Artefactos Jira | [02 Artefactos Jira V_1_0_0](docs/02%20Planificación/02%20Artefactos%20Jira%20V_1_0_0.md) |
 | Registro de riesgos | [03 Registro de riesgos V_1_0_0](docs/02%20Planificación/03%20Registro%20de%20riesgos%20V_1_0_0.md) |
 | Presupuesto del proyecto | [04 Presupuesto del proyecto V_1_0_0](docs/02%20Planificación/04%20Presupuesto%20del%20proyecto%20V_1_0_0.md) |
+
+# 🛠️ Implementación del Sprint 1
+
+Los entregables de implementación, estado, impedimentos, riesgos, revisión y retrospectiva del Sprint 1 se encuentran en `docs/03 Implementación/`.
+
+| Artefacto | Documento |
+|---|---|
+| Índice de implementación | [README de implementación](docs/03%20Implementación/README.md) |
+| Estado del proyecto | [01 Informe de estado](docs/03%20Implementación/01%20Informe%20de%20estado%20del%20proyecto%20V_1_0_0.md) |
+| Impedimentos | [02 Registro de Impedimentos](docs/03%20Implementación/02%20Registro%20de%20Impedimentos%20V_1_0_0.md) |
+| Riesgos | [03 Registro de riesgos](docs/03%20Implementación/03%20Registro%20de%20riesgos%20V_1_0_0.md) |
+| Sprint Review | [04 Revisión del Sprint](docs/03%20Implementación/04%20Revisión%20del%20Sprint%20V_1_0_0.md) |
+| Retrospectiva | [05 Retrospectiva del Sprint](docs/03%20Implementación/05%20Retrospectiva%20del%20Sprint%20V_1_0_0.md) |
+
+## Historial de cambios
+
+| Versión | Fecha | Cambio |
+|---|---|---|
+| V_1_0_0 | 2026-09-22 | Se agregó el índice de implementación del Sprint 1 y sus cinco entregables. |
