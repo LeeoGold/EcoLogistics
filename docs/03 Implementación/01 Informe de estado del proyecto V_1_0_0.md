@@ -2,119 +2,165 @@
 
 [← Volver al README](../../README.md)
 
+**Versión documental:** 1.1.0  
+**Fecha de corte:** 2026-09-23
+
 ## 1. Datos del Sprint
 
-- Proyecto: **EcoLogística Huancayo**
-- Sprint: **Sprint 1**
-- Periodo planificado: **09/09/2026 – 22/09/2026**
-- Historias comprometidas: **6 HUs**
-- Story Points comprometidos: **20 SP**
-- Release: **v1.0.0 - MVP EcoLogística Huancayo**
+| Campo | Valor |
+|---|---|
+| Proyecto | **EcoLogística Huancayo** |
+| Sprint | **ECO Sprint 1** |
+| Periodo planificado | **09/09/2026 – 22/09/2026** |
+| Historias comprometidas | **6 HUs** |
+| Story Points comprometidos | **20 SP** |
+| Release | **v1.0.0 - MVP EcoLogística Huancayo** |
+| Meta | Implementar la base operativa para registrar y consultar vehículos, conductores, clientes y pedidos, dejando la información preparada para la planificación de rutas. |
 
 ## 2. Estado actual de las HUs comprometidas
 
-Estado observado en Jira antes de completar el Sprint y actualizado con el trabajo registrado durante este checkpoint:
+Al corte de este informe, Jira muestra **2 HUs en En revisión / QA**, **4 HUs en Por hacer** y **0 HUs en Listo**.
 
-| HU | Descripción | Estado | SP |
+| HU | Descripción | Estado Jira | SP |
 |---|---|---|---:|
-| US-001 | Registrar vehículo | En curso | 3 |
+| US-001 | Registrar vehículo | En revisión / QA | 3 |
 | US-002 | Consultar vehículos | En revisión / QA | 3 |
 | US-003 | Registrar pedido | Por hacer | 5 |
 | US-004 | Consultar pedidos | Por hacer | 3 |
 | US-005 | Registrar conductor | Por hacer | 3 |
 | US-006 | Registrar cliente | Por hacer | 3 |
 
-### 2.1 Avance de HUs
+### 2.1 Avance por HUs
 
 - HUs comprometidas: **6**
-- HUs en estado **Listo**: **0**
-- HUs en estado **En revisión / QA**: **1**
-- HUs en estado **En curso**: **1**
-- HUs en estado **Por hacer**: **4**
-- Porcentaje de HUs terminadas según Jira: **0 % (0/6)**
+- HUs actualmente en Listo: **0/6 = 0 %**
+- HUs actualmente en En revisión / QA: **2/6 = 33.3 %**
+- HUs actualmente en Por hacer: **4/6 = 66.7 %**
+
+El 33.3 % corresponde a HUs que han llegado a revisión/QA, no a HUs declaradas Done.
 
 ### 2.2 Avance por Story Points
 
-- SP comprometidos: **20**
-- SP en estado Listo: **0 SP**
-- SP en En revisión / QA: **3 SP**
-- SP en En curso: **3 SP**
-- SP pendientes en Por hacer: **14 SP**
-- SP terminados según Jira: **0 % (0/20)**
+- SP comprometidos: **20 SP**
+- SP actualmente en Listo: **0 SP**
+- SP actualmente en En revisión / QA: **6 SP**
+- SP actualmente en Por hacer: **14 SP**
 
-## 3. Subtareas registradas en las HUs con avance
+## 3. Evidencia de trabajo registrado en Jira
 
-### US-001 Registrar vehículo
+Los reportes de Jira del Sprint 1 muestran una reducción de **20 SP a 14 SP** en el Burndown, equivalente a **6 SP** de trabajo retirado del trabajo restante.
 
-- ECO-30 Definir campos y validaciones del vehículo → **Listo**
-- ECO-31 Implementar registro de vehículo → **Listo**
-- ECO-32 Probar registro de vehículo → **Por hacer**
+El Burnup registra **6 SP de trabajo completado en el historial del Sprint**. Este dato debe interpretarse como trabajo registrado por Jira en su historial y no como declaración de que las dos HUs cumplan por sí solas toda la Definition of Done.
 
-Resultado Jira: **2/3 subtareas** registradas como terminadas.
+> **Evidencias:**
+> - [Burndown de Sprint 1](./evidencias/06-burndown-sprint-1.png)
+> - [Burnup de Sprint 1](./evidencias/07-burnup-sprint-1.png)
 
-### US-002 Consultar vehículos
+### 3.1 Observación sobre incorporación del alcance
 
-- ECO-33 Definir consulta y filtros de vehículos → **Por hacer**
-- ECO-34 Implementar consulta y visualización de la flota → **Listo**
-- ECO-35 Probar consulta y filtros → **Por hacer**
-
-Resultado Jira: **1/3 subtareas** registradas como terminadas.
+El Burndown muestra que las seis HUs del Sprint fueron incorporadas al alcance el **11/09/2026**, aunque el periodo planificado inicia el **09/09/2026**. Esta diferencia queda registrada como una observación del flujo real y se considera un punto de mejora para Sprint 2.
 
 ## 4. Velocidad y métricas del equipo
 
-### Velocidad estimada del Sprint
+### Velocidad estimada
 
-La planificación comprometió **20 SP** para Sprint 1.
+La planificación del Sprint comprometió **20 SP**.
 
-### Velocidad observada a este checkpoint
+### Velocidad real cerrada
 
-El tablero registra **0 SP en estado Listo**, por lo que la velocidad cerrada observable en Jira en este momento es **0 SP**.
+No se registra todavía una velocidad histórica definitiva, porque el Sprint aún no ha sido cerrado formalmente en Jira y las HUs de mayor avance permanecen en **En revisión / QA**.
 
-> Esta cifra no debe interpretarse como una velocidad histórica estable del equipo. Es solamente el resultado registrado en el tablero para este Sprint antes de su cierre.
+Por ello, **no se inventa una velocidad real de Sprint 1**. El dato se incorporará después del cierre formal del Sprint si Jira lo genera.
 
-### Burndown / Burnup
+### Métricas disponibles al corte
 
-No se reconstruye una serie diaria con datos inventados. El material disponible en este checkpoint es un estado puntual del tablero. Para el cierre del informe se deberá incorporar el gráfico o historial de Jira, si se cuenta con él.
+| Métrica | Resultado |
+|---|---:|
+| HUs comprometidas | 6 |
+| HUs en revisión/QA | 2 |
+| HUs en Listo | 0 |
+| HUs por hacer | 4 |
+| SP comprometidos | 20 |
+| SP en revisión/QA | 6 |
+| SP pendientes | 14 |
+| Cobertura automatizada del backend | **99 %** |
+| Pruebas automatizadas | **11/11 aprobadas** |
 
-## 5. Avance técnico del incremento
+## 5. Calidad y verificación técnica
 
-El repositorio contiene un primer incremento funcional del módulo de vehículos con:
+Se ejecutaron pruebas automatizadas del módulo de vehículos con el siguiente resultado:
 
-- Backend en **Python + FastAPI**.
-- Persistencia en **PostgreSQL** mediante SQLAlchemy.
-- Frontend en **React + Vite**.
-- Endpoints para listar, consultar, registrar, actualizar y eliminar vehículos.
-- Validaciones de entrada y control de placa duplicada.
-- Interfaz para registrar vehículos y consultar la flota.
+- **11 pruebas aprobadas**.
+- **0 fallos**.
+- **99 % de cobertura** sobre `app`.
+- `python -m compileall -q app tests` ejecutado sin errores.
+- `python -m pip check` ejecutado con resultado **No broken requirements found**.
 
-La estructura actual del repositorio muestra un primer avance funcional, pero todavía requiere una reorganización adicional para cumplir completamente el esquema modular por capas solicitado para la implementación.
+Durante la ejecución se observaron dos warnings de deprecación de dependencias (`Starlette/httpx` y `anyio`). Los warnings no provocaron fallos en las pruebas.
 
-## 6. Milestones técnicos
+## 6. Avance técnico del incremento
 
-| Milestone | Estado |
-|---|---|
-| Base del backend FastAPI | Implementado |
-| Modelo de vehículo y persistencia | Implementado |
-| API inicial de vehículos | Implementado |
-| Interfaz React de registro/consulta | Implementado |
-| Pruebas del registro de vehículo | Pendiente de evidencia de ejecución |
-| Pruebas de consulta/filtros | Pendiente de evidencia de ejecución |
-| Arquitectura modular por capas | Pendiente de refactorización |
+### Backend
 
-## 7. Situación global del PFA
+Se implementó y reorganizó el módulo de vehículos con separación de responsabilidades:
 
-La planificación Agile, el backlog inicial, los artefactos de Jira y la definición del Sprint 1 se encuentran preparados. En este checkpoint el proyecto se encuentra en la etapa de **implementación inicial del Sprint 1**.
+```text
+routes → controllers → services → repositories → models
+```
 
-El porcentaje global del PFA completo **no se calcula en este documento** porque no se dispone aquí de una fórmula oficial de avance global ni de una medición consolidada de todos los entregables del PFA.
+La API de vehículos permite listar, consultar, registrar, actualizar y eliminar registros. La persistencia se realiza mediante SQLAlchemy sobre PostgreSQL.
 
-## 8. Conclusión del checkpoint
+### Frontend
 
-El Sprint 1 presenta un incremento funcional concentrado en la gestión inicial de vehículos y una parte de la consulta de flota. El tablero todavía no registra historias en estado Listo, por lo que el cumplimiento final del Sprint debe documentarse después de revisar pruebas, criterios de aceptación, Definition of Done y aceptación del Product Owner.
+El módulo de vehículos fue reorganizado en una estructura modular con:
+
+```text
+components/
+services/
+routes/
+state/
+assets/
+pages/
+```
+
+Se verificó la comunicación React ↔ FastAPI y la funcionalidad de registro, consulta, búsqueda y filtros de vehículos.
+
+### Base de datos
+
+La aplicación se ejecutó correctamente sobre la base PostgreSQL `ecologistica` en el equipo MAIN.
+
+## 7. Hitos técnicos
+
+| Hito | Estado | Evidencia |
+|---|---|---|
+| Backend FastAPI funcionando | Completado | Ejecución local verificada |
+| PostgreSQL operativo | Completado | Persistencia verificada |
+| Registro de vehículos | Completado técnicamente | Prueba funcional + automatizada |
+| Consulta de vehículos | Completado técnicamente | Swagger + frontend |
+| Búsqueda/filtros de vehículos | Completado técnicamente | Prueba funcional |
+| Arquitectura backend por capas | Completado | Repositorio |
+| Frontend modular | Completado | Repositorio |
+| Pruebas automatizadas | Completado | 11/11 |
+| Cobertura | Completado | 99 % |
+| Despliegue automatizado a staging | No verificado | Sin evidencia |
+
+## 8. Situación global del PFA
+
+La planificación, los artefactos de Jira, Sprint 1 y los primeros incrementos funcionales están desarrollados. La consigna de implementación exige reportar el progreso real respecto del plan global, por lo que se conserva la separación entre avance del Sprint y avance total del PFA.
+
+No se asigna un porcentaje global del PFA en este informe porque no existe una fórmula oficial única de ponderación del avance global disponible en las fuentes revisadas.
+
+## 9. Conclusión
+
+Sprint 1 dejó un incremento técnico funcional en gestión de vehículos, con backend y frontend integrados, persistencia PostgreSQL, búsqueda/filtros y un conjunto de 11 pruebas automatizadas con 99 % de cobertura.
+
+Al mismo tiempo, Jira mantiene las dos HUs de vehículos en **En revisión / QA**, mientras las otras cuatro HUs permanecen en **Por hacer**. Por ello, el informe diferencia entre **trabajo técnico comprobado**, **trabajo registrado como completado por los reportes** y **HUs formalmente Done**.
 
 ## Historial de cambios
 
 | Versión | Fecha | Cambio |
 |---|---|---|
-| V_1_0_0 | 2026-09-22 | Creación del informe con el estado real disponible del Sprint 1. |
+| 1.0.0 | 2026-09-22 | Creación inicial del informe. |
+| 1.1.0 | 2026-09-23 | Incorporación de Burndown/Burnup, QA, cobertura, estructura técnica y estado actualizado de Jira. |
 
 [← Volver al README](../../README.md)
