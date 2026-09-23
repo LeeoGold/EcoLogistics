@@ -2,22 +2,29 @@
 
 [← Volver al README](../../README.md)
 
+**Versión documental:** 1.1.0  
+**Fecha de corte:** 2026-09-23
+
 ## Registro
 
-| ID | Impedimento | Fecha de detección | Impacto | Acción / resolución | Estado | Responsable |
+| ID | Impedimento | Fecha de detección | Impacto en cronograma/HUs | Acción / resolución | Estado | Responsable |
 |---|---|---|---|---|---|---|
-| IMP-001 | Conectividad inestable en la PC utilizada para continuar la implementación y sincronizar cambios con GitHub. | 2026-09-22 | Retrasa la sincronización remota y obliga a trabajar mediante checkpoints locales para reducir el riesgo de pérdida de progreso. | Avanzar en bloques pequeños, conservar los cambios localmente y realizar el push cuando la conectividad esté disponible. | En Proceso | Equipo de desarrollo |
+| IMP-001 | Conectividad inestable en la PC secundaria utilizada para continuar la implementación y sincronizar cambios con GitHub. | 2026-09-22 | Retrasó la sincronización remota y obligó a trabajar con checkpoints. | Continuar en bloques pequeños y realizar push cuando hubo conectividad. | Resuelto | Equipo de desarrollo |
+| IMP-002 | La PC secundaria no tenía PostgreSQL disponible en `localhost:5432`, por lo que no podía ejecutar el backend con la misma configuración local. | 2026-09-22 | Impidió realizar la prueba completa de ejecución en esa PC y trasladó la validación a MAIN. | Ejecutar la validación integral en MAIN, donde PostgreSQL ya estaba disponible, y mantener el desarrollo sincronizado mediante Git. | Resuelto | Equipo de desarrollo |
 
 ## Seguimiento
 
-El impedimento IMP-001 no bloquea por completo la implementación local, pero sí afecta la velocidad de sincronización y publicación del trabajo.
+Los dos impedimentos fueron resueltos para el cierre técnico del incremento revisado. La estrategia utilizada fue separar el trabajo de desarrollo del entorno de ejecución y centralizar la validación integral en MAIN.
 
-No se registran otros impedimentos como hechos porque no existe evidencia suficiente en este checkpoint.
+## Impacto aprendido
+
+La experiencia mostró que el proyecto depende de disponer de un entorno reproducible en cada equipo. Para Sprint 2 se recomienda documentar una verificación inicial de Python, dependencias, PostgreSQL, `.env` y puertos antes de comenzar el trabajo.
 
 ## Historial de cambios
 
 | Versión | Fecha | Cambio |
 |---|---|---|
-| V_1_0_0 | 2026-09-22 | Creación del registro de impedimentos de Sprint 1. |
+| 1.0.0 | 2026-09-22 | Creación del registro inicial. |
+| 1.1.0 | 2026-09-23 | Incorporación del impedimento de entorno PostgreSQL y cierre de ambos impedimentos tras la validación en MAIN. |
 
 [← Volver al README](../../README.md)
