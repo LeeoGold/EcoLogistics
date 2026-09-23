@@ -1,11 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from . import models  # noqa: F401 - registra los modelos antes de create_all
 from .core import settings
 from .db import Base, engine
-from . import models  # noqa: F401 - registra los modelos antes de create_all
-from .routers.vehicles import router as vehicles_router
-
+from .routes.vehicles import router as vehicles_router
 
 app = FastAPI(
     title="EcoLogística Huancayo API",
