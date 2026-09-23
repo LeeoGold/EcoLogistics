@@ -130,8 +130,8 @@ La planificación Agile y sus evidencias se encuentran en `docs/02 Planificació
 | Artefacto | Documento |
 |---|---|
 | Transformación a ágil | [01 Transformando a ágil V_1_0_0](docs/02%20Planificación/01%20Transformando%20a%20ágil%20V_1_0_0.md) |
-| Artefactos Jira | [02 Artefactos Jira V_1_0_0](docs/02%20Planificación/02%20Artefactos%20Jira%20V_1_0_0.md) |
-| Registro de riesgos | [03 Registro de riesgos V_1_0_0](docs/02%20Planificación/03%20Registro%20de%20riesgos%20V_1_0_0.md) |
+| Artefactos Jira | [02 Artefactos Jira V_1_1_0](docs/02%20Planificación/02%20Artefactos%20Jira%20V_1_1_0.md) |
+| Registro de riesgos | [03 Registro de riesgos V_1_1_0](docs/02%20Planificación/03%20Registro%20de%20riesgos%20V_1_1_0.md) |
 | Presupuesto del proyecto | [04 Presupuesto del proyecto V_1_0_0](docs/02%20Planificación/04%20Presupuesto%20del%20proyecto%20V_1_0_0.md) |
 
 # 🛠️ Implementación del Sprint 1
@@ -143,7 +143,7 @@ Los entregables de implementación, estado, impedimentos, riesgos, revisión y r
 | Índice de implementación | [README de implementación](docs/03%20Implementación/README.md) |
 | Estado del proyecto | [01 Informe de estado](docs/03%20Implementación/01%20Informe%20de%20estado%20del%20proyecto%20V_1_0_0.md) |
 | Impedimentos | [02 Registro de Impedimentos](docs/03%20Implementación/02%20Registro%20de%20Impedimentos%20V_1_0_0.md) |
-| Riesgos | [03 Registro de riesgos](docs/03%20Implementación/03%20Registro%20de%20riesgos%20V_1_0_0.md) |
+| Riesgos | [03 Registro de riesgos](docs/03%20Implementación/03%20Registro%20de%20riesgos%20V_1_1_0.md) |
 | Sprint Review | [04 Revisión del Sprint](docs/03%20Implementación/04%20Revisión%20del%20Sprint%20V_1_0_0.md) |
 | Retrospectiva | [05 Retrospectiva del Sprint](docs/03%20Implementación/05%20Retrospectiva%20del%20Sprint%20V_1_0_0.md) |
 
