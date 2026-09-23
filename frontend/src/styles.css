@@ -25,3 +25,8 @@ th, td { padding: 10px 8px; border-bottom: 1px solid #e5eaee; text-align: left; 
 th { font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
 .message { margin: 14px 0 0; font-size: .9rem; }
 @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .hero { flex-direction: column; } }
+
+.filters { display: grid; grid-template-columns: 1fr 180px auto; gap: 12px; align-items: end; margin-top: 18px; padding: 14px; border: 1px solid #e5eaee; border-radius: 12px; background: #f8fafb; }
+.filter-clear { height: 42px; }
+.result-count { margin: 12px 0 0; color: #5b6670; font-size: .86rem; }
+@media (max-width: 760px) { .filters { grid-template-columns: 1fr; } .filter-clear { width: 100%; } }
