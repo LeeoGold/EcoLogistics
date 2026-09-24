@@ -1,6 +1,9 @@
-# 03 Registro de riesgos V_1_0_0
+# 03 Registro de riesgos V_1_1_0
 
 [← Volver al README Principal](../../README.md)
+
+**Versión documental:** 1.1.0
+**Fecha de actualización:** 2026-09-23
 
 ## 1. Propósito
 
@@ -21,10 +24,8 @@ Este documento registra y prioriza riesgos relevantes de EcoLogística Huancayo 
 | Puntaje | Nivel |
 |---:|---|
 | 1–6 | Bajo |
-| 8–12 | Medio |
+| 7–14 | Medio |
 | 15–25 | Alto |
-
-> La consigna deja sin clasificar los valores 7, 13 y 14; el registro evita esos puntajes.
 
 ## 3. Matriz cuantitativa
 
@@ -61,3 +62,29 @@ Este documento registra y prioriza riesgos relevantes de EcoLogística Huancayo 
 Los riesgos R-001, R-002, R-003 y R-006 son prioritarios porque afectan directamente el funcionamiento, seguridad o integridad del sistema.
 
 La selección es coherente con las restricciones existentes del repositorio relacionadas con seguridad, datos personales, integridad, costo del ciclo de vida, sostenibilidad y control del alcance.
+
+
+## 6. Actualización del contexto de implementación — Sprint 1
+
+Durante la implementación del Sprint 1 se identificaron y registraron riesgos operativos y técnicos adicionales que complementan la matriz de planificación original.
+
+| ID | Riesgo | Tipo | P | I | P×I | Nivel | Estrategia | Contingencia | Responsable |
+|---|---|---|---:|---:|---:|---|---|---|---|
+| RI-001 | Desalineación entre el estado real del código y el estado registrado en Jira. | Proceso/Requisitos | 3 | 4 | 12 | Alto | Mitigar | Revisar HUs, subtareas, pruebas y evidencias antes de cambiar estados. | Equipo de desarrollo |
+| RI-002 | Conectividad inestable entre PCs que retrase commits, pushes y sincronización. | Infraestructura | 4 | 3 | 12 | Alto | Mitigar | Crear checkpoints locales y sincronizar al recuperar conexión. | Equipo de desarrollo |
+| RI-003 | Falta de evidencia de pruebas que impida cerrar HUs aunque exista implementación. | Técnico/Calidad | 2 | 4 | 8 | Medio | Mitigar | Ejecutar pruebas y registrar evidencia antes de declarar Done. | Equipo de desarrollo |
+| RI-004 | Crecimiento de funcionalidad sin respetar la modularidad exigida. | Técnico/Arquitectura | 3 | 3 | 9 | Medio | Mitigar | Aplicar separación por capas y componentes desde el inicio de cada módulo. | Equipo de desarrollo |
+| RI-005 | Diferencias de entorno entre PCs, especialmente PostgreSQL, `.env` o dependencias. | Infraestructura | 3 | 4 | 12 | Alto | Mitigar | Verificar el entorno al inicio y centralizar la validación integral en MAIN cuando sea necesario. | Equipo de desarrollo |
+
+### Seguimiento del Sprint 1
+
+Durante Sprint 1 se materializaron situaciones relacionadas con conectividad y disponibilidad de PostgreSQL en un equipo secundario. Estas experiencias justifican mantener RI-002 y RI-005 como riesgos de seguimiento prioritario para el siguiente incremento.
+
+## Historial de cambios
+
+| Versión | Fecha | Cambio |
+|---|---|---|
+| 1.0.0 | 2026-09-01 | Matriz inicial de riesgos del proyecto. |
+| 1.1.0 | 2026-09-23 | Incorporación de riesgos específicos de implementación, evaluación P×I y seguimiento del Sprint 1. |
+
+[← Volver al README Principal](../../README.md)

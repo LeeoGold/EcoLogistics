@@ -1,113 +1,113 @@
 # 02 Artefactos Jira V_1_1_0
 
-**VersiÃ³n documental actual:** 1.1.0  
-**Fecha de actualizaciÃ³n:** 2026-09-23
+**Versión documental actual:** 1.1.0
+**Fecha de actualización:** 2026-09-23
 
-[â† Volver al README Principal](../../README.md)
+[← Volver al README Principal](../../README.md)
 
-## 1. InformaciÃ³n general
+## 1. Información general
 
 | Campo | Valor |
 |---|---|
-| Proyecto | EcoLogÃ­stica Huancayo |
+| Proyecto | EcoLogística Huancayo |
 | Clave Jira | ECO |
 | Tipo | Scrum, espacio gestionado por el equipo |
-| Release | `v1.0.0 - MVP EcoLogÃ­stica Huancayo` |
+| Release | `v1.0.0 - MVP EcoLogística Huancayo` |
 | Sprint | `ECO Sprint 1` |
-| Sprint Goal | Implementar la base operativa de EcoLogÃ­stica Huancayo para registrar y consultar vehÃ­culos, conductores, clientes y pedidos, dejando la informaciÃ³n preparada para la planificaciÃ³n de rutas. |
+| Sprint Goal | Implementar la base operativa de EcoLogística Huancayo para registrar y consultar vehículos, conductores, clientes y pedidos, dejando la información preparada para la planificación de rutas. |
 
-## 2. ConfiguraciÃ³n realizada
+## 2. Configuración realizada
 
-- 6 Ã‰picas.
+- 6 Épicas.
 - 10 Stories.
 - 12 Enablers.
 - 66 Subtasks.
-- EstimaciÃ³n con Story Points.
+- Estimación con Story Points.
 - Campo Prioridad para Story y Enabler.
 - Campo personalizado `Componente` para Story y Enabler.
-- Release `v1.0.0 - MVP EcoLogÃ­stica Huancayo`.
-- Sprint 1 con duraciÃ³n de dos semanas.
-- Flujo: **Por hacer â†’ En curso â†’ En revisiÃ³n / QA â†’ Listo**.
+- Release `v1.0.0 - MVP EcoLogística Huancayo`.
+- Sprint 1 con duración de dos semanas.
+- Flujo: **Por hacer → En curso → En revisión / QA → Listo**.
 
-## 3. Estructura de Ã‰picas
+## 3. Estructura de Épicas
 
-| Jira / diseÃ±o | Ã‰pica | Contenido |
+| Jira / diseño | Épica | Contenido |
 |---|---|---|
-| EP-01 | GestiÃ³n de Flota | US-001, US-002 |
-| EP-02 | GestiÃ³n de Conductores y Clientes | US-005, US-006 |
-| EP-03 | GestiÃ³n de Pedidos | US-003, US-004 |
-| EP-04 | GestiÃ³n y OptimizaciÃ³n de Rutas | US-007, US-008, US-010, EN-001, EN-002 |
+| EP-01 | Gestión de Flota | US-001, US-002 |
+| EP-02 | Gestión de Conductores y Clientes | US-005, US-006 |
+| EP-03 | Gestión de Pedidos | US-003, US-004 |
+| EP-04 | Gestión y Optimización de Rutas | US-007, US-008, US-010, EN-001, EN-002 |
 | EP-05 | Monitoreo e Indicadores | US-009 |
-| EP-06 | Seguridad y Calidad TÃ©cnica | EN-003 a EN-012 |
+| EP-06 | Seguridad y Calidad Técnica | EN-003 a EN-012 |
 
 ## 4. Sprint 1
 
-**Periodo:** 09/09/2026 â€“ 22/09/2026  
-**Actividades principales:** 6 Stories  
+**Periodo:** 09/09/2026 – 22/09/2026
+**Actividades principales:** 6 Stories
 **Story Points:** 20
 
 | Story | SP | Prioridad | Componente |
 |---|---:|---|---|
-| US-001 Registrar vehÃ­culo | 3 | High | BACKEND / API |
-| US-002 Consultar vehÃ­culos | 3 | Medium | FRONTEND |
+| US-001 Registrar vehículo | 3 | High | BACKEND / API |
+| US-002 Consultar vehículos | 3 | Medium | FRONTEND |
 | US-003 Registrar pedido | 5 | High | BACKEND / API |
 | US-004 Consultar pedidos | 3 | Medium | FRONTEND |
 | US-005 Registrar conductor | 3 | High | BACKEND / API |
 | US-006 Registrar cliente | 3 | High | BACKEND / API |
 
-## 5. Evidencias requeridas por la rÃºbrica
+## 5. Evidencias requeridas por la rúbrica
 
-Las capturas deben estar recortadas exclusivamente al panel de Jira que demuestra cada criterio, sin escritorio, navegador, pestaÃ±as o barra de tareas.
+Las capturas deben estar recortadas exclusivamente al panel de Jira que demuestra cada criterio, sin escritorio, navegador, pestañas o barra de tareas.
 
-### Evidencia 1 â€” Roadmap / Cronograma
+### Evidencia 1 — Roadmap / Cronograma
 
-**QuÃ© demuestra:** Ã‰picas, periodo planificado, Sprint y versiÃ³n.
+**Qué demuestra:** Épicas, periodo planificado, Sprint y versión.
 
-**Referencia:** captura del Cronograma de Jira con las seis Ã‰picas y ECO Sprint 1 visibles.
+**Referencia:** captura del Cronograma de Jira con las seis Épicas y ECO Sprint 1 visibles.
 
-**Archivo de evidencia:** `evidencias/01-roadmap.png`  
+**Archivo de evidencia:** `evidencias/01-roadmap.png`
 
 ![Roadmap / Cronograma de Jira](evidencias/01-roadmap.png)
 
-### Evidencia 2 â€” Backlog priorizado
+### Evidencia 2 — Backlog priorizado
 
-**QuÃ© demuestra:** Actividad, Principal, Prioridad, Story Points, Componente, Sprint y Estado.
+**Qué demuestra:** Actividad, Principal, Prioridad, Story Points, Componente, Sprint y Estado.
 
 **Referencia:** vista Lista filtrada a Stories + Enablers, 22/22 elementos.
 
-**Archivo de evidencia:** `evidencias/02-backlog-priorizado.png`  
+**Archivo de evidencia:** `evidencias/02-backlog-priorizado.png`
 
 ![Backlog priorizado con Principal, Prioridad, Story Points y Componente](evidencias/02-backlog-priorizado.png)
 
-### Evidencia 3 â€” Sprint Planning + Sprint Goal
+### Evidencia 3 — Sprint Planning + Sprint Goal
 
-**QuÃ© demuestra:** ECO Sprint 1, fechas, 6 actividades, 20 SP y Meta del sprint.
+**Qué demuestra:** ECO Sprint 1, fechas, 6 actividades, 20 SP y Meta del sprint.
 
-**Archivo de evidencia:** `evidencias/03-sprint-planning.png`  
+**Archivo de evidencia:** `evidencias/03-sprint-planning.png`
 
 ![Sprint Planning y Sprint Goal](evidencias/03-sprint-planning.png)
 
-### Evidencia 4 â€” Scrum Board
+### Evidencia 4 — Scrum Board
 
-**QuÃ© demuestra:** flujo y distribuciÃ³n del trabajo durante Sprint 1.
+**Qué demuestra:** flujo y distribución del trabajo durante Sprint 1.
 
-ConfiguraciÃ³n observada:
+Configuración observada:
 - Por hacer: 4
 - En curso: 1
-- En revisiÃ³n / QA: 1
+- En revisión / QA: 1
 - Listo: 0
 
-**Archivo de evidencia:** `evidencias/04-scrum-board.png`  
+**Archivo de evidencia:** `evidencias/04-scrum-board.png`
 
 ![Scrum Board de Sprint 1](evidencias/04-scrum-board.png)
 
-### Evidencia 5 â€” Release / PublicaciÃ³n
+### Evidencia 5 — Release / Publicación
 
-**QuÃ© demuestra:** `v1.0.0 - MVP EcoLogÃ­stica Huancayo` y su periodo.
+**Qué demuestra:** `v1.0.0 - MVP EcoLogística Huancayo` y su periodo.
 
-**Archivo de evidencia:** `evidencias/05-release.png`  
+**Archivo de evidencia:** `evidencias/05-release.png`
 
-![Release v1.0.0 de EcoLogÃ­stica Huancayo](evidencias/05-release.png)
+![Release v1.0.0 de EcoLogística Huancayo](evidencias/05-release.png)
 
 ## 6. Control de evidencias
 
@@ -115,30 +115,40 @@ Las cinco capturas utilizadas en este documento se almacenan en `evidencias/` y 
 
 | Evidencia | Archivo | Estado |
 |---|---|---|
-| 1 â€” Roadmap / Cronograma | `evidencias/01-roadmap.png` | Preparada |
-| 2 â€” Backlog priorizado | `evidencias/02-backlog-priorizado.png` | Preparada |
-| 3 â€” Sprint Planning + Sprint Goal | `evidencias/03-sprint-planning.png` | Preparada |
-| 4 â€” Scrum Board | `evidencias/04-scrum-board.png` | Preparada |
-| 5 â€” Release / PublicaciÃ³n | `evidencias/05-release.png` | Preparada |
+| 1 — Roadmap / Cronograma | `evidencias/01-roadmap.png` | Preparada |
+| 2 — Backlog priorizado | `evidencias/02-backlog-priorizado.png` | Preparada |
+| 3 — Sprint Planning + Sprint Goal | `evidencias/03-sprint-planning.png` | Preparada |
+| 4 — Scrum Board | `evidencias/04-scrum-board.png` | Preparada |
+| 5 — Release / Publicación | `evidencias/05-release.png` | Preparada |
 
-> **Nota de entrega:** las capturas deben conservar el recorte centrado en el panel de Jira y evitar escritorio, pestaÃ±as del navegador, barra de tareas u otros elementos ajenos a la evidencia.
+> **Nota de entrega:** las capturas deben conservar el recorte centrado en el panel de Jira y evitar escritorio, pestañas del navegador, barra de tareas u otros elementos ajenos a la evidencia.
 
 ## 7. Resultado final de Sprint 1
 
-El Sprint 1 se cerrÃ³ en Jira con **2 actividades completadas y 4 actividades abiertas**, equivalentes a **6 SP completados de 20 SP comprometidos**. Jira registrÃ³ una velocidad real de **6 SP** para ECO Sprint 1. Las cuatro actividades abiertas fueron trasladadas al backlog.
+El Sprint 1 se cerró en Jira con **2 actividades completadas y 4 actividades abiertas**, equivalentes a **6 SP completados de 20 SP comprometidos**. Jira registró una velocidad real de **6 SP** para ECO Sprint 1. Las cuatro actividades abiertas fueron trasladadas al backlog.
 
 ### Evidencias posteriores al Sprint
 
-- [Burndown de Sprint 1](../03%20ImplementaciÃ³n/evidencias/06-burndown-sprint-1.png)
-- [Burnup de Sprint 1](../03%20ImplementaciÃ³n/evidencias/07-burnup-sprint-1.png)
-- [Pull Request aprobada](../03%20ImplementaciÃ³n/evidencias/08-pull-request-aprobada.png)
-- [Velocidad de Sprint 1](../03%20ImplementaciÃ³n/evidencias/09-velocidad-sprint-1.png)
+- [Burndown de Sprint 1](../03%20Implementación/evidencias/06-burndown-sprint-1.png)
+- [Burnup de Sprint 1](../03%20Implementación/evidencias/07-burnup-sprint-1.png)
+- [Pull Request aprobada](../03%20Implementación/evidencias/08-pull-request-aprobada.png)
+- [Velocidad de Sprint 1](../03%20Implementación/evidencias/09-velocidad-sprint-1.png)
 
-## 7. Resumen de planificaciÃ³n Agile en Jira
+## 8. Cierre del Sprint y consistencia con Jira
+
+El Sprint 1 fue cerrado en Jira. Al cierre se registraron **2 actividades completadas** y **4 actividades abiertas**, equivalentes a **6 SP completados de 20 SP comprometidos**. Las cuatro actividades abiertas fueron trasladadas al backlog.
+
+> La captura del Scrum Board utilizada como Evidencia 4 corresponde a un **estado del tablero durante la ejecución previa al cierre**. El resultado definitivo del Sprint se acredita con los reportes de Burndown, Burnup y Velocidad y con el cierre registrado en Jira.
+
+## 9. Relación con la implementación y la ingeniería aumentada con IA
+
+La planificación de Jira se mantuvo como fuente de seguimiento del trabajo del Sprint. La documentación del cierre se consolidó en `docs/03 Implementación/`. Para la siguiente evolución del proyecto, el repositorio fue preparado con un flujo **spec-driven** mediante OpenSpec y OpenCode.
+
+## 8. Resumen de planificación Agile en Jira
 
 | Elemento | Cantidad |
 |---|---:|
-| Ã‰picas | 6 |
+| Épicas | 6 |
 | Stories | 10 |
 | Enablers | 12 |
 | Subtasks | 66 |
@@ -147,14 +157,16 @@ El Sprint 1 se cerrÃ³ en Jira con **2 actividades completadas y 4 actividades 
 | Story Points de Enablers | 48 |
 | Story Points totales estimados | 99 |
 
-## 8. RelaciÃ³n con GitHub
+## 10. Relación con GitHub
 
-Este documento constituye la evidencia documental de la configuraciÃ³n realizada en Jira. El cÃ³digo, los documentos y las evidencias se consolidan en el repositorio GitHub.
+Este documento constituye la evidencia documental de la configuración realizada en Jira. El código, los documentos y las evidencias se consolidan en el repositorio GitHub.
 
 
 ## Historial de cambios
 
-| VersiÃ³n | Fecha | Cambio |
+| Versión | Fecha | Cambio |
 |---|---|---|
-| 1.0.0 | 2026-09-01 | ConfiguraciÃ³n inicial de Jira y Sprint 1. |
-| 1.1.0 | 2026-09-23 | IncorporaciÃ³n del resultado final del Sprint, velocidad y evidencias de implementaciÃ³n. |
+| 1.0.0 | 2026-09-01 | Configuración inicial de Jira y Sprint 1. |
+| 1.1.0 | 2026-09-23 | Incorporación del resultado final del Sprint, velocidad y evidencias de implementación. |
+
+[← Volver al README Principal](../../README.md)
