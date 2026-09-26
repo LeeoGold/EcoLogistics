@@ -1,9 +1,9 @@
-# 01 Informe de estado del proyecto V_1_1_0
+# 01 Informe de estado del proyecto V_1_0_0
 
 [← Volver al README Principal](../../README.md)
 
-**Versión documental:** 1.1.0
-**Fecha de corte:** 2026-09-23
+**Versión documental:** 1.0.0  
+**Fecha de corte:** 2026-09-23  
 **Estado del Sprint:** Cerrado en Jira
 
 ## 1. Datos del Sprint
@@ -20,7 +20,7 @@
 
 ## 2. Estado final de las HUs comprometidas
 
-Al cierre del Sprint 1, Jira registró **2 actividades completadas** y **4 actividades abiertas**. Las 2 HUs completadas fueron US-001 y US-002; las 4 restantes fueron trasladadas al backlog para trabajo posterior.
+Al cierre del Sprint 1, Jira registró **2 HUs completadas** y **4 HUs abiertas**. Las HUs completadas fueron US-001 y US-002; las restantes fueron trasladadas al backlog para trabajo posterior.
 
 | HU | Descripción | Estado Jira | SP |
 |---|---|---|---:|
@@ -34,8 +34,8 @@ Al cierre del Sprint 1, Jira registró **2 actividades completadas** y **4 activ
 ### 2.1 Avance por HUs
 
 - HUs comprometidas: **6**
-- HUs completadas al cierre según Jira: **2/6 = 33.3 %**
-- HUs abiertas trasladadas al backlog: **4/6 = 66.7 %**
+- HUs completadas al cierre según Jira: **2/6 = 33,3 %**
+- HUs abiertas trasladadas al backlog: **4/6 = 66,7 %**
 
 ### 2.2 Avance por Story Points
 
@@ -46,9 +46,7 @@ Al cierre del Sprint 1, Jira registró **2 actividades completadas** y **4 activ
 
 ## 3. Evidencia de trabajo registrado en Jira
 
-Los reportes de Jira del Sprint 1 muestran una reducción de **20 SP a 14 SP** en el Burndown, equivalente a **6 SP** de trabajo retirado del trabajo restante.
-
-El Burnup registra **6 SP de trabajo completado en el historial del Sprint**. Este dato debe interpretarse como trabajo registrado por Jira en su historial y no como declaración de que las dos HUs cumplan por sí solas toda la Definition of Done.
+Los reportes del Sprint 1 muestran una reducción de **20 SP a 14 SP** en el Burndown, equivalente a **6 SP** de trabajo retirado del trabajo restante. El Burnup registra **6 SP de trabajo completado** en el historial del Sprint.
 
 > **Evidencias:**
 > - [Burndown de Sprint 1](./evidencias/06-burndown-sprint-1.png)
@@ -56,31 +54,23 @@ El Burnup registra **6 SP de trabajo completado en el historial del Sprint**. Es
 
 ### 3.1 Observación sobre incorporación del alcance
 
-El Burndown muestra que las seis HUs del Sprint fueron incorporadas al alcance el **11/09/2026**, aunque el periodo planificado inicia el **09/09/2026**. Esta diferencia queda registrada como una observación del flujo real y se considera un punto de mejora para Sprint 2.
+El Burndown muestra que las seis HUs del Sprint fueron incorporadas al alcance el **11/09/2026**, aunque el periodo planificado inicia el **09/09/2026**. Esta diferencia se registra como un punto de mejora para Sprint 2.
 
 ## 4. Velocidad y métricas del equipo
 
-### Velocidad estimada vs. real
-
 | Métrica | Resultado |
 |---|---:|
-| Velocidad estimada / capacidad comprometida | **20 SP** |
-| Velocidad real registrada por Jira al cierre | **6 SP** |
+| Capacidad comprometida | **20 SP** |
+| Velocidad real registrada por Jira | **6 SP** |
 | Diferencia | **14 SP** |
 | Cumplimiento del compromiso por SP | **30 %** |
 
-La planificación comprometió 20 SP. Una vez cerrado ECO Sprint 1, Jira registró **6 SP completados** y un promedio de **6 SP**, correspondiente al único Sprint cerrado disponible en el reporte de velocidad.
-
-### Burndown y Burnup
-
-El Burndown muestra 20 SP incorporados al alcance y 14 SP restantes al corte final, equivalente a una reducción de 6 SP. El Burnup registra 6 SP de trabajo completado.
+Jira registra una velocidad de **6 SP** para el único Sprint cerrado disponible en el reporte.
 
 > **Evidencias:**
 > - [Burndown de Sprint 1](./evidencias/06-burndown-sprint-1.png)
 > - [Burnup de Sprint 1](./evidencias/07-burnup-sprint-1.png)
 > - [Velocidad de Sprint 1](./evidencias/09-velocidad-sprint-1.png)
-
-La lectura debe considerar que Jira registra la incorporación de las seis HUs al alcance el **11/09/2026**, aunque el Sprint estaba planificado desde el **09/09/2026**.
 
 ## 5. Calidad y verificación técnica
 
@@ -94,7 +84,7 @@ Se ejecutaron pruebas automatizadas del módulo de vehículos con el siguiente r
 
 Durante la ejecución se observaron dos warnings de deprecación de dependencias (`Starlette/httpx` y `anyio`). Los warnings no provocaron fallos en las pruebas.
 
-## 5.1 Matriz de verificación de la Definition of Done
+### 5.1 Matriz de verificación de la Definition of Done
 
 | Condición de la DoD | Estado | Evidencia / observación |
 |---|---|---|
@@ -102,10 +92,10 @@ Durante la ejecución se observaron dos warnings de deprecación de dependencias
 | Pruebas automatizadas y cobertura ≥ 80 % | Verificada | 11/11 pruebas aprobadas; 99 % de cobertura del backend. |
 | Criterios Gherkin | Parcialmente verificada | Los criterios forman parte de la planificación; no se dispone de una ejecución independiente de Gherkin para este cierre. |
 | Análisis estático sin vulnerabilidades críticas | No verificada | No se ejecutó una herramienta específica de análisis estático durante este cierre. |
-| Revisión por pares mediante Pull Request | Verificada para el cierre documental | PR #1 de cierre documental aprobada y fusionada. |
+| Revisión por Pull Request | Parcialmente verificada | PR #1 de cierre documental creada y en estado **Ready to merge**; la evidencia disponible no muestra revisión de terceros ni merge. |
 | Integración correcta | Verificada | React ↔ FastAPI ↔ PostgreSQL validado en MAIN. |
 | Despliegue automatizado a staging | No verificada | No existe evidencia de un despliegue automatizado a staging. |
-| Documentación actualizada | Verificada | Documentación Sprint 1 actualizada y versionada. |
+| Documentación actualizada | Verificada | Documentación del Sprint 1 actualizada y versionada. |
 | Trazabilidad | Verificada | HUs, subtareas, evidencias y documentación relacionados. |
 
 ## 6. Avance técnico del incremento
@@ -118,11 +108,11 @@ Se implementó y reorganizó el módulo de vehículos con separación de respons
 routes → controllers → services → repositories → models
 ```
 
-La API de vehículos permite listar, consultar, registrar, actualizar y eliminar registros. La persistencia se realiza mediante SQLAlchemy sobre PostgreSQL.
+La API permite listar, consultar, registrar, actualizar y eliminar registros de vehículos. La persistencia se realiza mediante SQLAlchemy sobre PostgreSQL.
 
 ### Frontend
 
-El módulo de vehículos fue reorganizado en una estructura modular con:
+El módulo de vehículos se organizó de forma modular con:
 
 ```text
 components/
@@ -137,7 +127,7 @@ Se verificó la comunicación React ↔ FastAPI y la funcionalidad de registro, 
 
 ### Base de datos
 
-La aplicación se ejecutó correctamente sobre la base PostgreSQL `ecologistica` en el equipo MAIN.
+La aplicación se ejecutó sobre PostgreSQL `ecologistica` en el equipo MAIN.
 
 ## 7. Hitos técnicos
 
@@ -156,23 +146,20 @@ La aplicación se ejecutó correctamente sobre la base PostgreSQL `ecologistica`
 
 ## 8. Situación global del PFA
 
-La planificación, los artefactos de Jira, Sprint 1 y los primeros incrementos funcionales están desarrollados. La consigna de implementación exige reportar el progreso real respecto del plan global, por lo que se conserva la separación entre avance del Sprint y avance total del PFA.
-
-No se asigna un porcentaje global del PFA en este informe porque no existe una fórmula oficial única de ponderación del avance global disponible en las fuentes revisadas.
+La planificación, los artefactos de Jira, el Sprint 1 y los primeros incrementos funcionales están documentados. El presente informe diferencia el avance específico del Sprint 1 del avance global del PFA y no asigna un porcentaje global porque no existe una fórmula oficial única de ponderación en los materiales revisados.
 
 ## 9. Conclusión
 
 Sprint 1 dejó un incremento técnico funcional en gestión de vehículos, con backend y frontend integrados, persistencia PostgreSQL, búsqueda/filtros y 11 pruebas automatizadas con 99 % de cobertura.
 
-Al cierre, Jira registró **2 HUs completadas (6 SP)** y **4 HUs abiertas trasladadas al backlog (14 SP)**. La velocidad oficial del reporte de Jira quedó en **6 SP**. El informe conserva como hechos separados el resultado de Jira, la evidencia técnica de QA y las condiciones de la DoD que sí pudieron ser verificadas.
+Al cierre, Jira registró **2 HUs completadas (6 SP)** y **4 HUs abiertas trasladadas al backlog (14 SP)**. El informe conserva como hechos separados el resultado de Jira, la evidencia técnica de QA y las condiciones de la DoD que sí pudieron verificarse.
 
-No se afirma despliegue automatizado a staging ni aceptación formal del PO cuando no existe evidencia de esos eventos.
+No se afirma despliegue automatizado a staging ni aceptación formal del Product Owner cuando no existe evidencia de esos eventos.
 
 ## Historial de cambios
 
 | Versión | Fecha | Cambio |
 |---|---|---|
-| 1.0.0 | 2026-09-22 | Creación inicial del informe. |
-| 1.1.0 | 2026-09-23 | Incorporación de Burndown/Burnup, QA, cobertura, estructura técnica, cierre del Sprint y velocidad real de 6 SP. |
+| 1.0.0 | 2026-09-23 | Consolidación del informe final del Sprint 1 conforme a la plantilla de implementación y a la evidencia disponible. |
 
 [← Volver al README Principal](../../README.md)

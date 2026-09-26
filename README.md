@@ -135,16 +135,16 @@ La planificación Agile y sus evidencias se encuentran en `docs/02 Planificació
 
 # 🛠️ Implementación del Sprint 1
 
-Los entregables de implementación, estado, impedimentos, riesgos, revisión, retrospectiva y evidencias se encuentran en `docs/03 Implementación/`.
+Los cuatro entregables oficiales de implementación, el registro de riesgos complementario y sus evidencias se encuentran en `docs/03 Implementación/`.
 
 | Artefacto | Documento |
 |---|---|
 | Índice de implementación | [README de implementación](docs/03%20Implementación/README.md) |
-| Estado del proyecto | [01 Informe de estado V_1_1_0](docs/03%20Implementación/01%20Informe%20de%20estado%20del%20proyecto%20V_1_1_0.md) |
-| Impedimentos | [02 Registro de Impedimentos V_1_1_0](docs/03%20Implementación/02%20Registro%20de%20Impedimentos%20V_1_1_0.md) |
-| Riesgos | [03 Registro de riesgos V_1_1_0](docs/03%20Implementación/03%20Registro%20de%20riesgos%20V_1_1_0.md) |
-| Revisión del Sprint | [04 Revisión del Sprint V_1_1_0](docs/03%20Implementación/04%20Revisión%20del%20Sprint%20V_1_1_0.md) |
-| Retrospectiva | [05 Retrospectiva del Sprint V_1_1_0](docs/03%20Implementación/05%20Retrospectiva%20del%20Sprint%20V_1_1_0.md) |
+| Estado del proyecto | [01 Informe de estado V_1_0_0](docs/03%20Implementación/01%20Informe%20de%20estado%20del%20proyecto%20V_1_0_0.md) |
+| Impedimentos | [02 Registro de Impedimentos V_1_0_0](docs/03%20Implementación/02%20Registro%20de%20Impedimentos%20V_1_0_0.md) |
+| Revisión del Sprint | [03 Revisión del Sprint V_1_0_0](docs/03%20Implementación/03%20Revisión%20del%20Sprint%20V_1_0_0.md) |
+| Retrospectiva | [04 Retrospectiva del Sprint V_1_0_0](docs/03%20Implementación/04%20Retrospectiva%20del%20Sprint%20V_1_0_0.md) |
+| Documento complementario | [05 Registro de riesgos V_1_0_0](docs/03%20Implementación/05%20Registro%20de%20riesgos%20V_1_0_0.md) |
 
 ## Resultado del Sprint 1
 
@@ -161,8 +161,6 @@ Los entregables de implementación, estado, impedimentos, riesgos, revisión, re
 | Velocidad Jira | 6 SP |
 | Pruebas automatizadas | 11/11 aprobadas |
 | Cobertura | 99 % |
-
----
 
 # 🤖 Ingeniería de software aumentada con IA
 
@@ -187,7 +185,7 @@ compileall → sin errores
 pip check → No broken requirements found
 ```
 
-La revisión documental mediante Pull Request también quedó registrada y aprobada.
+La Pull Request #1 de cierre documental quedó registrada con estado **Ready to merge** en la evidencia disponible; no se afirma aprobación de terceros ni merge cuando no existe esa evidencia.
 
 # 📂 Estructura principal del repositorio
 
