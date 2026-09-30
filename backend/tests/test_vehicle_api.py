@@ -84,7 +84,7 @@ def test_update_vehicle(client, vehicle_payload):
 
 def test_update_to_duplicate_plate_is_rejected(client):
     first_payload = {"placa": "TST-AAAAAA", "tipo": "CAMIONETA", "capacidad_kg": 1000,
-                     "consumo_km_l": 10, "factor_co2_kg_km": 0.25, "anio_fabricacion": 2024,
+                     "consumo_km_gal": 10, "factor_co2_kg_km": 0.25, "anio_fabricacion": 2024,
                      "estado": "DISPONIBLE"}
     second_payload = {**first_payload, "placa": "TST-BBBBBB"}
 

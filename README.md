@@ -96,14 +96,14 @@ Indicadores
 
 # 🏗️ Arquitectura y diseño técnico
 
-Los siguientes documentos contienen el diseño técnico actualizado a **V_1_1_0**:
+Los siguientes documentos contienen el diseño técnico actualizado del proyecto, manteniendo la versión semántica correspondiente a cada cambio:
 
 | Documento | Enlace |
 |---|---|
 | Stack tecnológico | [10. Stack tecnológico V_1_1_0](docs/01%20Inicio/10.%20Stack%20tecnológico%20V_1_1_0.md) |
-| Base de datos | [11. Base de datos V_1_1_0](docs/01%20Inicio/11.%20Base%20de%20datos%20V_1_1_0.md) |
+| Base de datos | [11. Base de datos V_1_2_0](docs/01%20Inicio/11.%20Base%20de%20datos%20V_1_2_0.md) |
 | Modelo C4 | [12. Modelo C4 V_1_1_0](docs/01%20Inicio/12.%20Modelo%20C4%20V_1_1_0.md) |
-| Restricciones | [13. Restricciones V_1_1_0](docs/01%20Inicio/13.%20Restricciones%20V_1_1_0.md) |
+| Restricciones | [13. Restricciones V_1_2_0](docs/01%20Inicio/13.%20Restricciones%20V_1_2_0.md) |
 
 ---
 
@@ -201,6 +201,15 @@ EcoLogistics/
 ├── .gitignore
 └── README.md
 ```
+
+# 🔄 Integración inicial del Sprint 2
+
+La primera mejora de Sprint 2 incorpora el feedback recibido durante la demostración:
+
+- El rendimiento de los vehículos se registra en km/galón estadounidense.
+- El Factor CO₂ (kg/km) dispone de información contextual mediante ayuda flotante.
+- El consumo también dispone de información contextual para evitar ambigüedad.
+- La base de datos, backend, frontend, tests y datos de prueba fueron alineados con la nueva unidad.
 
 # 📜 Historial de cambios del README
 

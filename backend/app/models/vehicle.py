@@ -1,4 +1,5 @@
 import uuid
+from decimal import Decimal
 
 from sqlalchemy import Numeric, String
 from sqlalchemy.dialects.postgresql import UUID
@@ -15,8 +16,8 @@ class Vehicle(Base):
     )
     placa: Mapped[str] = mapped_column(String(15), unique=True, nullable=False)
     tipo: Mapped[str] = mapped_column(String(30), nullable=False)
-    capacidad_kg: Mapped[float] = mapped_column(Numeric(10, 2), nullable=False)
-    consumo_km_l: Mapped[float] = mapped_column(Numeric(10, 3), nullable=False)
-    factor_co2_kg_km: Mapped[float] = mapped_column(Numeric(10, 4), nullable=False)
+    capacidad_kg: Mapped[Decimal] = mapped_column(Numeric(10, 2), nullable=False)
+    consumo_km_gal: Mapped[Decimal] = mapped_column(Numeric(10, 3), nullable=False)
+    factor_co2_kg_km: Mapped[Decimal] = mapped_column(Numeric(10, 4), nullable=False)
     anio_fabricacion: Mapped[int] = mapped_column(nullable=False)
     estado: Mapped[str] = mapped_column(String(20), nullable=False, default="DISPONIBLE")

@@ -10,7 +10,7 @@
 | Artefacto | Transformando a ágil |
 | Versión | V_1_0_0 |
 | Enfoque | Híbrido con planificación y ejecución Agile |
-| Fuente de requisitos | `docs/01 Inicio/06. Requisitos funcionales V_1_0_0.md`, `07. Requisitos no funcionales V_1_0_0.md` y `09. Reglas de negocio V_1_0_0.md` |
+| Fuente de requisitos | `docs/01 Inicio/06. Requisitos funcionales V_1_1_0.md`, `07. Requisitos no funcionales V_1_0_0.md` y `09. Reglas de negocio V_1_0_0.md` |
 
 ## 1. Propósito
 

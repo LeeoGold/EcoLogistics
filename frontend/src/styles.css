@@ -30,3 +30,94 @@ th { font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
 .filter-clear { height: 42px; }
 .result-count { margin: 12px 0 0; color: #5b6670; font-size: .86rem; }
 @media (max-width: 760px) { .filters { grid-template-columns: 1fr; } .filter-clear { width: 100%; } }
+
+
+.label-with-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.info-tooltip-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.info-tooltip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 1px solid #98a6b3;
+  border-radius: 50%;
+  background: #fff;
+  color: #41515f;
+  font-size: .72rem;
+  line-height: 1;
+  font-weight: 800;
+  cursor: help;
+  outline: none;
+}
+
+.info-tooltip:focus-visible {
+  box-shadow: 0 0 0 3px rgba(99,174,230,.28);
+}
+
+.info-tooltip-bubble {
+  position: absolute;
+  z-index: 20;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  width: 280px;
+  padding: 10px 12px;
+  border-radius: 9px;
+  background: #16202a;
+  color: #fff;
+  font-size: .78rem;
+  line-height: 1.4;
+  font-weight: 400;
+  box-shadow: 0 8px 24px rgba(22,32,42,.18);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 4px);
+  transition: opacity .15s ease, transform .15s ease, visibility .15s ease;
+  pointer-events: none;
+}
+
+.info-tooltip-bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 6px solid transparent;
+  border-top-color: #16202a;
+  transform: translateX(-50%);
+}
+
+.info-tooltip-wrap:hover .info-tooltip-bubble,
+.info-tooltip:focus-visible + .info-tooltip-bubble {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+th .label-with-hint {
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+@media (max-width: 760px) {
+  .info-tooltip-bubble {
+    left: 0;
+    transform: translate(0, 4px);
+  }
+
+  .info-tooltip-wrap:hover .info-tooltip-bubble,
+  .info-tooltip:focus-visible + .info-tooltip-bubble {
+    transform: translate(0, 0);
+  }
+}

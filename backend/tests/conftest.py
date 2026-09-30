@@ -22,7 +22,7 @@ def vehicle_payload():
         "placa": f"TST-{suffix}",
         "tipo": "CAMIONETA",
         "capacidad_kg": 1000,
-        "consumo_km_l": 10,
+        "consumo_km_gal": 10,
         "factor_co2_kg_km": 0.25,
         "anio_fabricacion": 2024,
         "estado": "DISPONIBLE",

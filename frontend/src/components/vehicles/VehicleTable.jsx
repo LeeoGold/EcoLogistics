@@ -1,4 +1,5 @@
 import VehicleFilters from './VehicleFilters'
+import InfoTooltip from '../common/InfoTooltip'
 import { useVehicles } from '../../state/VehicleContext'
 
 export default function VehicleTable() {
@@ -29,8 +30,18 @@ export default function VehicleTable() {
               <th>Placa</th>
               <th>Tipo</th>
               <th>Capacidad</th>
-              <th>Consumo</th>
-              <th>CO₂</th>
+              <th>
+                <span className="label-with-hint">
+                  <span>Consumo</span>
+                  <InfoTooltip text="Rendimiento del vehículo expresado en kilómetros por galón estadounidense (US)." />
+                </span>
+              </th>
+              <th>
+                <span className="label-with-hint">
+                  <span>CO₂</span>
+                  <InfoTooltip text="Factor de emisión expresado en kilogramos de CO₂ por cada kilómetro recorrido." />
+                </span>
+              </th>
               <th>Año</th>
               <th>Estado</th>
             </tr>
@@ -41,7 +52,7 @@ export default function VehicleTable() {
                 <td>{vehicle.placa}</td>
                 <td>{vehicle.tipo}</td>
                 <td>{vehicle.capacidad_kg}</td>
-                <td>{vehicle.consumo_km_l}</td>
+                <td>{vehicle.consumo_km_gal}</td>
                 <td>{vehicle.factor_co2_kg_km}</td>
                 <td>{vehicle.anio_fabricacion}</td>
                 <td>{vehicle.estado}</td>

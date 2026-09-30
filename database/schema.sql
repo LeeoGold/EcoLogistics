@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS vehiculos (
     placa VARCHAR(15) NOT NULL UNIQUE,
     tipo VARCHAR(30) NOT NULL,
     capacidad_kg NUMERIC(10,2) NOT NULL CHECK (capacidad_kg > 0),
-    consumo_km_l NUMERIC(10,3) NOT NULL CHECK (consumo_km_l > 0),
+    consumo_km_gal NUMERIC(10,3) NOT NULL CHECK (consumo_km_gal > 0),
     factor_co2_kg_km NUMERIC(10,4) NOT NULL CHECK (factor_co2_kg_km >= 0),
     anio_fabricacion INTEGER NOT NULL,
     estado VARCHAR(20) NOT NULL DEFAULT 'DISPONIBLE'

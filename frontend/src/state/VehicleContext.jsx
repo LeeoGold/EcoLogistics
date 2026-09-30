@@ -7,7 +7,7 @@ const initialForm = {
   placa: '',
   tipo: 'CAMIONETA',
   capacidad_kg: '',
-  consumo_km_l: '',
+  consumo_km_gal: '',
   factor_co2_kg_km: '',
   anio_fabricacion: new Date().getFullYear(),
   estado: 'DISPONIBLE',
@@ -51,7 +51,7 @@ export function VehicleProvider({ children }) {
       await createVehicle({
         ...form,
         capacidad_kg: Number(form.capacidad_kg),
-        consumo_km_l: Number(form.consumo_km_l),
+        consumo_km_gal: Number(form.consumo_km_gal),
         factor_co2_kg_km: Number(form.factor_co2_kg_km),
         anio_fabricacion: Number(form.anio_fabricacion),
       })
