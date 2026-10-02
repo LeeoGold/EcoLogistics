@@ -4,7 +4,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from . import models  # noqa: F401 - registra los modelos antes de create_all
 from .core import settings
 from .db import Base, engine
+from .routes.clients import router as clients_router
+from .routes.orders import router as orders_router
 from .routes.vehicles import router as vehicles_router
+from .routes.drivers import router as drivers_router
 
 app = FastAPI(
     title="EcoLogística Huancayo API",
@@ -26,7 +29,9 @@ app.add_middleware(
 Base.metadata.create_all(bind=engine)
 
 app.include_router(vehicles_router)
-
+app.include_router(clients_router)
+app.include_router(orders_router)
+app.include_router(drivers_router)
 
 @app.get("/health", tags=["Sistema"])
 def health() -> dict[str, str]:

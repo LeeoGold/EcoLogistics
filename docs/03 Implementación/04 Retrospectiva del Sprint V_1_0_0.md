@@ -2,87 +2,82 @@
 
 [← Volver al README Principal](../../README.md)
 
-**Versión documental:** 1.0.0  
-**Fecha de corte:** 2026-09-23
+## 1. Información general
 
-## 1. ¿Qué aprendimos?
+| Campo | Valor |
+|---|---|
+| Proyecto | EcoLogística Huancayo |
+| Sprint | Sprint 2 — Gestión operativa y flota |
+| Periodo | 23/09/2026 – 05/10/2026 |
+| Corte | 02/10/2026 |
+| Técnica | Análisis por cuatro ejes + plan de acción |
 
-Sprint 1 permitió comprobar que la implementación, Jira, las pruebas, la evidencia y la documentación deben evolucionar de forma sincronizada. También se comprobó que las diferencias entre entornos de desarrollo pueden detener la validación aunque el código esté disponible.
+## 2. Personas
 
-El uso de checkpoints y la centralización de la validación integral en MAIN permitieron continuar el trabajo frente a problemas de conectividad y disponibilidad de PostgreSQL.
+### Aprendizajes
 
-## 2. ¿Qué estamos haciendo bien?
+La división del desarrollo por historia facilita identificar qué parte del sistema debe cambiar y reduce la necesidad de modificar archivos no relacionados.
 
-- Se mantiene Jira como fuente principal de seguimiento del Sprint.
-- El backend y frontend están organizados de manera modular.
-- Se ejecutan pruebas automatizadas como parte de la validación.
-- Se documentan las métricas del Sprint mediante Burndown, Burnup y Velocidad.
-- Se mantiene trazabilidad entre HUs, evidencias y documentación.
+### Aciertos
 
-## 3. ¿Qué podemos hacer mejor?
+Se mantuvo una forma de trabajo incremental: implementar una historia, revisar la estructura y realizar una verificación de compilación antes de avanzar.
 
-### Personas
+### Oportunidad de mejora
 
-- Definir responsabilidades explícitas para actualizar Jira, ejecutar pruebas y consolidar evidencias.
-- Verificar el entorno antes de iniciar una sesión para reducir interrupciones durante la implementación.
+La validación integral no debe quedar concentrada al final. Debe existir una rutina de pruebas funcionales por historia antes de acumular demasiados cambios.
 
-### Relaciones
+## 3. Relaciones
 
-- Mejorar la coordinación entre quienes desarrollan y quienes revisan el estado de las HUs.
-- Acordar previamente cuándo una HU puede pasar a revisión y qué evidencia debe acompañarla.
-- Formalizar la comunicación de aceptación del incremento con los stakeholders cuando corresponda.
+### Aprendizajes
 
-### Procesos
+La sincronización del trabajo entre GitHub y Jira es importante para que el estado del tablero represente el estado técnico real.
 
-- Incorporar todo el alcance del Sprint antes de su inicio operativo; en Sprint 1 las seis HUs aparecen incorporadas al alcance el 11/09/2026 mientras el periodo planificado inicia el 09/09/2026.
-- Utilizar la Definition of Done como lista de verificación antes de marcar una HU como terminada.
-- Registrar pruebas y evidencias durante la ejecución, no solamente al cierre.
-- Mantener una rutina de cierre que incluya revisión, demo, actualización de documentación y trazabilidad.
+### Aciertos
 
-### Herramientas
+Los cambios se organizaron de forma que cada bloque funcional pudiera identificarse por historia.
 
-- Mantener Jira, GitHub y el repositorio como fuentes coordinadas de seguimiento y versión.
-- Documentar un entorno reproducible para Python, dependencias, PostgreSQL, `.env` y puertos.
-- Completar el flujo de ramas y Pull Requests para que la revisión quede trazable.
+### Oportunidad de mejora
 
-### Acciones a realizar
+Los cambios de estado en Jira deben realizarse cerca del momento en que se completa y verifica cada historia, no únicamente al cierre.
 
-| Acción | Indicador | Meta | Responsable |
-|---|---|---:|---|
-| Sincronizar Jira con el trabajo real | Subtareas/HUs actualizadas durante la sesión | **100 %** | Equipo de desarrollo |
-| Evidenciar las pruebas | HUs con evidencia antes del cierre | **100 %** | Equipo de desarrollo |
-| Verificar entorno | Sesiones con checklist inicial | **100 %** | Equipo de desarrollo |
-| Proteger avances | Checkpoint / push | **≥ 1 por sesión** con conectividad | Equipo de desarrollo |
-| Evitar alcance tardío | Historias agregadas después del inicio sin justificación | **0** | Equipo de desarrollo |
-| Revisar cambios | Funcionalidades con Pull Request | **100 %** cuando aplique | Equipo de desarrollo |
-| Formalizar la demo | HUs cerradas con evidencia de demostración | **100 %** | Equipo de desarrollo |
+## 4. Procesos
 
-## 4. Método de retrospectiva
+### Aprendizajes
 
-Se utilizó el enfoque **Keep / Start / Stop** como apoyo para convertir los hallazgos anteriores en acciones:
+La separación entre implementación, compilación y validación ayuda a detectar problemas antes de integrar nuevas funcionalidades.
 
-- **Keep:** mantener Jira, checkpoints, pruebas automatizadas y desarrollo incremental.
-- **Start:** iniciar cada sesión con checklist de entorno y registrar la evidencia durante la ejecución.
-- **Stop:** evitar marcar HUs como terminadas antes de comprobar la DoD y evitar incorporar alcance después del inicio del Sprint sin justificación.
+### Aciertos
 
-## 5. Datos observables del Sprint
+Se utilizaron comprobaciones intermedias de `compileall` y `npm run build` para evitar acumular errores de sintaxis o integración.
 
-- **20 SP** comprometidos.
-- **6 SP** registrados como completados por Jira.
-- **2 HUs** completadas y **4 HUs** abiertas al cierre.
-- **11/11** pruebas aprobadas.
-- **99 %** de cobertura sobre `app`.
-- Las seis HUs fueron incorporadas al alcance registrado el **11/09/2026**, después del inicio planificado del **09/09/2026**.
-- La validación integral se centralizó en MAIN debido a diferencias de entorno.
+### Oportunidad de mejora
 
-## 6. Conclusión
+La Definition of Done debe aplicarse por historia, incluyendo pruebas y evidencia, para evitar que la verificación de calidad se concentre en una sola sesión final.
 
-La retrospectiva deja un conjunto de acciones verificables para Sprint 2. El foco está en la sincronización temprana entre Jira, código y evidencias; la preparación del entorno; la revisión de la DoD; la trazabilidad mediante Pull Requests y la formalización de la demostración del incremento.
+## 5. Herramientas
 
-## Historial de cambios
+### Aprendizajes
 
-| Versión | Fecha | Cambio |
-|---|---|---|
-| 1.0.0 | 2026-09-23 | Reformulación de la retrospectiva conforme a los cuatro ejes de la rúbrica y definición de acciones medibles. |
+Git, GitHub, Jira, FastAPI, React, Vite y PostgreSQL deben considerarse parte de un mismo flujo de trazabilidad y no como herramientas aisladas.
 
-[← Volver al README Principal](../../README.md)
+### Aciertos
+
+La arquitectura modular permitió incorporar pedidos, conductores y clientes sin abandonar la separación por capas y componentes.
+
+### Oportunidad de mejora
+
+Mantener un procedimiento de entorno actualizado y verificable para reducir diferencias entre PCs y facilitar la continuidad del trabajo.
+
+## 6. Plan de acción Sprint siguiente
+
+| Acción | Responsable | Indicador | Objetivo |
+|---|---|---|---|
+| Ejecutar pruebas antes de cerrar cada HU | Equipo | HUs con evidencia de prueba / HUs completadas | 100 % |
+| Sincronizar Jira con el trabajo real | Equipo | HUs con estado correcto / HUs trabajadas | 100 % |
+| Verificar entorno antes de iniciar sesión | Equipo | Sesiones con checklist / sesiones totales | 100 % |
+| Registrar cambios mediante commits claros | Equipo | Commits descriptivos / commits totales | 100 % |
+| Mantener evidencia de validación | Equipo | HUs con evidencia / HUs completadas | 100 % |
+
+## 7. Cierre
+
+La principal mejora de proceso identificada para la siguiente iteración es trasladar parte de la validación de calidad hacia el momento de finalización de cada historia, manteniendo la implementación incremental y la sincronización continua entre código, documentación y Jira.

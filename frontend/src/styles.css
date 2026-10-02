@@ -121,3 +121,49 @@ th .label-with-hint {
     transform: translate(0, 0);
   }
 }
+
+/* US-006 Registrar cliente */
+.client-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-help {
+  margin: -4px 0 16px;
+  color: #5b6670;
+  font-size: .88rem;
+}
+
+@media (max-width: 760px) {
+  .client-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: auto;
+  }
+}
+
+/* US-004 Consultar pedidos */
+.order-filters {
+  grid-template-columns: repeat(3, minmax(150px, 1fr)) auto;
+}
+
+.order-filter-card {
+  grid-column: 1 / -1;
+}
+
+.orders-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 900px) {
+  .order-filters {
+    grid-template-columns: 1fr;
+  }
+}

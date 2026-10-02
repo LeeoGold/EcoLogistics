@@ -2,38 +2,27 @@
 
 [← Volver al README Principal](../../README.md)
 
-**Versión documental:** 1.0.0  
-**Fecha de corte:** 2026-09-23
+## 1. Información general
 
-## Registro de impedimentos
+| Campo | Valor |
+|---|---|
+| Proyecto | EcoLogística Huancayo |
+| Sprint | Sprint 2 — Gestión operativa y flota |
+| Periodo | 23/09/2026 – 05/10/2026 |
+| Corte | 02/10/2026 |
 
-| Impedimento # | Fecha de Registro | Descripción del Impedimento e Impacto en el Proyecto | Prioridad | Reportado por | Fecha tope de Resolución | Estado | Fecha de Resolución | Resolución / Comentarios |
-|---|---|---|---|---|---|---|---|---|
-| IMP-001 | 2026-09-22 | Conectividad inestable en la PC secundaria utilizada para continuar la implementación y sincronizar cambios con GitHub. Retrasó la sincronización remota y obligó a trabajar con checkpoints. | Alta | Equipo de desarrollo | Cierre del Sprint 1 | Resuelto | 2026-09-23 | Se trabajó en bloques pequeños y se realizó push cuando se recuperó la conectividad. |
-| IMP-002 | 2026-09-22 | La PC secundaria no tenía PostgreSQL disponible en `localhost:5432`, impidiendo ejecutar el backend con la misma configuración local y trasladando la validación integral a MAIN. | Alta | Equipo de desarrollo | Cierre del Sprint 1 | Resuelto | 2026-09-23 | Se centralizó la validación integral en MAIN, donde PostgreSQL estaba disponible, y se mantuvo el desarrollo sincronizado mediante Git. |
+## 2. Registro
 
-> **Nota:** “Cierre del Sprint 1” se utiliza como fecha tope operativa porque los documentos disponibles no registran una fecha límite distinta para estos impedimentos.
+| ID | Impedimento | Tipo | Impacto | Prioridad | Estado | Acción de resolución / mitigación | Trazabilidad |
+|---|---|---|---|---|---|---|---|
+| IMP-001 | Diferencias de entorno entre PCs, principalmente disponibilidad de PostgreSQL local y dependencias | Técnico | Alto | Alta | Mitigado | Centralizar la validación integral en el entorno con PostgreSQL operativo, mantener checklist de instalación y sincronizar el repositorio antes de continuar | DEV_SETUP.md / flujo Git |
+| IMP-002 | Acumulación de cambios de backend y frontend durante varias historias | Técnico / operativo | Medio | Media | Mitigado | Separar cambios por historia, mantener estructura modular y ejecutar `compileall` / `npm run build` como verificaciones intermedias | US-003 a US-011 |
+| IMP-003 | Las pruebas funcionales finales del Sprint 2 todavía no se han ejecutado al corte | Calidad | Medio | Alta | Abierto | Ejecutar la batería integral al cierre y registrar resultados antes de declarar Done | Definition of Done / tests |
 
-## Seguimiento
+## 3. Seguimiento
 
-Los dos impedimentos fueron resueltos para el cierre técnico del incremento revisado. La estrategia utilizada fue separar el trabajo de desarrollo del entorno de ejecución y centralizar la validación integral en MAIN.
+IMP-001 e IMP-002 no bloquean actualmente la continuación del desarrollo. IMP-003 permanece abierto porque la validación final forma parte del cierre de calidad del Sprint.
 
-## Impacto aprendido
+## 4. Criterio de cierre
 
-La experiencia mostró que el proyecto depende de disponer de un entorno reproducible en cada equipo. Para Sprint 2 se recomienda documentar una verificación inicial de Python, dependencias, PostgreSQL, `.env` y puertos antes de comenzar el trabajo.
-
-## Acciones preventivas para Sprint 2
-
-| Acción | Indicador | Meta |
-|---|---|---:|
-| Checklist de entorno antes de comenzar | Sesiones con checklist ejecutado | 100 % |
-| Sincronización frecuente | Sesiones con checkpoint/push | ≥ 1 por sesión con conectividad |
-| Validación cruzada de entorno | Equipos con configuración documentada | 100 % |
-
-## Historial de cambios
-
-| Versión | Fecha | Cambio |
-|---|---|---|
-| 1.0.0 | 2026-09-23 | Consolidación del registro conforme a la plantilla del Sprint 1, incluyendo impacto, prioridad, trazabilidad y resolución. |
-
-[← Volver al README Principal](../../README.md)
+Un impedimento se considerará cerrado cuando exista evidencia verificable de la resolución o mitigación y no produzca un bloqueo sobre la entrega comprometida.

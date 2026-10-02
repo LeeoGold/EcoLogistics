@@ -2,164 +2,84 @@
 
 [← Volver al README Principal](../../README.md)
 
-**Versión documental:** 1.0.0  
-**Fecha de corte:** 2026-09-23  
-**Estado del Sprint:** Cerrado en Jira
+## 1. Información general
 
-## 1. Datos del Sprint
-
-| Campo | Valor |
+| Campo | Información |
 |---|---|
-| Proyecto | **EcoLogística Huancayo** |
-| Sprint | **ECO Sprint 1** |
-| Periodo planificado | **09/09/2026 – 22/09/2026** |
-| Historias comprometidas | **6 HUs** |
-| Story Points comprometidos | **20 SP** |
-| Release | **v1.0.0 - MVP EcoLogística Huancayo** |
-| Meta | Implementar la base operativa para registrar y consultar vehículos, conductores, clientes y pedidos, dejando la información preparada para la planificación de rutas. |
+| Proyecto | EcoLogística Huancayo |
+| Iteración | Sprint 2 — Gestión operativa y flota |
+| Periodo planificado | 23/09/2026 – 05/10/2026 |
+| Corte del informe | 02/10/2026 |
+| Estado | Implementación en curso; validación funcional integral pendiente de cierre |
+| Stack | React + FastAPI + PostgreSQL |
 
-## 2. Estado final de las HUs comprometidas
+## 2. Resumen ejecutivo
 
-Al cierre del Sprint 1, Jira registró **2 HUs completadas** y **4 HUs abiertas**. Las HUs completadas fueron US-001 y US-002; las restantes fueron trasladadas al backlog para trabajo posterior.
+Durante Sprint 2 se implementaron las funcionalidades comprometidas para la gestión operativa y la mejora de la información de flota. El alcance técnico incluye el registro de pedidos, la consulta y filtrado de pedidos, el registro de conductores, el registro de clientes y la mejora de las unidades de consumo y la interpretación del factor de emisiones de los vehículos.
 
-| HU | Descripción | Estado Jira | SP |
-|---|---|---|---:|
-| US-001 | Registrar vehículo | Completada en Jira | 3 |
-| US-002 | Consultar vehículos | Completada en Jira | 3 |
-| US-003 | Registrar pedido | Abierta / Backlog | 5 |
-| US-004 | Consultar pedidos | Abierta / Backlog | 3 |
-| US-005 | Registrar conductor | Abierta / Backlog | 3 |
-| US-006 | Registrar cliente | Abierta / Backlog | 3 |
+La implementación mantiene la separación por capas del backend y la estructura modular del frontend. Las validaciones de compilación realizadas durante el desarrollo no han presentado errores.
 
-### 2.1 Avance por HUs
+La Definition of Done del proyecto exige implementación terminada, pruebas unitarias ejecutadas con cobertura mínima de 80 % y validación de los criterios Gherkin. La batería funcional integral del Sprint 2 queda pendiente de ejecutar al cierre, por lo que este informe no declara todavía esas condiciones como cumplidas.
 
-- HUs comprometidas: **6**
-- HUs completadas al cierre según Jira: **2/6 = 33,3 %**
-- HUs abiertas trasladadas al backlog: **4/6 = 66,7 %**
+## 3. Avance funcional del Sprint 2
 
-### 2.2 Avance por Story Points
+| Historia | SP | Componente | Estado técnico al corte | Evidencia de compilación |
+|---|---:|---|---|---|
+| US-003 Registrar pedido | 5 | BACKEND / API | Implementada | `python -m compileall -q app` sin errores |
+| US-004 Consultar pedidos | 3 | FRONTEND | Implementada | `npm run build` exitoso; 34 módulos transformados |
+| US-005 Registrar conductor | 3 | BACKEND / API | Implementada | `python -m compileall -q app` sin errores |
+| US-006 Registrar cliente | 3 | BACKEND / API | Implementada | `python -m compileall -q app` y `npm run build` exitosos durante integración |
+| US-011 Mejorar información y precisión de la gestión de flota | 3 | FRONTEND / BACKEND / DATABASE | Implementada | Compilación backend y build frontend verificados durante la integración |
 
-- SP comprometidos: **20 SP**
-- SP completados al cierre según Jira: **6 SP**
-- SP trasladados como trabajo abierto: **14 SP**
-- Cumplimiento por SP: **6/20 = 30 %**
+**Alcance planificado:** 17 SP.
 
-## 3. Evidencia de trabajo registrado en Jira
+## 4. Cambios técnicos relevantes
 
-Los reportes del Sprint 1 muestran una reducción de **20 SP a 14 SP** en el Burndown, equivalente a **6 SP** de trabajo retirado del trabajo restante. El Burnup registra **6 SP de trabajo completado** en el historial del Sprint.
+### Gestión de pedidos
 
-> **Evidencias:**
-> - [Burndown de Sprint 1](./evidencias/06-burndown-sprint-1.png)
-> - [Burnup de Sprint 1](./evidencias/07-burnup-sprint-1.png)
+Se incorporó la capacidad de registrar pedidos asociados a clientes, con peso, volumen, ventana temporal, prioridad, tipo de producto, estado y referencia de entrega.
 
-### 3.1 Observación sobre incorporación del alcance
+Se incorporó la consulta de pedidos y los filtros de estado, prioridad y fecha de ventana de entrega.
 
-El Burndown muestra que las seis HUs del Sprint fueron incorporadas al alcance el **11/09/2026**, aunque el periodo planificado inicia el **09/09/2026**. Esta diferencia se registra como un punto de mejora para Sprint 2.
+### Gestión de conductores
 
-## 4. Velocidad y métricas del equipo
+Se incorporó el registro de conductores con documento de identidad, licencia, categoría, experiencia, disponibilidad, contacto y estado. Se contemplan validaciones para datos obligatorios, experiencia y horario de disponibilidad, además de controles de unicidad.
 
-| Métrica | Resultado |
-|---|---:|
-| Capacidad comprometida | **20 SP** |
-| Velocidad real registrada por Jira | **6 SP** |
-| Diferencia | **14 SP** |
-| Cumplimiento del compromiso por SP | **30 %** |
+### Gestión de clientes
 
-Jira registra una velocidad de **6 SP** para el único Sprint cerrado disponible en el reporte.
+Se incorporó el registro y consulta de clientes con nombre, contacto, dirección de referencia, coordenadas geográficas, horario preferido y restricciones de acceso. Se valida la consistencia de la ventana horaria.
 
-> **Evidencias:**
-> - [Burndown de Sprint 1](./evidencias/06-burndown-sprint-1.png)
-> - [Burnup de Sprint 1](./evidencias/07-burnup-sprint-1.png)
-> - [Velocidad de Sprint 1](./evidencias/09-velocidad-sprint-1.png)
+### Gestión de flota
 
-## 5. Calidad y verificación técnica
+La unidad de rendimiento del vehículo se actualizó de km/L a km/galón estadounidense (`consumo_km_gal`). Se añadieron ayudas contextuales para explicar el consumo y el factor de emisiones `factor_co2_kg_km`.
 
-Se ejecutaron pruebas automatizadas del módulo de vehículos con el siguiente resultado:
+## 5. Calidad y validación al corte
 
-- **11 pruebas aprobadas**.
-- **0 fallos**.
-- **99 % de cobertura** sobre `app`.
-- `python -m compileall -q app tests` ejecutado sin errores.
-- `python -m pip check` ejecutado con resultado **No broken requirements found**.
+| Verificación | Resultado |
+|---|---|
+| Compilación backend (`compileall`) | Sin errores en los cambios de Sprint 2 verificados |
+| Build frontend | Exitoso |
+| Pruebas funcionales integrales Sprint 2 | Pendientes de ejecución al cierre |
+| Cobertura final Sprint 2 | Pendiente de medición final |
+| Validación Gherkin final | Pendiente de ejecución/documentación final |
 
-Durante la ejecución se observaron dos warnings de deprecación de dependencias (`Starlette/httpx` y `anyio`). Los warnings no provocaron fallos en las pruebas.
+## 6. Riesgos e impedimentos observados
 
-### 5.1 Matriz de verificación de la Definition of Done
-
-| Condición de la DoD | Estado | Evidencia / observación |
+| Riesgo / impedimento | Impacto | Acción aplicada |
 |---|---|---|
-| Implementación del incremento | Verificada | US-001 y US-002 implementadas. |
-| Pruebas automatizadas y cobertura ≥ 80 % | Verificada | 11/11 pruebas aprobadas; 99 % de cobertura del backend. |
-| Criterios Gherkin | Parcialmente verificada | Los criterios forman parte de la planificación; no se dispone de una ejecución independiente de Gherkin para este cierre. |
-| Análisis estático sin vulnerabilidades críticas | No verificada | No se ejecutó una herramienta específica de análisis estático durante este cierre. |
-| Revisión por Pull Request | Parcialmente verificada | PR #1 de cierre documental creada y en estado **Ready to merge**; la evidencia disponible no muestra revisión de terceros ni merge. |
-| Integración correcta | Verificada | React ↔ FastAPI ↔ PostgreSQL validado en MAIN. |
-| Despliegue automatizado a staging | No verificada | No existe evidencia de un despliegue automatizado a staging. |
-| Documentación actualizada | Verificada | Documentación del Sprint 1 actualizada y versionada. |
-| Trazabilidad | Verificada | HUs, subtareas, evidencias y documentación relacionados. |
+| Diferencias de entorno entre PCs | Puede afectar la validación local de PostgreSQL y dependencias | Mantener el repositorio sincronizado y realizar la validación integral en el entorno con PostgreSQL disponible |
+| Cambios acumulados en varias historias | Puede dificultar identificar el origen de una regresión | Desarrollo incremental por historia y verificaciones de compilación/build antes de continuar |
+| Pruebas finales aún no ejecutadas | No permite declarar la Definition of Done completa | Ejecutar la batería integral al cierre del Sprint y registrar resultados |
 
-## 6. Avance técnico del incremento
+## 7. Próximos pasos
 
-### Backend
+1. Ejecutar pruebas funcionales y unitarias del Sprint 2.
+2. Medir y registrar cobertura final.
+3. Validar criterios Gherkin y registrar evidencias.
+4. Sincronizar estados reales de Jira con el trabajo técnico.
+5. Completar Sprint Review y Retrospectiva.
+6. Publicar cambios en GitHub según el flujo de versionado definido.
 
-Se implementó y reorganizó el módulo de vehículos con separación de responsabilidades:
+## 8. Conclusión
 
-```text
-routes → controllers → services → repositories → models
-```
-
-La API permite listar, consultar, registrar, actualizar y eliminar registros de vehículos. La persistencia se realiza mediante SQLAlchemy sobre PostgreSQL.
-
-### Frontend
-
-El módulo de vehículos se organizó de forma modular con:
-
-```text
-components/
-services/
-routes/
-state/
-assets/
-pages/
-```
-
-Se verificó la comunicación React ↔ FastAPI y la funcionalidad de registro, consulta, búsqueda y filtros de vehículos.
-
-### Base de datos
-
-La aplicación se ejecutó sobre PostgreSQL `ecologistica` en el equipo MAIN.
-
-## 7. Hitos técnicos
-
-| Hito | Estado | Evidencia |
-|---|---|---|
-| Backend FastAPI funcionando | Completado | Ejecución local verificada |
-| PostgreSQL operativo | Completado | Persistencia verificada |
-| Registro de vehículos | Completado técnicamente | Prueba funcional + automatizada |
-| Consulta de vehículos | Completado técnicamente | Swagger + frontend |
-| Búsqueda/filtros de vehículos | Completado técnicamente | Prueba funcional |
-| Arquitectura backend por capas | Completado | Repositorio |
-| Frontend modular | Completado | Repositorio |
-| Pruebas automatizadas | Completado | 11/11 |
-| Cobertura | Completado | 99 % |
-| Despliegue automatizado a staging | No verificado | Sin evidencia |
-
-## 8. Situación global del PFA
-
-La planificación, los artefactos de Jira, el Sprint 1 y los primeros incrementos funcionales están documentados. El presente informe diferencia el avance específico del Sprint 1 del avance global del PFA y no asigna un porcentaje global porque no existe una fórmula oficial única de ponderación en los materiales revisados.
-
-## 9. Conclusión
-
-Sprint 1 dejó un incremento técnico funcional en gestión de vehículos, con backend y frontend integrados, persistencia PostgreSQL, búsqueda/filtros y 11 pruebas automatizadas con 99 % de cobertura.
-
-Al cierre, Jira registró **2 HUs completadas (6 SP)** y **4 HUs abiertas trasladadas al backlog (14 SP)**. El informe conserva como hechos separados el resultado de Jira, la evidencia técnica de QA y las condiciones de la DoD que sí pudieron verificarse.
-
-No se afirma despliegue automatizado a staging ni aceptación formal del Product Owner cuando no existe evidencia de esos eventos.
-
-## Historial de cambios
-
-| Versión | Fecha | Cambio |
-|---|---|---|
-| 1.0.0 | 2026-09-23 | Consolidación del informe final del Sprint 1 conforme a la plantilla de implementación y a la evidencia disponible. |
-
-[← Volver al README Principal](../../README.md)
+El Sprint 2 presenta avance técnico significativo y las cinco historias incluidas en el alcance han sido implementadas a nivel de código. La declaración de cierre queda condicionada a la ejecución y documentación de las pruebas finales, a la actualización de Jira y a la consolidación de las evidencias de la iteración.

@@ -2,94 +2,61 @@
 
 [← Volver al README Principal](../../README.md)
 
-**Versión documental:** 1.0.0  
-**Fecha de corte:** 2026-09-23
+## 1. Información general
 
-## 1. Objetivo de la revisión
+| Campo | Valor |
+|---|---|
+| Proyecto | EcoLogística Huancayo |
+| Sprint | Sprint 2 — Gestión operativa y flota |
+| Periodo | 23/09/2026 – 05/10/2026 |
+| Corte documental | 02/10/2026 |
+| Estado de la revisión | Preparada para consolidación al cierre |
 
-Revisar el incremento del Sprint 1, contrastando las Historias de Usuario, resultados técnicos, pruebas, evidencias disponibles y Definition of Done (DoD).
+## 2. Historias revisadas
 
-## 2. Historias de Usuario completadas en este Sprint
+| Historia | SP | Resultado técnico |
+|---|---:|---|
+| US-003 Registrar pedido | 5 | Implementada en backend/API |
+| US-004 Consultar pedidos | 3 | Implementada en frontend, con consulta y filtros |
+| US-005 Registrar conductor | 3 | Implementada en backend/API |
+| US-006 Registrar cliente | 3 | Implementada en backend/API y frontend de apoyo |
+| US-011 Mejorar información y precisión de la gestión de flota | 3 | Implementada en backend, base de datos y frontend |
 
-| HU | Estado Jira | Resultado técnico | DoD / aceptación |
-|---|---|---|---|
-| US-001 Registrar vehículo | Completada en Jira al cierre | Registro funcional, persistencia PostgreSQL y pruebas automatizadas verificadas. | Completada en Jira. No se dispone de evidencia documental de aceptación formal del Product Owner ni de staging automatizado. |
-| US-002 Consultar vehículos | Completada en Jira al cierre | Consulta, visualización, búsqueda y filtros verificados. | Completada en Jira. No se dispone de evidencia documental de aceptación formal del Product Owner ni de staging automatizado. |
+## 3. Demostración funcional prevista
 
-## 3. Demostración del trabajo completado
+La demostración debe presentar, en este orden:
 
-La demostración del incremento debe centrarse en las funcionalidades efectivamente desarrolladas durante Sprint 1:
+1. Registro de un pedido con datos válidos y asociación a un cliente.
+2. Consulta de pedidos y uso de filtros por estado, prioridad y fecha.
+3. Registro de un conductor con validación de disponibilidad.
+4. Registro de un cliente con ubicación y horario preferido.
+5. Registro/consulta de vehículos mostrando consumo en km/galón estadounidense y las ayudas contextuales de consumo y factor de emisiones.
 
-1. Registro de vehículos.
-2. Consulta de vehículos.
-3. Búsqueda y filtros.
-4. Persistencia en PostgreSQL.
-5. Integración React ↔ FastAPI.
-6. Pruebas automatizadas del módulo.
+## 4. Evidencias técnicas disponibles al corte
 
-### Evidencias disponibles
+- Backend: compilación con `python -m compileall -q app` sin errores durante la implementación de US-003, US-005 y US-006.
+- Frontend: `npm run build` exitoso después de integrar US-004 y US-006.
+- Estructura modular por capas conservada en backend y por componentes/páginas/servicios/estado en frontend.
+- Cambios de flota alineados con la unidad km/galón estadounidense y ayudas contextuales.
 
-- [Burndown del Sprint 1](./evidencias/06-burndown-sprint-1.png)
-- [Burnup del Sprint 1](./evidencias/07-burnup-sprint-1.png)
-- [Velocidad del Sprint 1](./evidencias/09-velocidad-sprint-1.png)
-- [Pull Request de cierre documental](./evidencias/08-pull-request-cierre.png)
+## 5. Aceptación y Definition of Done
 
-> **Estado de la demostración formal ante stakeholders:** en los materiales revisados no existe un acta, captura o registro que permita afirmar que se realizó una demostración formal ante stakeholders. Esta evidencia debe completarse en la revisión final del Sprint para satisfacer literalmente ese requisito de la rúbrica.
+Al corte del 02/10/2026, la implementación técnica de las cinco historias está preparada. La aceptación final no debe declararse completa hasta registrar:
 
-## 4. HUs no terminadas / pendientes
+- ejecución de pruebas funcionales y unitarias;
+- cobertura final de al menos 80 %;
+- validación de criterios Gherkin;
+- sincronización de los estados reales en Jira;
+- evidencias finales del Sprint Review.
 
-- **US-003 Registrar pedido:** pendiente.
-- **US-004 Consultar pedidos:** pendiente.
-- **US-005 Registrar conductor:** pendiente.
-- **US-006 Registrar cliente:** pendiente.
+## 6. Pendientes
 
-Las cuatro HUs quedaron abiertas al cierre y fueron trasladadas al backlog para trabajo posterior.
+1. Ejecutar la batería final de pruebas.
+2. Medir cobertura y documentar resultados.
+3. Registrar evidencias de las demostraciones.
+4. Actualizar los estados finales en Jira.
+5. Consolidar observaciones de stakeholders, si corresponden.
 
-## 5. Evidencia de calidad
+## 7. Conclusión
 
-Para el incremento de vehículos se verificó:
-
-- 11 pruebas automatizadas aprobadas.
-- 99 % de cobertura sobre `app`.
-- Compilación de `app` y `tests` sin errores.
-- Dependencias consistentes según `pip check`.
-- Integración React ↔ FastAPI ↔ PostgreSQL.
-
-## 6. Feedback de stakeholders / docente
-
-No se dispone de una retroalimentación documentada correspondiente a este Sprint. Por tanto, no se atribuyen comentarios o decisiones a un stakeholder cuando no existe evidencia registrada.
-
-## 7. Estado de la DoD al cierre
-
-| Condición | Estado | Observación |
-|---|---|---|
-| Implementación del incremento | Verificada | US-001 y US-002 implementadas. |
-| Pruebas automatizadas y cobertura ≥ 80 % | Verificada | 11/11 y 99 %. |
-| Criterios Gherkin ejecutados | Parcial | Los criterios están documentados; no se dispone de una ejecución independiente. |
-| Análisis estático | No verificado | No existe evidencia de herramienta específica en este cierre. |
-| Pull Request revisada | Parcial | PR #1 creada y en estado Ready to merge; sin evidencia de revisión de tercero. |
-| Integración | Verificada | React ↔ FastAPI ↔ PostgreSQL. |
-| Staging automatizado | No verificado | Sin evidencia disponible. |
-| Documentación | Verificada | Documentos de Sprint 1 preparados y versionados. |
-
-## 8. Observaciones para Sprint 2
-
-- Incorporar todo el alcance del Sprint antes del inicio operativo.
-- Sincronizar Jira con el trabajo real durante la ejecución.
-- Registrar evidencia de pruebas antes del cierre de cada HU.
-- Completar el flujo de revisión por Pull Request.
-- Establecer un procedimiento de demostración y aceptación de cada incremento.
-
-## 9. Conclusión de la revisión
-
-El Sprint 1 produjo un incremento funcional verificable en el módulo de vehículos y una base modular para continuar el desarrollo. Jira registró 2 HUs completadas (6 SP) y 4 HUs abiertas trasladadas al backlog. La evidencia de QA registra 11/11 pruebas aprobadas y 99 % de cobertura en el backend.
-
-La revisión mantiene separados los hechos comprobados en Jira y en el repositorio de las actividades de aceptación formal o demostración ante stakeholders que no cuentan con evidencia documental en los materiales disponibles.
-
-## Historial de cambios
-
-| Versión | Fecha | Cambio |
-|---|---|---|
-| 1.0.0 | 2026-09-23 | Consolidación de la revisión del Sprint 1 conforme a la plantilla y evidencia disponible. |
-
-[← Volver al README Principal](../../README.md)
+El Sprint 2 cuenta con las funcionalidades técnicas principales implementadas. La revisión final se cerrará cuando las pruebas, evidencias y estados de seguimiento estén consolidados y sean coherentes con el trabajo real.

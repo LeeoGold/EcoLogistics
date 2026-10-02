@@ -1,6 +1,13 @@
+import ClientsPage from '../pages/ClientsPage'
+import OrdersPage from '../pages/OrdersPage'
 import VehiclesPage from '../pages/VehiclesPage'
 
 export default function AppRoutes() {
-  // Punto central para incorporar nuevas rutas/páginas en futuras historias.
-  return <VehiclesPage />
+  return (
+    <>
+      <VehiclesPage />
+      <ClientsPage />
+      <OrdersPage />
+    </>
+  )
 }
