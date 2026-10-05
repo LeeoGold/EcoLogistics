@@ -4,13 +4,13 @@ import VehicleTable from '../components/vehicles/VehicleTable'
 export default function VehiclesPage() {
   return (
     <main className="container">
-      <header className="hero">
+      <header className="page-heading">
         <div>
-          <p className="eyebrow">ECOLOGÍSTICA HUANCAYO</p>
-          <h1>Gestión inicial de flota</h1>
-          <p>Primer avance funcional del MVP: registrar y consultar vehículos.</p>
+          <p className="section-kicker">GESTIÓN DE FLOTA · US-001 / US-002 / US-011</p>
+          <h1>Flota operativa</h1>
+          <p>Registro, consulta y lectura clara de las métricas ambientales de los vehículos.</p>
         </div>
-        <span className="status">MVP 0.1</span>
+        <span className="status success-status">Módulo activo</span>
       </header>
 
       <section className="grid">

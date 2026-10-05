@@ -4,15 +4,13 @@ import OrderTable from '../components/orders/OrderTable'
 export default function OrdersPage() {
   return (
     <main className="container">
-      <header className="hero">
+      <header className="page-heading">
         <div>
-          <p className="eyebrow">ECOLOGÍSTICA HUANCAYO</p>
-          <h1>Consulta de pedidos</h1>
-          <p>
-            Sprint 2: revisión de pedidos registrados para gestión y planificación.
-          </p>
+          <p className="section-kicker">GESTIÓN DE PEDIDOS · US-003 / US-004</p>
+          <h1>Pedidos</h1>
+          <p>Consulta la carga operativa y filtra pedidos para la planificación.</p>
         </div>
-        <span className="status">US-004 · 3 SP</span>
+        <span className="status success-status">Módulo activo</span>
       </header>
 
       <section className="grid orders-grid">

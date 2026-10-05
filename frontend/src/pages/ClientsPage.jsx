@@ -4,15 +4,13 @@ import ClientTable from '../components/clients/ClientTable'
 export default function ClientsPage() {
   return (
     <main className="container">
-      <header className="hero">
+      <header className="page-heading">
         <div>
-          <p className="eyebrow">ECOLOGÍSTICA HUANCAYO</p>
-          <h1>Gestión de clientes</h1>
-          <p>
-            Sprint 2: registro y consulta de clientes para la operación logística.
-          </p>
+          <p className="section-kicker">GESTIÓN DE CLIENTES · US-006</p>
+          <h1>Clientes</h1>
+          <p>Registra puntos de entrega y conserva la información necesaria para planificar.</p>
         </div>
-        <span className="status">US-006 · 3 SP</span>
+        <span className="status success-status">Módulo activo</span>
       </header>
 
       <section className="grid">

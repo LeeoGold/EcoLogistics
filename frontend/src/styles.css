@@ -167,3 +167,386 @@ th .label-with-hint {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================
+   Rediseño de la interfaz para demostración Sprint 2
+   ============================================================ */
+
+:root {
+  --ink: #17212b;
+  --muted: #61707c;
+  --line: #dbe3e8;
+  --surface: #ffffff;
+  --canvas: #f4f7f9;
+  --accent: #1b7f73;
+  --accent-dark: #125d55;
+  --accent-soft: #e5f2ef;
+  --danger: #b42318;
+  --danger-soft: #fef3f2;
+  --success: #18794e;
+  --success-soft: #e9f7ef;
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+button {
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+
+button:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 12px 28px;
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 235px;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: var(--accent);
+  color: white;
+  font-weight: 900;
+}
+
+.brand-block strong,
+.brand-block span {
+  display: block;
+}
+
+.brand-block strong {
+  font-size: .93rem;
+}
+
+.brand-block span {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: .75rem;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.nav-item {
+  padding: 9px 13px;
+  background: transparent;
+  color: var(--muted);
+  border-radius: 9px;
+  font-size: .86rem;
+  font-weight: 800;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+.nav-status {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: var(--success-soft);
+  color: var(--success);
+  font-size: .74rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.app-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 28px;
+  border-top: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  font-size: .75rem;
+}
+
+.dashboard-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 22px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #ffffff 0%, #edf8f5 100%);
+  box-shadow: 0 10px 35px rgba(23,33,43,.05);
+}
+
+.dashboard-hero h1,
+.page-heading h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.45rem);
+  letter-spacing: -.03em;
+}
+
+.dashboard-hero p:last-child,
+.page-heading p:last-child {
+  color: var(--muted);
+  max-width: 720px;
+}
+
+.hero-mark {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  flex: 0 0 auto;
+  border-radius: 22px;
+  background: var(--accent);
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 900;
+  box-shadow: 0 14px 30px rgba(27,127,115,.25);
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.metric-card {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: #fff;
+}
+
+.metric-card > span {
+  display: block;
+  color: var(--muted);
+  font-size: .78rem;
+}
+
+.metric-card strong {
+  display: block;
+  margin: 7px 0 3px;
+  font-size: 2rem;
+}
+
+.metric-label {
+  font-weight: 800;
+  color: var(--ink) !important;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 18px;
+}
+
+.section-kicker {
+  margin: 0 0 7px;
+  color: var(--accent-dark);
+  font-size: .73rem;
+  font-weight: 900;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.success-status {
+  border-color: #b9ddcb;
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.module-badge {
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-size: .75rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.form-card {
+  overflow: visible;
+}
+
+.form-section {
+  padding: 14px 0;
+  border-top: 1px solid #edf1f3;
+}
+
+.form-section:first-of-type {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.form-section-title {
+  margin: 0 0 11px;
+  font-size: .8rem;
+  font-weight: 900;
+  color: #354451;
+}
+
+.required-mark {
+  color: #b42318;
+}
+
+.field-note {
+  margin: -4px 0 0;
+  color: var(--muted);
+  font-size: .76rem;
+  line-height: 1.4;
+}
+
+.message.success {
+  padding: 10px 12px;
+  border-radius: 9px;
+  background: var(--success-soft);
+  color: var(--success);
+  font-weight: 700;
+}
+
+.message.error {
+  padding: 10px 12px;
+  border-radius: 9px;
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.check-list {
+  display: grid;
+  gap: 9px;
+  color: #40505c;
+  font-size: .88rem;
+}
+
+.demo-flow {
+  display: grid;
+  gap: 13px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.demo-flow li {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  align-items: center;
+  gap: 10px;
+  color: #40505c;
+  font-size: .87rem;
+}
+
+.demo-flow li span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-size: .72rem;
+  font-weight: 900;
+}
+
+@media (max-width: 900px) {
+  .topbar {
+    flex-wrap: wrap;
+    padding: 12px 18px;
+  }
+
+  .brand-block {
+    min-width: auto;
+  }
+
+  .main-nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .nav-status {
+    margin-left: auto;
+  }
+
+  .metric-grid,
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-heading {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 22px 14px 42px;
+  }
+
+  .dashboard-hero {
+    padding: 20px;
+  }
+
+  .hero-mark {
+    display: none;
+  }
+
+  .app-footer {
+    flex-direction: column;
+    padding: 16px 18px;
+  }
+
+  .nav-item {
+    flex: 0 0 auto;
+  }
+}

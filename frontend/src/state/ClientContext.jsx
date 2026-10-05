@@ -18,16 +18,21 @@ export function ClientProvider({ children }) {
   const [clients, setClients] = useState([])
   const [form, setForm] = useState(initialForm)
   const [message, setMessage] = useState('')
+  const [messageType, setMessageType] = useState('')
   const [loading, setLoading] = useState(false)
 
-  async function loadClients() {
+  async function loadClients({ clearMessage = true } = {}) {
     setLoading(true)
 
     try {
       const data = await getClients()
       setClients(data)
-      setMessage('')
+      if (clearMessage) {
+        setMessage('')
+        setMessageType('')
+      }
     } catch (error) {
+      setMessageType('error')
       setMessage(error.message)
     } finally {
       setLoading(false)
@@ -40,28 +45,33 @@ export function ClientProvider({ children }) {
 
   function updateField(event) {
     const { name, value } = event.target
-
-    setForm((current) => ({
-      ...current,
-      [name]: value,
-    }))
+    setForm((current) => ({ ...current, [name]: value }))
   }
 
   async function registerClient(event) {
     event.preventDefault()
     setMessage('')
+    setMessageType('')
+
+    const payload = {
+      ...form,
+      latitud: Number(form.latitud),
+      longitud: Number(form.longitud),
+    }
+
+    if (!form.horario_preferido_inicio && !form.horario_preferido_fin) {
+      delete payload.horario_preferido_inicio
+      delete payload.horario_preferido_fin
+    }
 
     try {
-      await createClient({
-        ...form,
-        latitud: Number(form.latitud),
-        longitud: Number(form.longitud),
-      })
-
-      setMessage('Cliente registrado correctamente.')
+      await createClient(payload)
       setForm({ ...initialForm })
-      await loadClients()
+      await loadClients({ clearMessage: false })
+      setMessageType('success')
+      setMessage('Cliente registrado correctamente.')
     } catch (error) {
+      setMessageType('error')
       setMessage(error.message)
     }
   }
@@ -72,6 +82,7 @@ export function ClientProvider({ children }) {
         clients,
         form,
         message,
+        messageType,
         loading,
         updateField,
         registerClient,
