@@ -1,4 +1,4 @@
-﻿# 🚚 EcoLogística Huancayo
+﻿﻿# 🚚 EcoLogística Huancayo
 
 ## Plataforma de gestión y optimización de rutas logísticas
 
@@ -133,34 +133,32 @@ La planificación Agile y sus evidencias se encuentran en `docs/02 Planificació
 
 ---
 
-# 🛠️ Implementación del Sprint 1
+# 🛠️ Implementación del Sprint 2
 
 Los cuatro entregables oficiales de implementación, el registro de riesgos complementario y sus evidencias se encuentran en `docs/03 Implementación/`.
 
 | Artefacto | Documento |
 |---|---|
-| Índice de implementación | [README de implementación](docs/03%20Implementación/README.md) |
-| Estado del proyecto | [01 Informe de estado V_1_0_0](docs/03%20Implementación/01%20Informe%20de%20estado%20del%20proyecto%20V_1_0_0.md) |
-| Impedimentos | [02 Registro de Impedimentos V_1_0_0](docs/03%20Implementación/02%20Registro%20de%20Impedimentos%20V_1_0_0.md) |
-| Revisión del Sprint | [03 Revisión del Sprint V_1_0_0](docs/03%20Implementación/03%20Revisión%20del%20Sprint%20V_1_0_0.md) |
-| Retrospectiva | [04 Retrospectiva del Sprint V_1_0_0](docs/03%20Implementación/04%20Retrospectiva%20del%20Sprint%20V_1_0_0.md) |
-| Documento complementario | [05 Registro de riesgos V_1_0_0](docs/03%20Implementación/05%20Registro%20de%20riesgos%20V_1_0_0.md) |
+| Índice de implementación | [README de implementación](docs/03%20Implementaci%C3%B3n/README.md) |
+| Estado del proyecto | [01 Informe de estado](docs/03%20Implementaci%C3%B3n/01%20Informe%20de%20estado%20del%20proyecto%20V_1_0_0.md) |
+| Impedimentos | [02 Registro de Impedimentos](docs/03%20Implementaci%C3%B3n/02%20Registro%20de%20Impedimentos%20V_1_0_0.md) |
+| Revisión del Sprint | [03 Revisión del Sprint](docs/03%20Implementaci%C3%B3n/03%20Revisi%C3%B3n%20del%20Sprint%20V_1_0_0.md) |
+| Retrospectiva | [04 Retrospectiva del Sprint](docs/03%20Implementaci%C3%B3n/04%20Retrospectiva%20del%20Sprint%20V_1_0_0.md) |
+| Documento complementario | [05 Registro de riesgos](docs/03%20Implementaci%C3%B3n/05%20Registro%20de%20riesgos%20V_1_0_0.md) |
 
-## Resultado del Sprint 1
+## Resultado del Sprint 2
 
 | Métrica | Resultado |
 |---|---:|
-| HUs comprometidas | 6 |
-| HUs completadas | 2 |
-| HUs abiertas | 4 |
-| SP comprometidos | 20 |
-| SP completados | 6 |
-| SP pendientes | 14 |
-| Cumplimiento por HUs | 33,3 % |
-| Cumplimiento por SP | 30 % |
-| Velocidad Jira | 6 SP |
-| Pruebas automatizadas | 11/11 aprobadas |
-| Cobertura | 99 % |
+| HUs del alcance | 5 |
+| SP comprometidos | 17 |
+| HUs implementadas técnicamente | 5 |
+| Pruebas backend | 30/30 aprobadas |
+| Cobertura sobre `app` | 98 % |
+| Build frontend | Exitoso |
+| `pip check` | No broken requirements found |
+
+> El cierre administrativo del Sprint 2 requiere consolidar la demostración ante stakeholders y sincronizar los estados finales de Jira con la evidencia técnica.
 
 # 🤖 Ingeniería de software aumentada con IA
 
@@ -201,17 +199,6 @@ EcoLogistics/
 ├── .gitignore
 └── README.md
 ```
-
-## Sprint 2 — Implementación
-
-Documentación de seguimiento de la iteración Sprint 2:
-
-- [Informe de estado del proyecto](docs/03%20Implementaci%C3%B3n/01%20Informe%20de%20estado%20del%20proyecto%20V_1_0_0.md)
-- [Registro de Impedimentos](docs/03%20Implementaci%C3%B3n/02%20Registro%20de%20Impedimentos%20V_1_0_0.md)
-- [Revisión del Sprint](docs/03%20Implementaci%C3%B3n/03%20Revisi%C3%B3n%20del%20Sprint%20V_1_0_0.md)
-- [Retrospectiva del Sprint](docs/03%20Implementaci%C3%B3n/04%20Retrospectiva%20del%20Sprint%20V_1_0_0.md)
-
-> Estos documentos deben actualizarse al cierre definitivo del Sprint 2 con las pruebas finales, cobertura, evidencias de demostración y estados finales de Jira.
 
 
 # 📜 Historial de cambios del README
