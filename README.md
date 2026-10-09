@@ -133,32 +133,44 @@ La planificación Agile y sus evidencias se encuentran en `docs/02 Planificació
 
 ---
 
-# 🛠️ Implementación del Sprint 2
+# 🛠️ Implementación por Sprints
 
-Los cuatro entregables oficiales de implementación, el registro de riesgos complementario y sus evidencias se encuentran en `docs/03 Implementación/`.
+Los entregables se organizan por iteración dentro de `docs/03 Implementación/`. Los documentos de Sprint 1 y Sprint 2 se conservan separados; el historial de versiones se consulta desde cada índice.
 
-| Artefacto | Documento |
+| Iteración | Índice | Alcance documentado |
+|---|---|---|
+| Sprint 1 | [Índice del Sprint 1](docs/03%20Implementaci%C3%B3n/Sprint%201/README.md) | Gestión de vehículos; 2 HUs completadas en Jira y 6 SP registrados al cierre. |
+| Sprint 2 | [Índice del Sprint 2](docs/03%20Implementaci%C3%B3n/Sprint%202/README.md) | Gestión operativa y flota; alcance técnico de 5 historias y 17 SP. |
+
+## Entregables oficiales — Sprint 1
+
+| Documento | Versión actual |
 |---|---|
-| Índice de implementación | [README de implementación](docs/03%20Implementaci%C3%B3n/README.md) |
-| Estado del proyecto | [01 Informe de estado](docs/03%20Implementaci%C3%B3n/01%20Informe%20de%20estado%20del%20proyecto%20V_1_0_0.md) |
-| Impedimentos | [02 Registro de Impedimentos](docs/03%20Implementaci%C3%B3n/02%20Registro%20de%20Impedimentos%20V_1_0_0.md) |
-| Revisión del Sprint | [03 Revisión del Sprint](docs/03%20Implementaci%C3%B3n/03%20Revisi%C3%B3n%20del%20Sprint%20V_1_0_0.md) |
-| Retrospectiva | [04 Retrospectiva del Sprint](docs/03%20Implementaci%C3%B3n/04%20Retrospectiva%20del%20Sprint%20V_1_0_0.md) |
-| Documento complementario | [05 Registro de riesgos](docs/03%20Implementaci%C3%B3n/05%20Registro%20de%20riesgos%20V_1_0_0.md) |
+| Informe de estado | [01 Informe de estado del proyecto V_1_2_0](docs/03%20Implementaci%C3%B3n/Sprint%201/01%20Informe%20de%20estado%20del%20proyecto%20V_1_2_0.md) |
+| Registro de impedimentos | [02 Registro de Impedimentos V_1_2_0](docs/03%20Implementaci%C3%B3n/Sprint%201/02%20Registro%20de%20Impedimentos%20V_1_2_0.md) |
+| Revisión del Sprint | [03 Revisión del Sprint V_1_2_0](docs/03%20Implementaci%C3%B3n/Sprint%201/03%20Revisi%C3%B3n%20del%20Sprint%20V_1_2_0.md) |
+| Retrospectiva | [04 Retrospectiva del Sprint V_1_2_0](docs/03%20Implementaci%C3%B3n/Sprint%201/04%20Retrospectiva%20del%20Sprint%20V_1_2_0.md) |
+| Registro de riesgos complementario | [05 Registro de riesgos V_1_2_0](docs/03%20Implementaci%C3%B3n/Sprint%201/05%20Registro%20de%20riesgos%20V_1_2_0.md) |
 
-## Resultado del Sprint 2
+## Entregables oficiales — Sprint 2
 
-| Métrica | Resultado |
-|---|---:|
-| HUs del alcance | 5 |
-| SP comprometidos | 17 |
-| HUs implementadas técnicamente | 5 |
-| Pruebas backend | 30/30 aprobadas |
-| Cobertura sobre `app` | 98 % |
-| Build frontend | Exitoso |
-| `pip check` | No broken requirements found |
+| Documento | Versión |
+|---|---|
+| Informe de estado | [01 Informe de estado del proyecto V_1_0_0](docs/03%20Implementaci%C3%B3n/Sprint%202/01%20Informe%20de%20estado%20del%20proyecto%20V_1_0_0.md) |
+| Registro de impedimentos | [02 Registro de Impedimentos V_1_0_0](docs/03%20Implementaci%C3%B3n/Sprint%202/02%20Registro%20de%20Impedimentos%20V_1_0_0.md) |
+| Revisión del Sprint | [03 Revisión del Sprint V_1_0_0](docs/03%20Implementaci%C3%B3n/Sprint%202/03%20Revisi%C3%B3n%20del%20Sprint%20V_1_0_0.md) |
+| Retrospectiva | [04 Retrospectiva del Sprint V_1_0_0](docs/03%20Implementaci%C3%B3n/Sprint%202/04%20Retrospectiva%20del%20Sprint%20V_1_0_0.md) |
 
-> El cierre administrativo del Sprint 2 requiere consolidar la demostración ante stakeholders y sincronizar los estados finales de Jira con la evidencia técnica.
+## Métricas técnicas por iteración
+
+| Métrica | Sprint 1 | Sprint 2 |
+|---|---:|---:|
+| HUs completadas por Jira al cierre | 2 de 6 | Consultar revisión del Sprint |
+| Story Points registrados como completados | 6 de 20 | Alcance técnico: 17 |
+| Pruebas automatizadas backend | 11/11 | 30/30 |
+| Cobertura sobre `app` | 99 % | 98 % |
+
+Las métricas de cada iteración se mantienen en su documento de estado. La documentación distingue el avance técnico de la aceptación formal, los estados de Jira y la evidencia disponible.
 
 # 🤖 Ingeniería de software aumentada con IA
 
@@ -196,6 +208,9 @@ EcoLogistics/
 │   ├── 01 Inicio/
 │   ├── 02 Planificación/
 │   └── 03 Implementación/
+│       ├── README.md
+│       ├── Sprint 1/
+│       └── Sprint 2/
 ├── .gitignore
 └── README.md
 ```
@@ -207,6 +222,7 @@ EcoLogistics/
 |---|---|---|
 | V_1_0_0 | 2026-09-22 | Incorporación del índice de implementación del Sprint 1. |
 | V_1_1_0 | 2026-09-23 | Actualización integral del README con arquitectura técnica, cierre del Sprint 1, evidencias, QA, versionado y flujo de ingeniería aumentada con IA. |
+| V_1_2_0 | 2026-10-09 | Separación por Sprint, conservación de versiones y navegación bidireccional. |
 
 ---
 
