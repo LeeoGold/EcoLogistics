@@ -1,6 +1,6 @@
 ﻿# 01 Informe de estado del proyecto V_1_0_0
 
-[← Volver al README Principal](../../README.md)
+[← Volver al índice del Sprint 2](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
 ## 1. Información general
 
