@@ -1,6 +1,15 @@
 from .client import Client
-from .vehicle import Vehicle
-from .order import Order
 from .driver import Driver
+from .order import Order
+from .route import DriverAssignment, Route, RouteDetail
+from .vehicle import Vehicle
 
-__all__ = ["Client", "Vehicle"]
+__all__ = [
+    "Client",
+    "Driver",
+    "DriverAssignment",
+    "Order",
+    "Route",
+    "RouteDetail",
+    "Vehicle",
+]

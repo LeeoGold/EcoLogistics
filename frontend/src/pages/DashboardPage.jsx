@@ -71,6 +71,7 @@ export default function DashboardPage() {
             <li><span>03</span> Registrar un cliente y su punto de entrega.</li>
             <li><span>04</span> Registrar un pedido asociado al cliente.</li>
             <li><span>05</span> Consultar y filtrar pedidos.</li>
+            <li><span>06</span> Planificar una ruta y asignar pedidos.</li>
           </ol>
         </article>
       </section>

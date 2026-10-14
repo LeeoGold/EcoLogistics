@@ -3,6 +3,7 @@ import ClientsPage from '../pages/ClientsPage'
 import DashboardPage from '../pages/DashboardPage'
 import DriversPage from '../pages/DriversPage'
 import OrdersPage from '../pages/OrdersPage'
+import RoutesPage from '../pages/RoutesPage'
 import VehiclesPage from '../pages/VehiclesPage'
 
 const sections = [
@@ -11,6 +12,7 @@ const sections = [
   { id: 'clientes', label: 'Clientes', short: 'Clientes' },
   { id: 'conductores', label: 'Conductores', short: 'Conductores' },
   { id: 'pedidos', label: 'Pedidos', short: 'Pedidos' },
+  { id: 'rutas', label: 'Rutas', short: 'Rutas' },
 ]
 
 function getInitialSection() {
@@ -71,6 +73,7 @@ export default function AppRoutes() {
         {activeSection === 'clientes' && <ClientsPage />}
         {activeSection === 'conductores' && <DriversPage />}
         {activeSection === 'pedidos' && <OrdersPage />}
+        {activeSection === 'rutas' && <RoutesPage />}
       </div>
 
       <footer className="app-footer">
