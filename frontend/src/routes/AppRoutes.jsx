@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import ClientsPage from '../pages/ClientsPage'
 import DashboardPage from '../pages/DashboardPage'
+import DriversPage from '../pages/DriversPage'
 import OrdersPage from '../pages/OrdersPage'
 import VehiclesPage from '../pages/VehiclesPage'
 
@@ -8,6 +9,7 @@ const sections = [
   { id: 'inicio', label: 'Inicio', short: 'Inicio' },
   { id: 'flota', label: 'Flota', short: 'Flota' },
   { id: 'clientes', label: 'Clientes', short: 'Clientes' },
+  { id: 'conductores', label: 'Conductores', short: 'Conductores' },
   { id: 'pedidos', label: 'Pedidos', short: 'Pedidos' },
 ]
 
@@ -67,6 +69,7 @@ export default function AppRoutes() {
         {activeSection === 'inicio' && <DashboardPage />}
         {activeSection === 'flota' && <VehiclesPage />}
         {activeSection === 'clientes' && <ClientsPage />}
+        {activeSection === 'conductores' && <DriversPage />}
         {activeSection === 'pedidos' && <OrdersPage />}
       </div>
 

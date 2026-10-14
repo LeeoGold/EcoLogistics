@@ -590,3 +590,88 @@ button:disabled {
     grid-column: auto;
   }
 }
+
+
+/* US-012 Gestión de conductores */
+.metric-grid {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.drivers-grid {
+  grid-template-columns: minmax(290px, 350px) minmax(0, 1fr);
+}
+
+.driver-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.driver-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.driver-summary > div {
+  display: grid;
+  gap: 5px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #f8fafb;
+}
+
+.driver-summary span {
+  color: var(--muted);
+  font-size: .77rem;
+}
+
+.driver-summary strong {
+  font-size: 1.35rem;
+}
+
+.driver-filters {
+  grid-template-columns: minmax(180px, 1fr) 150px auto;
+}
+
+.table-subtext {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: .76rem;
+}
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 800;
+}
+
+.status-chip.is-active {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.status-chip.is-inactive {
+  background: #eef2f4;
+  color: #53616b;
+}
+
+@media (max-width: 1000px) {
+  .drivers-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .driver-form-grid,
+  .driver-summary,
+  .driver-filters {
+    grid-template-columns: 1fr;
+  }
+}

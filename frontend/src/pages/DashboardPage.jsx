@@ -1,10 +1,12 @@
 import { useClients } from '../state/ClientContext'
+import { useDrivers } from '../state/DriverContext'
 import { useOrders } from '../state/OrderContext'
 import { useVehicles } from '../state/VehicleContext'
 
 export default function DashboardPage() {
   const { vehicles } = useVehicles()
   const { clients } = useClients()
+  const { drivers } = useDrivers()
   const { orders } = useOrders()
 
   const pendingOrders = orders.filter((order) => order.estado === 'PENDIENTE').length
@@ -39,6 +41,11 @@ export default function DashboardPage() {
           <strong>{pendingOrders}</strong>
           <span>disponibles para planificación</span>
         </article>
+        <article className="metric-card">
+          <span className="metric-label">Conductores activos</span>
+          <strong>{drivers.filter((driver) => driver.estado === 'ACTIVO').length}</strong>
+          <span>de {drivers.length} registrados</span>
+        </article>
       </section>
 
       <section className="dashboard-grid">
@@ -49,9 +56,9 @@ export default function DashboardPage() {
             <span>✓ Gestión de flota y rendimiento en km/galón</span>
             <span>✓ Registro y consulta de clientes</span>
             <span>✓ Registro, consulta y filtrado de pedidos</span>
-            <span>✓ Registro de conductores mediante API</span>
+            <span>✓ Registro y consulta de conductores desde la interfaz</span>
             <span>✓ Validaciones de datos y ventanas de tiempo</span>
-            <span>✓ Evidencia técnica: 30 pruebas y 98 % de cobertura</span>
+            <span>✓ Validaciones de formularios y pruebas automatizadas de backend</span>
           </div>
         </article>
 
@@ -59,10 +66,11 @@ export default function DashboardPage() {
           <p className="section-kicker">Flujo de demostración</p>
           <h2>Orden recomendado</h2>
           <ol className="demo-flow">
-            <li><span>01</span> Revisar vehículos y tooltips ambientales.</li>
-            <li><span>02</span> Registrar un cliente.</li>
-            <li><span>03</span> Registrar un pedido asociado.</li>
-            <li><span>04</span> Consultar y filtrar pedidos.</li>
+            <li><span>01</span> Revisar vehículos y métricas ambientales.</li>
+            <li><span>02</span> Registrar o consultar conductores.</li>
+            <li><span>03</span> Registrar un cliente y su punto de entrega.</li>
+            <li><span>04</span> Registrar un pedido asociado al cliente.</li>
+            <li><span>05</span> Consultar y filtrar pedidos.</li>
           </ol>
         </article>
       </section>
