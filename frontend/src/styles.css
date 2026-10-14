@@ -675,3 +675,136 @@ button:disabled {
     grid-template-columns: 1fr;
   }
 }
+
+/* US-013 · Planificación inicial de rutas */
+.routes-grid {
+  grid-template-columns: minmax(320px, 410px) minmax(0, 1fr);
+}
+
+.route-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.route-order-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.route-order-heading h3 {
+  margin: 0 0 5px;
+  font-size: 1rem;
+}
+
+.route-order-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .8rem;
+  line-height: 1.4;
+}
+
+.route-order-list {
+  display: grid;
+  gap: 8px;
+  max-height: 330px;
+  overflow-y: auto;
+  margin: 12px 0;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f8fafb;
+}
+
+.route-order-option {
+  display: flex;
+  grid-template-columns: auto 1fr;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.route-order-option:has(input:checked) {
+  border-color: #9acbc1;
+  background: var(--accent-soft);
+}
+
+.route-order-option input {
+  width: auto;
+  margin-top: 4px;
+}
+
+.route-order-option span,
+.route-order-option strong,
+.route-order-option small {
+  display: block;
+}
+
+.route-order-option strong {
+  font-size: .86rem;
+}
+
+.route-order-option small {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: .76rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.route-capacity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 12px 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #f8fafb;
+  font-size: .84rem;
+}
+
+.route-capacity strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.route-capacity.over-capacity {
+  border-color: #f3b7b2;
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.route-notice {
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #fff;
+  color: var(--muted);
+  font-size: .86rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 1000px) {
+  .routes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .route-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .route-order-heading {
+    flex-direction: column;
+  }
+}

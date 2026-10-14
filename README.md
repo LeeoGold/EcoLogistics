@@ -1,4 +1,4 @@
-﻿﻿# 🚚 EcoLogística Huancayo
+﻿# 🚚 EcoLogística Huancayo
 
 ## Plataforma de gestión y optimización de rutas logísticas
 
@@ -7,6 +7,22 @@ EcoLogística Huancayo es un proyecto de desarrollo de software orientado a la g
 La propuesta busca apoyar la planificación de rutas considerando factores operativos y ambientales como distancia, tiempo, consumo de combustible, emisiones de CO₂, ventanas de entrega y restricciones de operación.
 
 > **Estado actual:** Sprint 1 cerrado. Jira registró **2 HUs completadas de 6 comprometidas**, equivalentes a **6 SP de 20 SP**. El incremento funcional validado corresponde principalmente a gestión de vehículos.
+
+## Incremento técnico actual · Planificación operativa (en desarrollo)
+
+El incremento `US-013` expone una primera planificación manual de rutas sobre las tablas `rutas`, `asignaciones_conductor` y `detalle_ruta`. Permite registrar una ruta planificada con conductor, vehículo y pedidos ordenados; valida estado de los recursos, horario del conductor y capacidad total; y cambia los pedidos incluidos a `ASIGNADO` en la misma transacción.
+
+| Endpoint | Propósito |
+|---|---|
+| `GET /api/rutas` | Listar rutas planificadas y resumen de asignaciones. |
+| `GET /api/rutas/{ruta_id}` | Consultar una ruta. |
+| `POST /api/rutas` | Crear una ruta y asignar uno o más pedidos. |
+
+La interfaz incorpora la sección **Rutas** para seleccionar conductor, vehículo, fecha, hora y pedidos pendientes. Esta capacidad es una planificación manual inicial; **no representa todavía una optimización automática ni calcula distancias reales por carretera, tiempos de llegada, combustible o emisiones de una ruta**. Esos cálculos requieren integrar geolocalización y un motor de rutas en una etapa posterior.
+
+La validación backend realizada durante el desarrollo de `US-013` pasó **43 pruebas** con una cobertura total del **97 %** en el entorno de prueba aislado. La compilación del frontend debe volver a ejecutarse después de aplicar este incremento en el equipo de desarrollo.
+
+Consulta el alcance, reglas y limitaciones en [US-013 · Planificación operativa de rutas](docs/04-desarrollo/US-013-planificacion-rutas.md).
 
 ---
 
