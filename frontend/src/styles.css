@@ -550,3 +550,43 @@ button:disabled {
     flex: 0 0 auto;
   }
 }
+
+
+/* US-003 · Registro de pedidos */
+.order-create-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.order-reference-field {
+  grid-column: span 2;
+}
+
+.empty-state {
+  padding: 18px;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  background: #f8fafb;
+}
+
+.empty-state p {
+  margin-top: 0;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .order-create-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .order-create-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order-reference-field {
+    grid-column: auto;
+  }
+}

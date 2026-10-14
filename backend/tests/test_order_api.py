@@ -1,7 +1,7 @@
 from uuid import uuid4
 
 import pytest
-from sqlalchemy import delete
+from sqlalchemy import delete, select
 
 from app.db import SessionLocal
 from app.models.client import Client
@@ -46,15 +46,11 @@ def cleanup_test_orders():
     yield
     db = SessionLocal()
     try:
-        test_client_ids = db.query(Client.cliente_id).filter(
+        test_client_ids = select(Client.cliente_id).where(
             Client.nombre.like("TEST Pedido Cliente %")
-        ).subquery()
-        db.query(Order).filter(Order.cliente_id.in_(test_client_ids)).delete(
-            synchronize_session=False
         )
-        db.query(Client).filter(Client.nombre.like("TEST Pedido Cliente %")).delete(
-            synchronize_session=False
-        )
+        db.execute(delete(Order).where(Order.cliente_id.in_(test_client_ids)))
+        db.execute(delete(Client).where(Client.nombre.like("TEST Pedido Cliente %")))
         db.commit()
     finally:
         db.close()
