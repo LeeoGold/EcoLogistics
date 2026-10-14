@@ -229,3 +229,9 @@ EcoLogistics/
 **Proyecto Final de Asignatura — Ingeniería de Sistemas de Información**
 
 [Volver al inicio](#-ecolog%C3%ADstica-huancayo)
+## Flujo de desarrollo y configuración local
+
+- [Guía de configuración del entorno](DEV_SETUP.md)
+- [Flujo Git/Gitflow del proyecto](docs/04-desarrollo/GITFLOW.md)
+
+Para el desarrollo diario se trabaja en `develop` y se aísla cada funcionalidad en una rama `feature/*` o `fix/*`. `main` se conserva para incrementos estables.

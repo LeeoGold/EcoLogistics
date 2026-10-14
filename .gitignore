@@ -32,3 +32,6 @@ coverage/
 # Local DB exports
 *.dump
 *.bak
+
+# Disposable isolated test database
+backend/tests/.test_ecologistica.db

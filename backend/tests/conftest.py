@@ -1,12 +1,38 @@
+"""Fixtures compartidos y base aislada para pruebas de API.
+
+Las pruebas SIEMPRE apuntan a una base SQLite desechable. No reutilizan
+backend/.env ni la base PostgreSQL del desarrollador.
+"""
+import os
+from pathlib import Path
 import uuid
 
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import delete
 
-from app.db import SessionLocal
-from app.main import app
-from app.models.vehicle import Vehicle
+TEST_DB_PATH = Path(__file__).resolve().parent / ".test_ecologistica.db"
+# Asignación intencional (no setdefault): las pruebas nunca deben heredar la DB local.
+os.environ["DATABASE_URL"] = f"sqlite:///{TEST_DB_PATH.as_posix()}"
+os.environ["ACCESS_TOKEN_SECRET"] = "pytest-only-secret-not-for-production"
+os.environ["APP_ENV"] = "testing"
+os.environ["CORS_ORIGINS"] = "http://testserver"
+
+from app.db import Base, SessionLocal, engine  # noqa: E402
+from app.main import app  # noqa: E402
+from app.models.vehicle import Vehicle  # noqa: E402
+
+
+@pytest.fixture(scope="session", autouse=True)
+def isolated_test_database():
+    """Recrea y elimina la base SQLite temporal al iniciar/finalizar la suite."""
+    Base.metadata.drop_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
+    yield
+    Base.metadata.drop_all(bind=engine)
+    engine.dispose()
+    if TEST_DB_PATH.exists():
+        TEST_DB_PATH.unlink()
 
 
 @pytest.fixture()

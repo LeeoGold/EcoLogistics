@@ -48,7 +48,7 @@ export default function DashboardPage() {
           <div className="check-list">
             <span>✓ Gestión de flota y rendimiento en km/galón</span>
             <span>✓ Registro y consulta de clientes</span>
-            <span>✓ Registro y consulta de pedidos</span>
+            <span>✓ Registro, consulta y filtrado de pedidos</span>
             <span>✓ Registro de conductores mediante API</span>
             <span>✓ Validaciones de datos y ventanas de tiempo</span>
             <span>✓ Evidencia técnica: 30 pruebas y 98 % de cobertura</span>

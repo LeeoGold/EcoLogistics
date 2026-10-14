@@ -1,4 +1,5 @@
 import OrderFilters from '../components/orders/OrderFilters'
+import OrderForm from '../components/orders/OrderForm'
 import OrderTable from '../components/orders/OrderTable'
 
 export default function OrdersPage() {
@@ -8,12 +9,14 @@ export default function OrdersPage() {
         <div>
           <p className="section-kicker">GESTIÓN DE PEDIDOS · US-003 / US-004</p>
           <h1>Pedidos</h1>
-          <p>Consulta la carga operativa y filtra pedidos para la planificación.</p>
+          <p>Registra pedidos, consulta la carga operativa y filtra ventanas de entrega.</p>
         </div>
         <span className="status success-status">Módulo activo</span>
       </header>
 
       <section className="grid orders-grid">
+        <OrderForm />
+
         <article className="card wide order-filter-card">
           <div className="card-heading">
             <div>
