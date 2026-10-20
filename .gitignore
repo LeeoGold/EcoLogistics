@@ -35,3 +35,6 @@ coverage/
 
 # Disposable isolated test database
 backend/tests/.test_ecologistica.db
+
+# Generated backend coverage report
+/backend/coverage.xml
