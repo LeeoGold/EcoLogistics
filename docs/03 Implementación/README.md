@@ -1,10 +1,9 @@
-﻿# Implementación por Sprints
+# Implementación por Sprints
 
 [← Volver al README principal](../../README.md)
 
-**Versión del índice:** V_1_2_0
-**Actualización:** 2026-10-09
-
+**Versión del índice:** V_1_3_0
+**Actualización:** 2026-10-20
 Esta carpeta reúne la documentación de implementación sin mezclar resultados ni evidencias entre iteraciones. Las versiones históricas se conservan y se enlazan desde el índice de cada Sprint.
 
 ## 1. Navegación por Sprint
@@ -13,6 +12,7 @@ Esta carpeta reúne la documentación de implementación sin mezclar resultados 
 |---|---|---|
 | Sprint 1 | [Abrir índice del Sprint 1](./Sprint%201/README.md) | Gestión de vehículos, cierre de 6 SP y aprendizaje para la siguiente iteración. |
 | Sprint 2 | [Abrir índice del Sprint 2](./Sprint%202/README.md) | Gestión operativa y flota, alcance de 17 SP. |
+| Sprint 3 | [Abrir índice del Sprint 3](./Sprint%2003/README.md) | Calidad de código, automatización CI y evaluación OWASP/WCAG. |
 
 ## 2. Entregables actuales del Sprint 1
 
@@ -45,3 +45,23 @@ Esta carpeta reúne la documentación de implementación sin mezclar resultados 
 | Versión | Fecha | Cambio |
 |---|---|---|
 | 1.2.0 | 2026-10-09 | Separación por Sprint, enlaces de navegación y matriz de versiones. |
+| 1.3.0 | 2026-10-20 | Incorporación del índice del Sprint 3 y enlaces a los entregables de calidad y evaluación. |
+
+<!-- SPRINT3-DOCS-START -->
+
+## 6. Entregables del Sprint 3 — Calidad y evaluación
+
+El Sprint 3 incorpora la documentación de revisión, retrospectiva, calidad de código, seguridad OWASP Top 10:2025 y accesibilidad WCAG.
+
+| Documento | Enlace |
+|---|---|
+| Índice del Sprint 3 | [README del Sprint 3](./Sprint%2003/README.md) |
+| Revisión del Sprint | [01 Revisión del Sprint V_1_0_0](./Sprint%2003/01%20Revisi%C3%B3n%20del%20Sprint%20V_1_0_0.md) |
+| Retrospectiva | [02 Retrospectiva del Sprint V_1_0_0](./Sprint%2003/02%20Retrospectiva%20del%20Sprint%20V_1_0_0.md) |
+| Calidad de código | [03 Calidad de código V_1_0_0](./Sprint%2003/03%20Calidad%20de%20c%C3%B3digo%20V_1_0_0.md) |
+| Seguridad OWASP | [04 OWASP V_1_0_0](./Sprint%2003/04%20OWASP%20V_1_0_0.md) |
+| Accesibilidad WCAG | [05 WCAG V_1_0_0](./Sprint%2003/05%20WCAG%20V_1_0_0.md) |
+
+[← Volver al README principal](../../README.md) · [Abrir índice del Sprint 3](./Sprint%2003/README.md)
+
+<!-- SPRINT3-DOCS-END -->
