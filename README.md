@@ -1,4 +1,4 @@
-﻿# 🚚 EcoLogística Huancayo
+# 🚚 EcoLogística Huancayo
 
 ## Plataforma de gestión y optimización de rutas logísticas
 
@@ -251,3 +251,22 @@ EcoLogistics/
 - [Flujo Git/Gitflow del proyecto](docs/04-desarrollo/GITFLOW.md)
 
 Para el desarrollo diario se trabaja en `develop` y se aísla cada funcionalidad en una rama `feature/*` o `fix/*`. `main` se conserva para incrementos estables.
+
+<!-- SPRINT3-DOCS-START -->
+
+## Implementación del Sprint 3 — Calidad y evaluación
+
+Los entregables del Sprint 3 se encuentran en `docs/03 Implementación/Sprint 03/`.
+
+| Documento | Enlace |
+|---|---|
+| Índice del Sprint 3 | [README del Sprint 3](docs/03%20Implementaci%C3%B3n/Sprint%2003/README.md) |
+| Revisión del Sprint | [01 Revisión del Sprint V_1_0_0](docs/03%20Implementaci%C3%B3n/Sprint%2003/01%20Revisi%C3%B3n%20del%20Sprint%20V_1_0_0.md) |
+| Retrospectiva | [02 Retrospectiva del Sprint V_1_0_0](docs/03%20Implementaci%C3%B3n/Sprint%2003/02%20Retrospectiva%20del%20Sprint%20V_1_0_0.md) |
+| Calidad de código | [03 Calidad de código V_1_0_0](docs/03%20Implementaci%C3%B3n/Sprint%2003/03%20Calidad%20de%20c%C3%B3digo%20V_1_0_0.md) |
+| Seguridad OWASP | [04 OWASP V_1_0_0](docs/03%20Implementaci%C3%B3n/Sprint%2003/04%20OWASP%20V_1_0_0.md) |
+| Accesibilidad WCAG | [05 WCAG V_1_0_0](docs/03%20Implementaci%C3%B3n/Sprint%2003/05%20WCAG%20V_1_0_0.md) |
+
+[Índice de implementación](docs/03%20Implementaci%C3%B3n/README.md)
+
+<!-- SPRINT3-DOCS-END -->
