@@ -13,15 +13,15 @@
 | 1 | [01 Revisión del Sprint V_1_0_0](./01%20Revisi%C3%B3n%20del%20Sprint%20V_1_0_0.md) | Alcance real, demostración técnica, resultados y pendientes. | Preparado con evidencia técnica disponible. |
 | 2 | [02 Retrospectiva del Sprint V_1_0_0](./02%20Retrospectiva%20del%20Sprint%20V_1_0_0.md) | Aprendizajes, fortalezas y acciones medibles de mejora. | Preparado; compromisos propuestos para el siguiente ciclo. |
 | 3 | [03 Calidad de código V_1_0_0](./03%20Calidad%20de%20c%C3%B3digo%20V_1_0_0.md) | Quality Gate, cobertura, duplicación, incidencias y remediación. | Quality Gate del PR aprobado; falta confirmar cobertura global actual. |
-| 4 | [04 OWASP V_1_0_0](./04%20OWASP%20V_1_0_0.md) | Matriz OWASP Top 10:2025 y plan de verificación. | Evaluación preliminar; categorías pendientes de revisión específica. |
-| 5 | [05 WCAG V_1_0_0](./05%20WCAG%20V_1_0_0.md) | Accesibilidad según los cuatro principios WCAG, hallazgos y correcciones. | Lighthouse en Inicio: 100/100; 18 auditorías automáticas aprobadas y 0 fallidas. Pendientes: 10 comprobaciones manuales y otras vistas. |
+| 4 | [04 OWASP V_1_0_1](./04%20OWASP%20V_1_0_1.md) | Matriz OWASP Top 10:2025 y hallazgos de autenticación/control de acceso. | SEC-001 y SEC-002 abiertos; remediación pendiente. |
+| 5 | [05 WCAG V_1_0_1](./05%20WCAG%20V_1_0_1.md) | Accesibilidad según los cuatro principios WCAG, hallazgos y correcciones. | Lighthouse en Inicio: 100/100; 18 auditorías automáticas aprobadas y 0 fallidas. Pruebas manuales favorables de foco visible, orden lógico, recorrido sin trampa de foco y activación de controles probados con Enter/Espacio. Otras comprobaciones y vistas pendientes. |
 
 ## Evidencias técnicas disponibles
 
 - Pull Request [#6 — Sprint 3: calidad de código y SonarQube](https://github.com/LeeoGold/EcoLogistics/pull/6), integrado en `develop`.
 - Ejecuciones de [GitHub Actions](https://github.com/LeeoGold/EcoLogistics/actions).
 - Proyecto [EcoLogistics en SonarQube Cloud](https://sonarcloud.io/project/overview?id=LeeooGold_EcoLogistics).
-- Pruebas locales del backend: **43 aprobadas de 43**, cobertura total local **97 %** y una advertencia de obsolescencia de `httpx`/Starlette.
+- Pruebas locales del backend: **47 aprobadas de 47**, cobertura total local **97 %** y una advertencia de obsolescencia de `httpx`/Starlette.
 - Compilación local del frontend con Vite: **44 módulos transformados**, resultado correcto.
 - SonarQube Cloud para el PR #6: **Quality Gate passed**, 0 incidencias nuevas, 0 accepted issues, 0 Security Hotspots y 0,0 % en las métricas de cobertura y duplicación *de código nuevo* mostradas por el análisis del PR.
 

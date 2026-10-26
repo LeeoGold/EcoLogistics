@@ -59,8 +59,8 @@ El Sprint 3 incorpora la documentación de revisión, retrospectiva, calidad de 
 | Revisión del Sprint | [01 Revisión del Sprint V_1_0_0](./Sprint%2003/01%20Revisi%C3%B3n%20del%20Sprint%20V_1_0_0.md) |
 | Retrospectiva | [02 Retrospectiva del Sprint V_1_0_0](./Sprint%2003/02%20Retrospectiva%20del%20Sprint%20V_1_0_0.md) |
 | Calidad de código | [03 Calidad de código V_1_0_0](./Sprint%2003/03%20Calidad%20de%20c%C3%B3digo%20V_1_0_0.md) |
-| Seguridad OWASP | [04 OWASP V_1_0_0](./Sprint%2003/04%20OWASP%20V_1_0_0.md) |
-| Accesibilidad WCAG | [05 WCAG V_1_0_0](./Sprint%2003/05%20WCAG%20V_1_0_0.md) |
+| Seguridad OWASP | [04 OWASP V_1_0_1](./Sprint%2003/04%20OWASP%20V_1_0_1.md) | Matriz OWASP Top 10:2025; SEC-001 y SEC-002 abiertos; remediación pendiente. |
+| Accesibilidad WCAG | [05 WCAG V_1_0_1](./Sprint%2003/05%20WCAG%20V_1_0_1.md) |
 
 [← Volver al README principal](../../README.md) · [Abrir índice del Sprint 3](./Sprint%2003/README.md)
 
