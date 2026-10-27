@@ -8,10 +8,12 @@ CREATE TABLE IF NOT EXISTS roles (
 
 CREATE TABLE IF NOT EXISTS usuarios (
     usuario_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    nombre_usuario VARCHAR(80) NOT NULL UNIQUE,
     rol_id UUID NOT NULL REFERENCES roles(rol_id),
-    email VARCHAR(255) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
     estado VARCHAR(20) NOT NULL DEFAULT 'ACTIVO',
+    intentos_fallidos INTEGER NOT NULL DEFAULT 0 CHECK (intentos_fallidos >= 0),
+    bloqueado_hasta TIMESTAMPTZ,
     creado_en TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

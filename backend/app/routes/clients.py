@@ -5,9 +5,10 @@ from sqlalchemy.orm import Session
 
 from ..controllers.client_controller import ClientController
 from ..db import get_db
+from ..security import get_current_user, require_roles
 from ..schemas.client import ClientCreate, ClientRead
 
-router = APIRouter(prefix="/api/clientes", tags=["Clientes"])
+router = APIRouter(prefix="/api/clientes", tags=["Clientes"], dependencies=[Depends(get_current_user)])
 controller = ClientController()
 
 
@@ -28,6 +29,7 @@ def get_client(
     "",
     response_model=ClientRead,
     status_code=status.HTTP_201_CREATED,
+    dependencies=[Depends(require_roles("ADMINISTRADOR", "OPERADOR"))],
 )
 def create_client(
     payload: ClientCreate,

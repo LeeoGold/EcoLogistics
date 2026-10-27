@@ -14,6 +14,8 @@ class Settings(BaseSettings):
     mfa_challenge_ttl_min: int = 5
     mfa_max_attempts: int = 5
     mfa_challenge_block_min: int = 30
+    auth_max_attempts: int = 5
+    auth_block_min: int = 30
 
     model_config = SettingsConfigDict(
         env_file=".env",

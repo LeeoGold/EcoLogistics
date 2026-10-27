@@ -5,9 +5,10 @@ from sqlalchemy.orm import Session
 
 from ..controllers.order_controller import OrderController
 from ..db import get_db
+from ..security import get_current_user, require_roles
 from ..schemas.order import OrderCreate, OrderRead
 
-router = APIRouter(prefix="/api/pedidos", tags=["Pedidos"])
+router = APIRouter(prefix="/api/pedidos", tags=["Pedidos"], dependencies=[Depends(get_current_user)])
 controller = OrderController()
 
 
@@ -21,7 +22,7 @@ def get_order(pedido_id: UUID, db: Session = Depends(get_db)) -> OrderRead:
     return controller.get_order(pedido_id, db)
 
 
-@router.post("", response_model=OrderRead, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=OrderRead, status_code=status.HTTP_201_CREATED, dependencies=[Depends(require_roles("ADMINISTRADOR", "OPERADOR"))])
 def create_order(
     payload: OrderCreate, db: Session = Depends(get_db)
 ) -> OrderRead:
