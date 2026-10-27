@@ -9,13 +9,14 @@
 
 ## 1. Resumen ejecutivo de Quality Gate
 
-- **Estado del Quality Gate del PR #6:** **PASSED** (verificación visible en el check `SonarCloud Code Analysis`).
+- **Estado del Quality Gate del PR #11:** **PASSED**.
 - **Nuevas incidencias en el análisis del PR:** 0.
 - **Accepted issues:** 0.
 - **Security Hotspots en el PR:** 0.
-- **Coverage on New Code en el PR:** 0,0 % según la pantalla del check.
+- **Coverage on New Code en el PR #11:** 88,1 % según SonarCloud; corresponde al código nuevo, no a la cobertura global del repositorio.
 - **Duplication on New Code en el PR:** 0,0 % según la pantalla del check.
-- **Cobertura total local del backend:** 97 % con `pytest-cov` (43 pruebas aprobadas; 813 sentencias y 23 no cubiertas).
+- **Cobertura total local del backend:** 97 % con `pytest-cov` (72 pruebas aprobadas; 981 sentencias y 34 no cubiertas).
+- **Cobertura local del frontend:** 14/14 pruebas aprobadas; 100 % en sentencias, líneas y funciones y 90 % en ramas para los cuatro archivos instrumentados.
 
 **Interpretación:** los datos de Coverage on New Code y Duplication on New Code pertenecen al alcance nuevo del PR. No deben presentarse como métricas globales del producto. La cobertura global medida localmente por `pytest-cov` fue 97 %, pero debe verificarse en SonarQube que el archivo `backend/coverage.xml` esté siendo importado y que la página Measures muestre la métrica global esperada.
 
@@ -75,12 +76,12 @@ Las incidencias anteriores corresponden a la rama `main` consultada. No se afirm
 | Alta | La captura histórica de `main` reflejaba 5 incidencias abiertas de Reliability. | Abrir la lista actual, inspeccionar regla, archivo y severidad; priorizar correcciones en orden de impacto. | Lista de incidencias revisada y PR correctiva cuando corresponda. |
 | Alta | Una captura histórica mostraba 1 incidencia abierta en Security. | Verificar el issue actual y confirmar si es vulnerabilidad, hotspot u otra categoría; no asumir que son equivalentes. | Detalle del issue y decisión documentada. |
 | Media | No quedó comprobada la cobertura global importada en SonarQube. | Confirmar que CI genera `backend/coverage.xml`, que el archivo está disponible antes del scanner y que `sonar.python.coverage.reportPaths=backend/coverage.xml` se aplica desde la raíz del repositorio. | Medida Coverage global visible en SonarQube o error de importación identificado. |
-| Media | Existe una advertencia local `StarletteDeprecationWarning` por el uso de `httpx` con `starlette.testclient`. | Revisar la recomendación del warning y compatibilidad de dependencias antes de cambiar versiones; volver a ejecutar las 43 pruebas. | Pruebas verdes tras cualquier cambio y dependencias verificadas. |
+| Media | La advertencia de compatibilidad de httpx/Starlette se atendió en el PR #9. | Mantener las versiones compatibles y revisar avisos en futuras actualizaciones. | La validación posterior finalizó con 72/72 pruebas del backend aprobadas. |
 | Baja | GitHub Actions mostró avisos sobre acciones que apuntan a Node.js 20 y futura migración de `ubuntu-latest`. | Revisar las versiones soportadas de las acciones y migrarlas en un cambio separado, con validación CI. | Workflow actualizado y checks verdes. |
 
 ## 4. Conclusión
 
-El análisis de SonarQube Cloud para el PR #6 terminó con **Quality Gate passed** y no reportó nuevas incidencias. Localmente, el backend alcanzó 97 % de cobertura y 43/43 pruebas aprobadas; el frontend también compiló correctamente. Para cerrar el análisis de calidad del proyecto completo faltan la verificación de la cobertura global importada y la revisión actual de las incidencias heredadas de `main`.
+El análisis de SonarQube Cloud para el PR #11 terminó con **Quality Gate passed**. Registró 0 nuevas incidencias, 0 incidencias aceptadas, 0 Security Hotspots, 88,1 % de cobertura en código nuevo y 0,0 % de duplicación en código nuevo. Localmente, el backend alcanzó 72/72 pruebas aprobadas y 97 % de cobertura total; el frontend alcanzó 14/14 pruebas aprobadas y un build correcto. Las cifras locales y las métricas de código nuevo de SonarCloud corresponden a alcances distintos.
 
 ## 5. Fuentes y evidencias
 

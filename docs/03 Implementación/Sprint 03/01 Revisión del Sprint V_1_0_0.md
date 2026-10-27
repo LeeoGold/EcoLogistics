@@ -24,7 +24,9 @@ En el pull request #6 no se incorporaron nuevas historias funcionales con un ide
 
 La demostración técnica disponible se realizó mediante la ejecución de pruebas, el build del frontend y la comprobación de SonarQube en el pull request. Los resultados observados fueron:
 
-- **Backend local:** 43 pruebas aprobadas de 43; 813 sentencias medidas, 23 no cubiertas y 97 % de cobertura total. Se mostró una advertencia `StarletteDeprecationWarning` asociada al uso de `httpx` con `starlette.testclient`; no provocó fallos.
+- **Backend local:** 72 pruebas aprobadas de 72; 981 sentencias medidas, 34 no cubiertas y 97 % de cobertura total.
+- **Frontend:** 14 pruebas aprobadas de 14; 100 % en sentencias, líneas y funciones y 90 % en ramas, medido sobre los cuatro archivos instrumentados.
+- **SonarCloud, PR #11:** Quality Gate aprobado; 0 nuevas incidencias, 0 Security Hotspots, 88,1 % de cobertura en código nuevo y 0,0 % de duplicación en código nuevo.
 - **Frontend local:** Vite transformó 44 módulos y terminó con código de salida 0.
 - **GitHub Actions:** los trabajos `Backend tests (SQLite aislada)` y `Frontend build` quedaron en verde tanto en la ejecución push observada como en las comprobaciones del pull request.
 - **SonarQube Cloud, PR #6:** `Quality Gate passed`, 0 incidencias nuevas, 0 accepted issues y 0 Security Hotspots en el análisis del PR. La pantalla mostró 0,0 % de Coverage on New Code y 0,0 % de Duplication on New Code; estos valores describen el código nuevo del PR, no la cobertura global del backend.
