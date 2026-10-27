@@ -17,7 +17,9 @@
 
 ## ¿Qué estamos haciendo bien?
 
-- Se ejecutaron localmente 43 pruebas del backend con resultado satisfactorio y 97 % de cobertura.
+- Se ejecutaron localmente 72 pruebas del backend con resultado satisfactorio y 97 % de cobertura total (981 sentencias, 34 no cubiertas).
+- Se incorporaron 14 pruebas de frontend aprobadas; la cobertura de los cuatro archivos instrumentados fue de 100 % en sentencias, líneas y funciones y 90 % en ramas.
+- La integración de autenticación, frontend y cobertura pasó los controles del PR #11.
 - Se verificó la compilación del frontend antes de completar el flujo de CI.
 - Se mantuvo `SONAR_TOKEN` como secreto de GitHub Actions en vez de escribir su valor en archivos versionados.
 - Se trabajó mediante rama de feature/documentación, pull request y comprobaciones automáticas antes de integrar en `develop`.
