@@ -58,7 +58,7 @@ export default function AppRoutes() {
       }
     }
 
-    restoreSession()
+    void restoreSession()
     return () => {
       active = false
     }

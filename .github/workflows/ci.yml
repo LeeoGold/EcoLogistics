@@ -42,6 +42,25 @@ jobs:
       - name: Run tests and generate coverage report
         run: python -m pytest --cov=app --cov-report=term-missing --cov-report=xml:coverage.xml
 
+      - name: Configure Node.js for frontend coverage
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install frontend dependencies for coverage
+        run: npm ci
+        working-directory: frontend
+
+      - name: Run frontend tests and generate LCOV
+        run: npm run test:coverage
+        working-directory: frontend
+
+      - name: Verify frontend LCOV report
+        run: test -s coverage/lcov.info
+        working-directory: frontend
+
       - name: SonarQube Cloud analysis
         uses: SonarSource/sonarqube-scan-action@v8.3.0
         env:
