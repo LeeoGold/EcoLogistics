@@ -5,9 +5,10 @@ from sqlalchemy.orm import Session
 
 from ..controllers.vehicle_controller import VehicleController
 from ..db import get_db
+from ..security import get_current_user, require_roles
 from ..schemas.vehicle import VehicleCreate, VehicleRead, VehicleUpdate
 
-router = APIRouter(prefix="/api/vehiculos", tags=["Vehículos"])
+router = APIRouter(prefix="/api/vehiculos", tags=["Vehículos"], dependencies=[Depends(get_current_user)])
 controller = VehicleController()
 
 
@@ -21,20 +22,20 @@ def get_vehicle(vehiculo_id: UUID, db: Session = Depends(get_db)) -> VehicleRead
     return controller.get_vehicle(vehiculo_id, db)
 
 
-@router.post("", response_model=VehicleRead, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=VehicleRead, status_code=status.HTTP_201_CREATED, dependencies=[Depends(require_roles("ADMINISTRADOR", "OPERADOR"))])
 def create_vehicle(
     payload: VehicleCreate, db: Session = Depends(get_db)
 ) -> VehicleRead:
     return controller.create_vehicle(payload, db)
 
 
-@router.put("/{vehiculo_id}", response_model=VehicleRead)
+@router.put("/{vehiculo_id}", response_model=VehicleRead, dependencies=[Depends(require_roles("ADMINISTRADOR", "OPERADOR"))])
 def update_vehicle(
     vehiculo_id: UUID, payload: VehicleUpdate, db: Session = Depends(get_db)
 ) -> VehicleRead:
     return controller.update_vehicle(vehiculo_id, payload, db)
 
 
-@router.delete("/{vehiculo_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{vehiculo_id}", status_code=status.HTTP_204_NO_CONTENT, dependencies=[Depends(require_roles("ADMINISTRADOR"))])
 def delete_vehicle(vehiculo_id: UUID, db: Session = Depends(get_db)) -> None:
     controller.delete_vehicle(vehiculo_id, db)

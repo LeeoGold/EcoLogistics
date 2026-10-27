@@ -9,6 +9,7 @@ from .routes.orders import router as orders_router
 from .routes.vehicles import router as vehicles_router
 from .routes.drivers import router as drivers_router
 from .routes.routes import router as routes_router
+from .routes.auth import router as auth_router
 
 app = FastAPI(
     title="EcoLogística Huancayo API",
@@ -34,6 +35,7 @@ app.include_router(clients_router)
 app.include_router(orders_router)
 app.include_router(drivers_router)
 app.include_router(routes_router)
+app.include_router(auth_router)
 
 @app.get("/health", tags=["Sistema"])
 def health() -> dict[str, str]:

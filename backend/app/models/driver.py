@@ -1,7 +1,7 @@
 import uuid
 from datetime import time
 
-from sqlalchemy import String, Time
+from sqlalchemy import ForeignKey, String, Time
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -15,7 +15,7 @@ class Driver(Base):
         UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
     )
     usuario_id: Mapped[uuid.UUID | None] = mapped_column(
-        UUID(as_uuid=True), unique=True, nullable=True
+        UUID(as_uuid=True), ForeignKey("usuarios.usuario_id"), unique=True, nullable=True
     )
     nombre_completo: Mapped[str] = mapped_column(String(150), nullable=False)
     documento_identidad: Mapped[str] = mapped_column(
