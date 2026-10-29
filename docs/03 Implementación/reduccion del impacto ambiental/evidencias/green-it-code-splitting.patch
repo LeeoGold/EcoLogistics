@@ -1,0 +1,56 @@
+diff --git a/frontend/src/routes/AppRoutes.jsx b/frontend/src/routes/AppRoutes.jsx
+--- a/frontend/src/routes/AppRoutes.jsx
++++ b/frontend/src/routes/AppRoutes.jsx
+@@ -1,17 +1,18 @@
+-import { useEffect, useState } from 'react'
+-import ClientsPage from '../pages/ClientsPage'
+-import DashboardPage from '../pages/DashboardPage'
+-import DriversPage from '../pages/DriversPage'
++import { lazy, Suspense, useEffect, useState } from 'react'
+ import LoginPage from '../pages/LoginPage'
+-import OrdersPage from '../pages/OrdersPage'
+-import RoutesPage from '../pages/RoutesPage'
+-import VehiclesPage from '../pages/VehiclesPage'
+ import { ClientProvider } from '../state/ClientContext'
+ import { DriverProvider } from '../state/DriverContext'
+ import { OrderProvider } from '../state/OrderContext'
+ import { VehicleProvider } from '../state/VehicleContext'
+ import { getCurrentUser, logout } from '../services/authService'
+ import { TOKEN_STORAGE_KEY } from '../services/apiClient'
++
++const ClientsPage = lazy(() => import('../pages/ClientsPage'))
++const DashboardPage = lazy(() => import('../pages/DashboardPage'))
++const DriversPage = lazy(() => import('../pages/DriversPage'))
++const OrdersPage = lazy(() => import('../pages/OrdersPage'))
++const RoutesPage = lazy(() => import('../pages/RoutesPage'))
++const VehiclesPage = lazy(() => import('../pages/VehiclesPage'))
+ const sections = [
+   { id: 'inicio', label: 'Inicio', short: 'Inicio' },
+   { id: 'flota', label: 'Flota', short: 'Flota' },
+@@ -143,12 +143,14 @@
+                 </div>
+               </header>
+               <div className="main-content">
+-                {activeSection === 'inicio' && <DashboardPage />}
+-                {activeSection === 'flota' && <VehiclesPage />}
+-                {activeSection === 'clientes' && <ClientsPage />}
+-                {activeSection === 'conductores' && <DriversPage />}
+-                {activeSection === 'pedidos' && <OrdersPage />}
+-                {activeSection === 'rutas' && <RoutesPage />}
++                <Suspense fallback={<p role="status" aria-live="polite">Cargando sección...</p>}>
++                  {activeSection === 'inicio' && <DashboardPage />}
++                  {activeSection === 'flota' && <VehiclesPage />}
++                  {activeSection === 'clientes' && <ClientsPage />}
++                  {activeSection === 'conductores' && <DriversPage />}
++                  {activeSection === 'pedidos' && <OrdersPage />}
++                  {activeSection === 'rutas' && <RoutesPage />}
++                </Suspense>
+               </div>
+               <footer className="app-footer">
+                 <span>EcoLogística Huancayo</span>
+diff --git a/frontend/tests/AppRoutes.test.jsx b/frontend/tests/AppRoutes.test.jsx
+--- a/frontend/tests/AppRoutes.test.jsx
++++ b/frontend/tests/AppRoutes.test.jsx
+@@ -87,1 +87,1 @@
+-    expect(screen.getByText('InicioMock')).toBeTruthy()
++    expect(await screen.findByText('InicioMock')).toBeTruthy()

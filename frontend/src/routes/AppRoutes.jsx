@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react'
-import ClientsPage from '../pages/ClientsPage'
-import DashboardPage from '../pages/DashboardPage'
-import DriversPage from '../pages/DriversPage'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import LoginPage from '../pages/LoginPage'
-import OrdersPage from '../pages/OrdersPage'
-import RoutesPage from '../pages/RoutesPage'
-import VehiclesPage from '../pages/VehiclesPage'
 import { ClientProvider } from '../state/ClientContext'
 import { DriverProvider } from '../state/DriverContext'
 import { OrderProvider } from '../state/OrderContext'
 import { VehicleProvider } from '../state/VehicleContext'
 import { getCurrentUser, logout } from '../services/authService'
 import { TOKEN_STORAGE_KEY } from '../services/apiClient'
+
+const ClientsPage = lazy(() => import('../pages/ClientsPage'))
+const DashboardPage = lazy(() => import('../pages/DashboardPage'))
+const DriversPage = lazy(() => import('../pages/DriversPage'))
+const OrdersPage = lazy(() => import('../pages/OrdersPage'))
+const RoutesPage = lazy(() => import('../pages/RoutesPage'))
+const VehiclesPage = lazy(() => import('../pages/VehiclesPage'))
 
 const sections = [
   { id: 'inicio', label: 'Inicio', short: 'Inicio' },
@@ -156,12 +157,14 @@ export default function AppRoutes() {
               </header>
 
               <div className="main-content">
-                {activeSection === 'inicio' && <DashboardPage />}
-                {activeSection === 'flota' && <VehiclesPage />}
-                {activeSection === 'clientes' && <ClientsPage />}
-                {activeSection === 'conductores' && <DriversPage />}
-                {activeSection === 'pedidos' && <OrdersPage />}
-                {activeSection === 'rutas' && <RoutesPage />}
+                <Suspense fallback={<p role="status" aria-live="polite">Cargando modulo...</p>}>
+                  {activeSection === 'inicio' && <DashboardPage />}
+                  {activeSection === 'flota' && <VehiclesPage />}
+                  {activeSection === 'clientes' && <ClientsPage />}
+                  {activeSection === 'conductores' && <DriversPage />}
+                  {activeSection === 'pedidos' && <OrdersPage />}
+                  {activeSection === 'rutas' && <RoutesPage />}
+                </Suspense>
               </div>
 
               <footer className="app-footer">

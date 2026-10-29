@@ -90,7 +90,7 @@ describe('AppRoutes', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Ingresar' }))
 
     expect(await screen.findByText(/admin\s*·\s*ADMINISTRADOR/)).toBeTruthy()
-    expect(screen.getByText('InicioMock')).toBeTruthy()
+    expect(await screen.findByText('InicioMock')).toBeTruthy()
   })
 
   it('restaura sesión, navega por las secciones y permite salir', async () => {
