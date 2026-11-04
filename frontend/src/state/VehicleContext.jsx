@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useContext, useMemo, useState } from 'react'
 import { createVehicle, getVehicles } from '../services/vehicleService'
 
 const VehicleContext = createContext(null)
@@ -34,9 +34,6 @@ export function VehicleProvider({ children }) {
     }
   }
 
-  useEffect(() => {
-    loadVehicles()
-  }, [])
 
   function updateField(event) {
     const { name, value } = event.target

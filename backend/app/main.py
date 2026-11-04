@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 
 from . import models  # noqa: F401 - registra los modelos antes de create_all
 from .core import settings
@@ -10,6 +11,7 @@ from .routes.vehicles import router as vehicles_router
 from .routes.drivers import router as drivers_router
 from .routes.routes import router as routes_router
 from .routes.auth import router as auth_router
+from .routes.dashboard import router as dashboard_router
 
 app = FastAPI(
     title="EcoLogística Huancayo API",
@@ -26,6 +28,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Reduce el tamaño transferido de respuestas JSON grandes cuando el cliente acepta gzip.
+app.add_middleware(
+    GZipMiddleware,
+    minimum_size=500,
+    compresslevel=5,
+)
+
 # Desarrollo inicial: crea las tablas de los modelos registrados si no existen.
 # La fuente definitiva del esquema del proyecto también está en database/schema.sql.
 Base.metadata.create_all(bind=engine)
@@ -36,6 +45,7 @@ app.include_router(orders_router)
 app.include_router(drivers_router)
 app.include_router(routes_router)
 app.include_router(auth_router)
+app.include_router(dashboard_router)
 
 @app.get("/health", tags=["Sistema"])
 def health() -> dict[str, str]:

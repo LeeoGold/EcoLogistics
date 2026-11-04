@@ -3,7 +3,7 @@ from decimal import Decimal
 from uuid import UUID
 from zoneinfo import ZoneInfo
 
-from sqlalchemy import select
+from sqlalchemy import or_, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
@@ -69,7 +69,82 @@ class RouteService:
         self.repository = repository or RouteRepository()
 
     def list_routes(self, db: Session) -> list[RouteRead]:
-        return [self._to_read(db, route) for route in self.repository.list(db)]
+        return self._map_routes(db, self.repository.list(db))
+
+    def list_routes_page(self, db: Session, *, page: int, page_size: int) -> dict:
+        routes, total = self.repository.list_page(
+            db,
+            offset=(page - 1) * page_size,
+            limit=page_size,
+        )
+        return {
+            "items": self._map_routes(db, routes),
+            "total": total,
+            "page": page,
+            "page_size": page_size,
+            "total_pages": (total + page_size - 1) // page_size if total else 0,
+        }
+
+    def _map_routes(self, db: Session, routes: list[Route]) -> list[RouteRead]:
+        """Convierte un conjunto de rutas consultando relaciones en bloque."""
+        if not routes:
+            return []
+
+        route_ids = [route.ruta_id for route in routes]
+
+        assignments = db.scalars(
+            select(DriverAssignment)
+            .where(DriverAssignment.ruta_id.in_(route_ids))
+            .order_by(DriverAssignment.ruta_id, DriverAssignment.hora_inicio)
+        ).all()
+        assignments_by_route = {}
+        for assignment in assignments:
+            assignments_by_route.setdefault(assignment.ruta_id, assignment)
+
+        detail_rows = db.scalars(
+            select(RouteDetail)
+            .where(RouteDetail.ruta_id.in_(route_ids))
+            .order_by(RouteDetail.ruta_id, RouteDetail.secuencia)
+        ).all()
+        details_by_route = {}
+        for detail in detail_rows:
+            details_by_route.setdefault(detail.ruta_id, []).append(detail)
+
+        order_ids = {detail.pedido_id for detail in detail_rows}
+        orders = (
+            db.scalars(select(Order).where(Order.pedido_id.in_(order_ids))).all()
+            if order_ids
+            else []
+        )
+        orders_by_id = {order.pedido_id: order for order in orders}
+
+        driver_ids = {item.conductor_id for item in assignments}
+        drivers = (
+            db.scalars(select(Driver).where(Driver.conductor_id.in_(driver_ids))).all()
+            if driver_ids
+            else []
+        )
+        drivers_by_id = {driver.conductor_id: driver for driver in drivers}
+
+        vehicle_ids = {item.vehiculo_id for item in assignments}
+        vehicles = (
+            db.scalars(select(Vehicle).where(Vehicle.vehiculo_id.in_(vehicle_ids))).all()
+            if vehicle_ids
+            else []
+        )
+        vehicles_by_id = {vehicle.vehiculo_id: vehicle for vehicle in vehicles}
+
+        return [
+            self._build_route_read(
+                route,
+                assignments_by_route.get(route.ruta_id),
+                details_by_route.get(route.ruta_id, []),
+                orders_by_id,
+                drivers_by_id,
+                vehicles_by_id,
+            )
+            for route in routes
+        ]
 
     def get_route(self, db: Session, ruta_id: UUID) -> RouteRead:
         route = self.repository.get(db, ruta_id)
@@ -150,16 +225,17 @@ class RouteService:
         assignments = db.scalars(
             select(DriverAssignment)
             .join(Route, DriverAssignment.ruta_id == Route.ruta_id)
-            .where(Route.fecha_planificada == payload.fecha_planificada)
+            .where(
+                Route.fecha_planificada == payload.fecha_planificada,
+                or_(
+                    DriverAssignment.conductor_id == payload.conductor_id,
+                    DriverAssignment.vehiculo_id == payload.vehiculo_id,
+                ),
+            )
         ).all()
 
         requested_time = starts_at.astimezone(LIMA_TZ).time().replace(tzinfo=None)
         for assignment in assignments:
-            same_driver = assignment.conductor_id == payload.conductor_id
-            same_vehicle = assignment.vehiculo_id == payload.vehiculo_id
-            if not (same_driver or same_vehicle):
-                continue
-
             previous_start = assignment.hora_inicio
             if previous_start.tzinfo is not None:
                 previous_start_time = previous_start.astimezone(LIMA_TZ).time().replace(tzinfo=None)
@@ -184,21 +260,54 @@ class RouteService:
             .where(DriverAssignment.ruta_id == route.ruta_id)
             .order_by(DriverAssignment.hora_inicio)
         )
-        detail_rows = list(
-            db.scalars(
-                select(RouteDetail)
-                .where(RouteDetail.ruta_id == route.ruta_id)
-                .order_by(RouteDetail.secuencia)
-            ).all()
+        detail_rows = db.scalars(
+            select(RouteDetail)
+            .where(RouteDetail.ruta_id == route.ruta_id)
+            .order_by(RouteDetail.secuencia)
+        ).all()
+        order_ids = {detail.pedido_id for detail in detail_rows}
+        orders = (
+            db.scalars(select(Order).where(Order.pedido_id.in_(order_ids))).all()
+            if order_ids
+            else []
         )
-        order_ids = [detail.pedido_id for detail in detail_rows]
-        orders = [db.get(Order, pedido_id) for pedido_id in order_ids]
-        total_weight = sum(
-            (Decimal(order.peso_kg) for order in orders if order is not None), Decimal("0")
-        )
+        orders_by_id = {order.pedido_id: order for order in orders}
 
         driver = db.get(Driver, assignment.conductor_id) if assignment else None
         vehicle = db.get(Vehicle, assignment.vehiculo_id) if assignment else None
+        drivers_by_id = {driver.conductor_id: driver} if driver else {}
+        vehicles_by_id = {vehicle.vehiculo_id: vehicle} if vehicle else {}
+
+        return self._build_route_read(
+            route,
+            assignment,
+            detail_rows,
+            orders_by_id,
+            drivers_by_id,
+            vehicles_by_id,
+        )
+
+    def _build_route_read(
+        self,
+        route: Route,
+        assignment: DriverAssignment | None,
+        detail_rows: list[RouteDetail],
+        orders_by_id: dict,
+        drivers_by_id: dict,
+        vehicles_by_id: dict,
+    ) -> RouteRead:
+        order_ids = [detail.pedido_id for detail in detail_rows]
+        total_weight = sum(
+            (
+                Decimal(orders_by_id[pedido_id].peso_kg)
+                for pedido_id in order_ids
+                if pedido_id in orders_by_id
+            ),
+            Decimal("0"),
+        )
+
+        driver = drivers_by_id.get(assignment.conductor_id) if assignment else None
+        vehicle = vehicles_by_id.get(assignment.vehiculo_id) if assignment else None
         local_start = None
         if assignment:
             starts_at = assignment.hora_inicio

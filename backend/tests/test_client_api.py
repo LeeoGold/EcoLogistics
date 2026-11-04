@@ -86,3 +86,19 @@ def test_partial_preferred_schedule_is_rejected(client, client_payload):
     response = client.post("/api/clientes", json=client_payload)
 
     assert response.status_code == 422
+
+
+def test_paginated_clients_returns_metadata(client):
+    response = client.get("/api/clientes/pagina?page=1&page_size=12")
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["page"] == 1
+    assert payload["page_size"] == 12
+    assert payload["total"] >= len(payload["items"])
+    assert len(payload["items"]) <= 12
+    assert "total_pages" in payload
+
+
+def test_paginated_clients_rejects_page_size_over_12(client):
+    response = client.get("/api/clientes/pagina?page_size=13")
+    assert response.status_code == 422

@@ -118,3 +118,31 @@ def test_delete_missing_vehicle_returns_404(client):
 
     assert response.status_code == 404
     assert response.json()["detail"] == "Vehículo no encontrado"
+
+
+def test_paginated_vehicles_returns_metadata(client):
+    response = client.get("/api/vehiculos/pagina?page=1&page_size=12")
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["page"] == 1
+    assert payload["page_size"] == 12
+    assert len(payload["items"]) <= 12
+
+
+def test_paginated_vehicle_list_supports_private_etag_revalidation(client):
+    first = client.get("/api/vehiculos/pagina?page=1&page_size=12")
+
+    assert first.status_code == 200
+    etag = first.headers.get("etag")
+    assert etag
+    assert first.headers.get("cache-control") == "private, no-cache"
+    assert "authorization" in first.headers.get("vary", "").lower()
+
+    second = client.get(
+        "/api/vehiculos/pagina?page=1&page_size=12",
+        headers={"If-None-Match": etag},
+    )
+
+    assert second.status_code == 304
+    assert second.content == b""
+    assert second.headers.get("etag") == etag

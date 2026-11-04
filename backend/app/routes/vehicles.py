@@ -1,7 +1,13 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, Request, Response, status
 from sqlalchemy.orm import Session
+from sqlalchemy import select
+from fastapi import Query
+
+from ..models.vehicle import Vehicle
+from ..pagination import PageResponse, paginate_statement
+from ..http_cache import apply_private_etag
 
 from ..controllers.vehicle_controller import VehicleController
 from ..db import get_db
@@ -16,6 +22,28 @@ controller = VehicleController()
 def list_vehicles(db: Session = Depends(get_db)) -> list[VehicleRead]:
     return controller.list_vehicles(db)
 
+
+
+
+@router.get("/pagina", response_model=PageResponse[VehicleRead])
+def page_vehicles(
+    request: Request,
+    response: Response,
+    page: int = Query(default=1, ge=1),
+    page_size: int = Query(default=12, ge=1, le=12),
+    q: str | None = Query(default=None, max_length=80),
+    estado: str | None = Query(default=None, max_length=20),
+    db: Session = Depends(get_db),
+) -> PageResponse[VehicleRead]:
+    """Lista de Vehicle paginada para la interfaz de gestión."""
+    statement = select(Vehicle).order_by(Vehicle.placa)
+    if q:
+        statement = statement.where(Vehicle.placa.ilike(f"%{q.strip()}%"))
+    if estado:
+        statement = statement.where(Vehicle.estado == estado)
+    data = paginate_statement(db, statement, page=page, page_size=page_size)
+    not_modified = apply_private_etag(request, response, data)
+    return not_modified or data
 
 @router.get("/{vehiculo_id}", response_model=VehicleRead)
 def get_vehicle(vehiculo_id: UUID, db: Session = Depends(get_db)) -> VehicleRead:

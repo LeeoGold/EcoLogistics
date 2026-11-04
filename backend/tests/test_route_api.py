@@ -242,3 +242,12 @@ def test_get_missing_route_returns_404(client):
 
     assert response.status_code == 404
     assert response.json()["detail"] == "Ruta no encontrada."
+
+
+def test_paginated_routes_returns_metadata(client):
+    response = client.get("/api/rutas/pagina?page=1&page_size=12")
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["page"] == 1
+    assert payload["page_size"] == 12
+    assert len(payload["items"]) <= 12

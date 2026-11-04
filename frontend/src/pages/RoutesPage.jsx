@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
-import { createRoute, getRoutes } from '../services/routeService'
+import { createRoute, getRoutesPage } from '../services/routeService'
+import PaginationControls from '../components/common/PaginationControls'
 import { useClients } from '../state/ClientContext'
 import { useDrivers } from '../state/DriverContext'
 import { useOrders } from '../state/OrderContext'
@@ -33,12 +34,14 @@ const initialForm = {
 }
 
 export default function RoutesPage() {
-  const { drivers, loading: driversLoading } = useDrivers()
-  const { vehicles, loading: vehiclesLoading } = useVehicles()
+  const { drivers, loading: driversLoading, loadDrivers } = useDrivers()
+  const { vehicles, loading: vehiclesLoading, loadVehicles } = useVehicles()
   const { orders, loading: ordersLoading, loadOrders } = useOrders()
-  const { clients } = useClients()
+  const { clients, loadClients } = useClients()
 
   const [routes, setRoutes] = useState([])
+  const [routePage, setRoutePage] = useState(1)
+  const [routeTotal, setRouteTotal] = useState(0)
   const [form, setForm] = useState({ ...initialForm })
   const [selectedOrderIds, setSelectedOrderIds] = useState([])
   const [loadingRoutes, setLoadingRoutes] = useState(false)
@@ -72,11 +75,13 @@ export default function RoutesPage() {
   const exceedsCapacity = selectedVehicle && selectedWeight > Number(selectedVehicle.capacidad_kg)
   const lookupLoading = driversLoading || vehiclesLoading || ordersLoading
 
-  async function loadRoutes() {
+  async function loadRoutes(targetPage = routePage) {
     setLoadingRoutes(true)
     try {
-      const data = await getRoutes()
-      setRoutes(data)
+      const data = await getRoutesPage({ page: targetPage, page_size: 12 })
+      setRoutes(data.items)
+      setRoutePage(data.page)
+      setRouteTotal(data.total)
       setMessage('')
       setMessageType('')
       return true
@@ -91,6 +96,10 @@ export default function RoutesPage() {
 
   useEffect(() => {
     void loadRoutes()
+    void loadClients()
+    void loadDrivers()
+    void loadVehicles()
+    void loadOrders()
   }, [])
 
   function updateField(event) {
@@ -279,7 +288,7 @@ export default function RoutesPage() {
               {loadingRoutes ? 'Actualizando…' : 'Actualizar listado'}
             </button>
           </div>
-          <p className="result-count">{routes.length} ruta(s) registrada(s).</p>
+          <p className="result-count">Mostrando {routes.length} de {routeTotal} ruta(s).</p>
           <div className="table-wrap">
             <table>
               <thead>
@@ -311,6 +320,7 @@ export default function RoutesPage() {
               </tbody>
             </table>
           </div>
+          <PaginationControls page={routePage} total={routeTotal} onPageChange={(next) => void loadRoutes(next)} />
         </article>
       </section>
     </main>

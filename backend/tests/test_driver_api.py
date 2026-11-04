@@ -89,3 +89,12 @@ def test_duplicate_document_is_rejected(client):
 
     assert first.status_code == 201
     assert second.status_code == 409
+
+
+def test_paginated_drivers_returns_metadata(client):
+    response = client.get("/api/conductores/pagina?page=1&page_size=12")
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["page"] == 1
+    assert payload["page_size"] == 12
+    assert len(payload["items"]) <= 12

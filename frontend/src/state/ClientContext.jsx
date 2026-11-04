@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import { createClient, getClients } from '../services/clientService'
 
 const ClientContext = createContext(null)
@@ -39,9 +39,6 @@ export function ClientProvider({ children }) {
     }
   }
 
-  useEffect(() => {
-    loadClients()
-  }, [])
 
   function updateField(event) {
     const { name, value } = event.target
