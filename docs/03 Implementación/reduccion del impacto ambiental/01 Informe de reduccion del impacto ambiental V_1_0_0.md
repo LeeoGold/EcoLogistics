@@ -4,11 +4,13 @@
 **Versión documental:** V_1_0_0<br>
 **Fecha:** 03 de noviembre de 2026<br>
 **Stack real:** React 19 + Vite 8 / FastAPI + Python / SQLAlchemy / PostgreSQL<br>
-**Rama de trabajo:** `feature/green-it-sobresaliente`<br>
-**Destino de entrega:** `main`<br>
-**Estado:** optimizaciones principales implementadas y validadas localmente; falta validar todos los módulos en navegador y ejecutar el workflow en GitHub después del push.
+**Rama publicada:** `main`<br>
+**Release:** [`v1.0.0 — Green IT Release`](https://github.com/LeeoGold/EcoLogistics/releases/tag/v1.0.0)<br>
+**Commit de entrega:** [`6041fe83d54367afd7a00139c1366d9f4c90c2fa`](https://github.com/LeeoGold/EcoLogistics/commit/6041fe83d54367afd7a00139c1366d9f4c90c2fa)<br>
+**Fecha de mediciones:** 03 de noviembre de 2026<br>
+**Estado de publicación actualizado:** 08 de noviembre de 2026 — Release publicada y workflow Green IT Audit confirmado en verde en GitHub.
 
-[Informe de estándares de ingeniería](./02%20Estandares%20Ingenier%C3%ADa%20de%20software%20V_1_0_0.md) · [Índice de evidencias](./evidencias/README.md)
+[Informe de estándares de ingeniería](./02%20Estandares%20Ingenier%C3%ADa%20de%20software%20V_1_0_0.md) · [Matriz de trazabilidad](./03%20Matriz%20de%20trazabilidad%20de%20la%20rubrica%20V_1_0_1.md) · [Índice de evidencias](./evidencias/README.md)
 
 ---
 
@@ -121,7 +123,7 @@ La funcionalidad se verificó localmente reduciendo temporalmente el umbral, obs
 | 2 | Paginación backend/frontend de 12 | **Aplicada** | Cinco endpoints paginados, filtros server-side y controles React; 80 pruebas backend aprobadas |
 | 3 | WebP/AVIF y `<picture>` | **No aplicable al inventario** | No se identificaron imágenes rasterizadas del producto que convertir |
 | 4 | `React.lazy()` / `Suspense` | **Aplicada** | Chunks Vite, build correcto y 14 pruebas frontend aprobadas |
-| 5 | Uso de APIs nativas y control de dependencias | **Aplicada sin dependencia adicional** | `fetch` en `apiFetch` y `URLSearchParams` en los cinco servicios paginados; no se incorpora una biblioteca HTTP/query-string |
+| 5 | Uso de APIs nativas y control de dependencias | **Parcial / conforme** | `fetch` en `apiFetch` y `URLSearchParams` en los cinco servicios paginados; no se incorpora una biblioteca HTTP/query-string |
 | 6 | SVG inline | **Sin oportunidad demostrada** | No se identificaron SVG externos ni peticiones de iconos SVG que eliminar |
 | 7 | Cache-Control / ETag | **Aplicada** | Política `private, no-cache`, `Vary: Authorization`, revalidación y prueba 304 |
 | 8 | Compresión GZip/Brotli | **Aplicada con GZip** | FastAPI `GZipMiddleware`, umbral 500 bytes y nivel 5; no se ha configurado Brotli |
@@ -421,9 +423,15 @@ La proyección escala linealmente el ahorro calculado por carga. La incertidumbr
 | Frontend con Vitest | **14 passed en 4 archivos** | Suite frontend existente; ejecutada después de la paginación |
 | Build de producción Vite | **Correcto; 50 módulos transformados** | Compilación posterior a la paginación |
 | Lighthouse CI local | **3 informes generados y analizados** | Ruta `/login`, Desktop |
-| Workflow GitHub Actions | **Configurado; ejecución remota pendiente** | Se dispara al hacer push/PR según el YAML |
+| Workflow GitHub Actions | **Ejecución verde confirmada** | `green-audit.yml` ejecutado en GitHub durante el cierre de la Release |
 
-No se documenta como prueba visual aprobada la navegación por los módulos que aún no han sido confirmados manualmente en la conversación. Se recomienda completar una única pasada por Clientes, Conductores, Pedidos y Rutas antes de la demostración; no es necesario generar una captura por cada módulo.
+Las pruebas automatizadas y la compilación no sustituyen una revisión visual completa de cada flujo. Las capturas funcionales adjuntas cubren Dashboard y Flota; antes de una demostración en vivo conviene realizar una pasada manual por Clientes, Conductores, Pedidos y Rutas, sin necesidad de generar una captura independiente para cada uno.
+
+### 7.1 Estado de publicación de la versión
+
+La versión se integró en `main` mediante el commit `6041fe83d54367afd7a00139c1366d9f4c90c2fa`, se publicó la etiqueta Git `v1.0.0` y se creó la Release **EcoLogistics v1.0.0 — Green IT Release**. El workflow `Green IT Audit` quedó en verde según la ejecución verificada en GitHub durante el cierre. Por tanto, la frase anterior de “ejecución remota pendiente” queda sustituida por este estado final.
+
+La medición técnica principal conserva su fecha original (03/11/2026); esta actualización modifica el estado de publicación, no los valores de los reportes.
 
 ## 8. Conclusiones
 
@@ -433,7 +441,7 @@ No se documenta como prueba visual aprobada la navegación por los módulos que 
 4. Las tres corridas Lighthouse CI del 03/11 cumplen los umbrales de la rúbrica para `/login`.
 5. SWDM v4 produce una estimación ilustrativa de 0.45238 kgCO₂e de ahorro anual para el escenario hipotético de 500,000 cargas. No es una medición directa.
 6. WebP/AVIF y SVG inline se registran como no aplicables/no demostrados por ausencia de activos de ese tipo en el inventario revisado. No se declaran como implementados.
-7. El estado de la primera rúbrica debe evaluarse como seis áreas demostradas y dos no aplicables, no como cumplimiento ficticio de las ocho.
+7. La entrega documenta seis áreas aplicadas o conformes con alcance explícito y dos sin oportunidad identificada. El área de APIs nativas es parcial: no se sustituyó una biblioteca instalada. Si la rúbrica exige sustitución material, el evaluador podría considerar solo cinco optimizaciones plenamente implementadas.
 
 ## 9. Evidencias
 
@@ -443,7 +451,7 @@ Consultar `evidencias/README.md`. Los reportes HTML/JSON originales de Lighthous
 
 1. Sustainable Web Design, *Estimating Digital Emissions* (SWDM v4): https://sustainablewebdesign.org/estimating-digital-emissions/
 2. W3C, *Web Sustainability Guidelines (WSG)*, Group Note Draft 16 October 2026: https://www.w3.org/TR/web-sustainability-guidelines/
-3. Green Software Foundation, *Learn Green Software — Introduction*: https://learn.greensoftware.foundation/es/introduction/
+3. Green Software Foundation, *Learn Green Software — Introduction*: https://learn.greensoftware.foundation/introduction/
 4. Green Software Foundation, *Software Carbon Intensity Specification*: https://sci.greensoftware.foundation/
 5. ISO, *ISO/IEC 25010:2023 — Product quality model*: https://www.iso.org/standard/78176.html
 
@@ -452,3 +460,4 @@ Consultar `evidencias/README.md`. Los reportes HTML/JSON originales de Lighthous
 | Versión | Fecha | Cambios |
 |---|---|---|
 | V_1_0_0 | 03/11/2026 | Consolidación de paginación, consultas SQL, ETag, GZip, LHCI, estimación SWDM v4 y límites de aplicabilidad. |
+| Actualización de estado | 08/11/2026 | Se registra la publicación en `main`, el tag/Release `v1.0.0` y la ejecución verde de GitHub Actions; no se alteran las mediciones del 03/11. |

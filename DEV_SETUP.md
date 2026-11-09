@@ -1,30 +1,46 @@
 # EcoLogística Huancayo — configuración de desarrollo
 
-Este repositorio contiene un MVP con API FastAPI, PostgreSQL y una interfaz React/Vite. Los módulos disponibles son flota (vehículos), clientes y pedidos; los conductores cuentan con endpoints en la API.
+Guía para ejecutar localmente la versión del repositorio. La arquitectura utiliza FastAPI/Python, SQLAlchemy, PostgreSQL y React/Vite. La interfaz incluye Inicio/Dashboard, Flota, Clientes, Conductores, Pedidos y Rutas.
 
-## 1. Preparar la base de datos local
+## 1. Requisitos
 
-1. Verifica que el servicio PostgreSQL esté activo.
+- PostgreSQL en ejecución.
+- Python 3.13 recomendado para reproducir el entorno del workflow CI (`.github/workflows/ci.yml`).
+- Node.js 24 y npm, utilizados por los workflows de GitHub Actions.
+- Git.
+
+El proyecto puede funcionar con versiones locales compatibles, pero se recomienda comenzar con las versiones utilizadas por CI para reducir diferencias de entorno.
+
+## 2. Preparar PostgreSQL
+
+1. Inicia el servicio PostgreSQL.
 2. Crea una base de datos llamada `ecologistica` con tu usuario local.
 3. Ejecuta `database/schema.sql` sobre esa base.
-4. Crea `backend/.env` a partir de `backend/.env.example` solo si todavía no existe. No sobrescribas un `.env` existente porque puede contener tu configuración local.
-5. Actualiza `DATABASE_URL` con tu usuario, contraseña, puerto y base reales.
+4. Crea `backend/.env` a partir de `backend/.env.example` solo si todavía no existe. No sobrescribas un `.env` existente.
+5. Ajusta `DATABASE_URL` según tu usuario, contraseña, puerto y base de datos.
+6. Cambia `ACCESS_TOKEN_SECRET` por un secreto local propio si vas a compartir o exponer el entorno. El valor de ejemplo es únicamente para desarrollo y no debe usarse en producción.
 
-La configuración de ejemplo usa:
+Ejemplo de cadena local:
 
-`postgresql+psycopg://postgres:postgres@localhost:5432/ecologistica`
-
-## 2. Instalar y arrancar el backend (PowerShell)
-
-```powershell
-cd backend
-py -3.14 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+```text
+postgresql+psycopg://postgres:postgres@localhost:5432/ecologistica
 ```
 
-Arranca la API:
+No subas archivos `.env`, contraseñas, tokens ni datos reales de usuarios al repositorio.
+
+## 3. Instalar y ejecutar el backend (PowerShell)
+
+```powershell
+Set-Location backend
+py -3.13 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt -r requirements-tests.txt
+```
+
+Si tu equipo no dispone de Python 3.13, utiliza una versión compatible con las dependencias del proyecto y con la que puedas ejecutar la suite. Python 3.13 es la referencia utilizada en CI; Python 3.14 también se utilizó en las ejecuciones locales comunicadas para este proyecto. En ese caso, cambia el primer comando por `py -3.14 -m venv .venv` si esa versión es la que tienes instalada.
+
+Inicia la API desde la carpeta `backend`:
 
 ```powershell
 python -m uvicorn app.main:app --reload
@@ -32,42 +48,71 @@ python -m uvicorn app.main:app --reload
 
 - API: `http://127.0.0.1:8000`
 - Documentación interactiva: `http://127.0.0.1:8000/docs`
-- Salud: `http://127.0.0.1:8000/health`
+- Estado de salud: `http://127.0.0.1:8000/health`
 
-Si aparece `ModuleNotFoundError`, comprueba que `(.venv)` esté activo y repite el comando de instalación de requisitos desde la carpeta `backend`.
+La aplicación registra los modelos y crea tablas que falten al iniciar; `database/schema.sql` continúa siendo el esquema de referencia del repositorio. Verifica que la base de datos local esté preparada antes de iniciar la API.
 
-## 3. Ejecutar pruebas sin tocar tu base real
+## 4. Ejecutar pruebas del backend
 
-Las pruebas fuerzan una base SQLite temporal en `backend/tests/.test_ecologistica.db`. No utilizan `backend/.env` para elegir la base y la base temporal se elimina al finalizar correctamente la suite.
+Las pruebas usan una base SQLite temporal configurada por los fixtures de `backend/tests`; no apuntes la suite a tu base PostgreSQL con información de desarrollo.
+
+Desde la carpeta `backend` y con el entorno virtual activo:
 
 ```powershell
-python -m pip install -r requirements-tests.txt
+python -m pytest -q
+```
+
+Para generar cobertura local:
+
+```powershell
 python -m pytest --cov=app --cov-report=term-missing
 ```
 
-No apuntes las pruebas automatizadas a la base PostgreSQL con datos de desarrollo.
+El workflow de CI utiliza `pytest-cov` y exporta cobertura en XML para su análisis. Los valores de cobertura pueden variar según la versión de código y el comando ejecutado; no mezcles resultados de distintas ejecuciones.
 
-## 4. Frontend
+## 5. Instalar y ejecutar el frontend
 
-Abre una segunda terminal:
+Abre una segunda terminal PowerShell:
 
 ```powershell
-cd frontend
+Set-Location frontend
 npm ci
 if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 npm run dev
 ```
 
-`npm ci` instala las versiones registradas en `package-lock.json`. Si ya tienes `frontend/.env`, no lo sobrescribas. La aplicación estará en `http://localhost:5173`.
+La interfaz estará disponible en `http://localhost:5173`. Comprueba que `VITE_API_URL` apunte a la API local si tu configuración no utiliza el valor predeterminado.
 
-Antes de enviar cambios, ejecuta también:
+Pruebas y compilación:
 
 ```powershell
+npm run test
 npm run build
 ```
 
-## 5. Reglas de colaboración y ramas
+Para generar cobertura de Vitest:
 
-Consulta [docs/04-desarrollo/GITFLOW.md](docs/04-desarrollo/GITFLOW.md). La regla base es: `main` conserva la versión estable, `develop` integra los avances y cada mejora se desarrolla en su propia rama `feature/*` o `fix/*`.
+```powershell
+npm run test:coverage
+```
 
-Los archivos `.env`, las bases de datos locales y los secretos no deben subirse a GitHub.
+`npm ci` respeta las versiones fijadas en `package-lock.json`; no reemplaces el lockfile por una instalación no reproducible sin revisar el cambio.
+
+## 6. Consideraciones funcionales y de seguridad
+
+- La API incluye autenticación mediante token JWT y almacenamiento de contraseñas con Argon2.
+- Las rutas protegidas requieren usuario autenticado; algunas operaciones de escritura exigen roles concretos.
+- El proyecto no debe presentarse como si MFA/TOTP estuviera implementado: esa capacidad está documentada como evolución.
+- `US-013` permite planificación manual de rutas; no existe cálculo automático de trayectos reales ni de emisiones por ruta.
+- Las pruebas automatizadas no reemplazan una verificación funcional manual de todos los flujos antes de una demostración.
+
+## 7. Flujo de colaboración
+
+Consulta [`docs/04-desarrollo/GITFLOW.md`](docs/04-desarrollo/GITFLOW.md). Como regla general, utiliza ramas `feature/*` o `fix/*` para cambios aislados, integra los avances según el flujo acordado por el equipo y conserva `main` para versiones estables.
+
+## 8. Seguridad del entorno local
+
+- No publiques `.env`, secretos ni bases de datos locales.
+- No uses el secreto de ejemplo en un entorno público.
+- No introduzcas datos personales reales en las capturas o evidencias de entrega.
+- Revisa `git status --short` antes de cada commit para detectar archivos temporales, `coverage`, `dist`, bases SQLite y credenciales.
