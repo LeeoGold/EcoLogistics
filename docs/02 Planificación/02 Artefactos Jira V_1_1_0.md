@@ -129,10 +129,10 @@ El Sprint 1 se cerró en Jira con **2 actividades completadas y 4 actividades ab
 
 ### Evidencias posteriores al Sprint
 
-- [Burndown de Sprint 1](../03%20Implementación/evidencias/06-burndown-sprint-1.png)
-- [Burnup de Sprint 1](../03%20Implementación/evidencias/07-burnup-sprint-1.png)
-- [Pull Request aprobada](../03%20Implementación/evidencias/08-pull-request-aprobada.png)
-- [Velocidad de Sprint 1](../03%20Implementación/evidencias/09-velocidad-sprint-1.png)
+- [Burndown de Sprint 1](../03%20Implementaci%C3%B3n/Sprint%201/evidencias/06-burndown-sprint-1.png)
+- [Burnup de Sprint 1](../03%20Implementaci%C3%B3n/Sprint%201/evidencias/07-burnup-sprint-1.png)
+- [Captura histórica del Pull Request en estado Ready to merge](../03%20Implementaci%C3%B3n/Sprint%201/Versiones%20anteriores/V_1_1_0/evidencias/08-pull-request-aprobada.png) — no demuestra aprobación de terceros ni fusión.
+- [Velocidad de Sprint 1](../03%20Implementaci%C3%B3n/Sprint%201/evidencias/09-velocidad-sprint-1.png)
 
 ## 8. Cierre del Sprint y consistencia con Jira
 

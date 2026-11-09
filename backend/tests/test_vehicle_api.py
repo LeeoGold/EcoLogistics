@@ -146,3 +146,22 @@ def test_paginated_vehicle_list_supports_private_etag_revalidation(client):
     assert second.status_code == 304
     assert second.content == b""
     assert second.headers.get("etag") == etag
+
+
+def test_vehicle_list_uses_gzip_when_response_exceeds_threshold(client, vehicle_payload):
+    suffix = vehicle_payload["placa"].removeprefix("TST-")
+
+    for index in range(5):
+        payload = {**vehicle_payload, "placa": f"TST-{suffix}-{index}"}
+        created = client.post("/api/vehiculos", json=payload)
+        assert created.status_code == 201
+
+    response = client.get(
+        "/api/vehiculos",
+        headers={"Accept-Encoding": "gzip"},
+    )
+
+    assert response.status_code == 200
+    assert response.headers.get("content-encoding") == "gzip"
+    assert "accept-encoding" in response.headers.get("vary", "").lower()
+    assert isinstance(response.json(), list)

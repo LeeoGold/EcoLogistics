@@ -2,11 +2,12 @@
 
 **Proyecto:** EcoLogística Huancayo (EcoLogistics)<br>
 **Versión documental:** V_1_0_0<br>
-**Fecha:** 03 de noviembre de 2026<br>
+**Fecha de referencia técnica:** 03 de noviembre de 2026<br>
+**Estado de publicación actualizado:** 08 de noviembre de 2026<br>
 **Stack:** React 19 + Vite 8 / FastAPI + SQLAlchemy / PostgreSQL<br>
 **Propósito:** justificar las decisiones de optimización mediante ISO/IEC 25010, Green Software Foundation (GSF), W3C Web Sustainability Guidelines (WSG) y prácticas de Clean Code, SOLID, DRY y YAGNI.
 
-[Informe Green IT](./01%20Informe%20de%20reduccion%20del%20impacto%20ambiental%20V_1_0_0.md) · [Índice de evidencias](./evidencias/README.md)
+[Informe Green IT](./01%20Informe%20de%20reduccion%20del%20impacto%20ambiental%20V_1_0_0.md) · [Matriz de trazabilidad](./03%20Matriz%20de%20trazabilidad%20de%20la%20rubrica%20V_1_0_1.md) · [Índice de evidencias](./evidencias/README.md)
 
 ---
 
@@ -47,14 +48,16 @@ El vínculo con ISO/IEC 25010 es una justificación de diseño y de objetivos de
 
 ## 3. Green Software Foundation (GSF)
 
-La GSF describe principios para diseñar, desarrollar y ejecutar software con menores impactos de carbono. Para la matriz académica de la actividad se explicitan cuatro principios:
+La guía oficial de Learn Green Software define el software verde como software eficiente en carbono y señala **tres actividades que reducen directamente sus emisiones**: eficiencia energética, conciencia de carbono y eficiencia de hardware. También presenta seis áreas de aprendizaje: eficiencia de carbono, eficiencia energética, conciencia de carbono, eficiencia de hardware, medición y compromisos climáticos.
 
-1. **Eficiencia de carbono (Carbon Efficiency):** emitir la menor cantidad de carbono posible para una unidad funcional dada.
-2. **Eficiencia energética (Energy Efficiency):** utilizar menos energía para prestar la misma función.
-3. **Conciencia de carbono (Carbon Awareness):** desplazar trabajo en tiempo o región cuando existan señales de electricidad con menor intensidad de carbono. No se implementó programación de trabajos según intensidad eléctrica en EcoLogistics.
-4. **Eficiencia de hardware (Hardware Efficiency):** reducir la cantidad de recursos físicos necesarios y el carbono incorporado asociado.
+Para responder a la rúbrica, se explicitan cuatro conceptos relacionados, pero no se presentan como cuatro palancas equivalentes:
 
-La GSF distingue estos principios de las categorías de acción que utiliza SCI: eficiencia energética, eficiencia de hardware y conciencia de carbono. Este informe usa SWDM v4 para una estimación basada en transferencia y no declara un puntaje SCI.
+1. **Eficiencia de carbono (Carbon Efficiency):** objetivo general de emitir la menor cantidad de carbono posible para una unidad funcional dada.
+2. **Eficiencia energética (Energy Efficiency):** una de las tres actividades directas; utilizar menos energía para prestar la misma función.
+3. **Conciencia de carbono (Carbon Awareness):** una de las tres actividades directas; desplazar trabajo en tiempo o región cuando existan señales de electricidad con menor intensidad de carbono. No se implementó programación de trabajos según intensidad eléctrica en EcoLogistics.
+4. **Eficiencia de hardware (Hardware Efficiency):** una de las tres actividades directas; reducir la cantidad de recursos físicos necesarios y el carbono incorporado asociado.
+
+La **medición** es un área adicional de la formación de GSF: en esta inspección se emplean Lighthouse y una estimación SWDM v4, con los límites descritos en el informe. No se documenta un compromiso climático organizacional. Tampoco se declara un puntaje SCI: SWDM v4 se utiliza como estimación basada en transferencia, no como certificación o resultado de SCI.
 
 ### Aplicación al proyecto
 
@@ -124,7 +127,7 @@ La matriz está completa para las ocho áreas solicitadas. Los estados “no apl
 | 2 | Paginación backend/frontend de 12 registros | Aplicada en cinco módulos con filtros server-side | Eficiencia: utilización de recursos y capacidad; mantenibilidad/modificabilidad | Eficiencia energética y de hardware | 2.4 recorridos eficientes; 3.1 objetivos de desempeño |
 | 3 | Imágenes WebP/AVIF adaptativas con `<picture>` | No aplicable al inventario de activos revisado: no hay imágenes rasterizadas del producto que convertir | Eficiencia: comportamiento temporal y utilización de recursos | Eficiencia energética y de carbono | 2.9 optimizar medios; 3.1 fijar objetivos |
 | 4 | React.lazy/Suspense y code splitting | Aplicada a páginas secundarias | Mantenibilidad/modularidad; eficiencia de recursos | Eficiencia energética y de hardware | 3.3 modularizar componentes pesados; 3.7 diferir recursos no críticos |
-| 5 | Uso de APIs nativas y control de dependencias | Aplicada sin dependencia adicional: `fetch` en `apiFetch` y `URLSearchParams` en servicios paginados; no se reemplaza una biblioteca que no estaba instalada | Eficiencia de recursos; mantenibilidad/analizabilidad | Eficiencia energética | 3.11 APIs sostenibles; 3.12 uso moderado de dependencias |
+| 5 | Uso de APIs nativas y control de dependencias | Parcial/conforme: `fetch` en `apiFetch` y `URLSearchParams` en servicios paginados; no se reemplaza una biblioteca instalada porque no existía una equivalente | Eficiencia de recursos; mantenibilidad/analizabilidad | Eficiencia energética | 3.11 APIs sostenibles; 3.12 uso moderado de dependencias |
 | 6 | Inlining de SVG para evitar solicitudes | Sin oportunidad demostrada: no se identificaron SVG externos ni solicitudes independientes de iconos | Eficiencia: comportamiento temporal y recursos | Eficiencia energética | 2.9 optimizar medios; 3.1 objetivos |
 | 7 | Caché HTTP y ETag | Aplicada a listados paginados y resumen del dashboard; política privada con revalidación | Eficiencia temporal y de recursos; mantenibilidad/modificabilidad | Eficiencia energética y de hardware | 4.2 estrategias de caché; 3.1 medición de objetivos |
 | 8 | Compresión GZip/Brotli | GZip aplicado con umbral 500 bytes y nivel 5; Brotli no configurado | Eficiencia temporal, recursos y capacidad | Eficiencia energética y de carbono | 4.3 compresión de transferencia; 3.1 objetivos |
@@ -140,13 +143,22 @@ La configuración `frontend/lighthouserc.json`:
 - Establece los límites: Performance ≥ 0.90, FCP ≤ 1,000 ms, LCP ≤ 1,400 ms, TBT ≤ 85 ms, CLS ≤ 0.02 y `total-byte-weight` ≤ 1,100,000 bytes.
 - Conserva los informes mediante destino `filesystem`.
 
-**Estado:** Lighthouse CI `autorun` se ejecutó localmente y generó los tres informes guardados. El workflow remoto queda configurado para validar cada publicación de la rama y cada Pull Request hacia `main`. El resultado remoto debe comprobarse en la ejecución de GitHub Actions asociada al commit; este informe no declara aprobada una ejecución remota que no se haya verificado y archivado.
+**Estado:** Lighthouse CI `autorun` se ejecutó localmente y generó los tres informes guardados. Además, el workflow `Green IT Audit` se ejecutó en GitHub y quedó en verde durante el cierre de la Release `v1.0.0`. La auditoría Lighthouse conservada en esta carpeta continúa limitada a `/login` en entorno local; el resultado verde del workflow no amplía por sí solo las rutas medidas.
 
 ## 8. Gestión de versiones y secuencia de entrega
 
-La etiqueta semántica prevista es `v1.0.0`. Debe crearse después de integrar y validar el trabajo en `main`; su existencia se comprueba con `git tag --list v1.0.0` antes de intentar crearla.
+### 8.1 Estado real de la entrega
 
-Secuencia propuesta para PowerShell, una vez revisados los cambios y aprobadas las pruebas. Se utiliza la rama de trabajo y un Pull Request para que GitHub Actions valide el cambio antes de integrarlo en `main`:
+La entrega se encuentra publicada en `main`, con commit `6041fe83d54367afd7a00139c1366d9f4c90c2fa`, etiqueta Git `v1.0.0` y Release [EcoLogistics v1.0.0 — Green IT Release](https://github.com/LeeoGold/EcoLogistics/releases/tag/v1.0.0). No es necesario crear otra etiqueta para volver a publicar el mismo contenido.
+
+El siguiente bloque se conserva como referencia de los comandos de versionado utilizados en el flujo del proyecto. No debe ejecutarse de nuevo sobre una etiqueta que ya existe.
+
+### 8.2 Referencia de comandos Git
+
+
+La etiqueta semántica publicada es `v1.0.0`. Para comprobarla en una copia local se puede ejecutar `git tag --list v1.0.0` y `git show --no-patch --decorate v1.0.0`.
+
+Secuencia de referencia para PowerShell. El cierre de esta inspección quedó consolidado en `main`; no se debe describir como una fusión de Pull Request para este commit si no se utilizó ese mecanismo:
 
 ```powershell
 # Ejecutar desde la raíz del repositorio
@@ -181,36 +193,31 @@ git diff --cached --check
 git diff --cached --stat
 git diff --cached --name-only
 
-# Registrar y publicar la rama de trabajo
-git commit -m "perf(green-it): add pagination caching and sustainability audit"
-git fetch origin
-git push -u origin feature/green-it-sobresaliente
+# Registrar y publicar los cambios de esta inspección en main
+git commit -m "perf(green-it): complete Green IT optimization and inspection 04"
+git push origin main
 ```
 
-Después de que `green-audit.yml` y los demás checks del Pull Request terminen correctamente, crear o revisar el Pull Request `feature/green-it-sobresaliente` → `main` y fusionarlo desde GitHub. Luego actualizar la copia local y registrar la versión semántica:
+La etiqueta y la Release ya existen. Este bloque permite comprobar el estado de la versión en la copia local:
 
 ```powershell
 git switch main
 git pull --ff-only origin main
 git fetch --tags
 
-# Crear v1.0.0 únicamente si todavía no existe
-if (-not (git tag --list "v1.0.0")) {
-    git tag -a v1.0.0 -m "EcoLogistics Green IT optimization release v1.0.0"
-    git push origin v1.0.0
-}
-
+git tag --list v1.0.0
+git show --no-patch --decorate v1.0.0
 git status --short --branch
 git log -3 --oneline --decorate
 ```
 
-No se debe hacer merge ni etiquetar una ejecución fallida. Los archivos temporales `.patch`, logs locales, `dist`, `.lighthouseci`, `coverage` y entornos virtuales no deben añadirse al commit salvo que un reporte se seleccione expresamente como evidencia.
+No se debe reutilizar una etiqueta publicada para contenido diferente. Si se prepara una corrección real posterior, se debe elegir la siguiente versión semántica adecuada. Los archivos temporales `.patch`, logs locales, `dist`, `.lighthouseci`, `coverage` y entornos virtuales no deben añadirse al commit salvo que un reporte se seleccione expresamente como evidencia.
 
 ## 9. Referencias
 
 1. ISO, [ISO/IEC 25010:2023 — Product quality model](https://www.iso.org/standard/78176.html).
 2. IEC, [ISO/IEC 25010:2023](https://webstore.iec.ch/en/publication/90024).
-3. Green Software Foundation, [Learn Green Software — Introduction](https://learn.greensoftware.foundation/es/introduction/).
+3. Green Software Foundation, [Learn Green Software — Introduction](https://learn.greensoftware.foundation/introduction/).
 4. Green Software Foundation, [Software Carbon Intensity Specification](https://sci.greensoftware.foundation/).
 5. W3C, [Web Sustainability Guidelines (WSG), Group Note Draft 16 October 2026](https://www.w3.org/TR/web-sustainability-guidelines/).
 6. W3C, [WSG publication history](https://www.w3.org/standards/history/web-sustainability-guidelines/).
@@ -221,3 +228,4 @@ No se debe hacer merge ni etiquetar una ejecución fallida. Los archivos tempora
 | Versión | Fecha | Cambios |
 |---|---|---|
 | V_1_0_0 | 03/11/2026 | Estándares y matriz ajustados al stack real, numeración y significado vigente de WSG, estados de implementación y guía de desarrollo verde. |
+| Actualización de estado | 08/11/2026 | Se confirma la publicación `v1.0.0`, el commit de `main` y el resultado verde del workflow remoto; se corrigen instrucciones de versionado para no crear la etiqueta dos veces. |

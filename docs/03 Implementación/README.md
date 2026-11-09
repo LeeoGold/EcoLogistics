@@ -1,67 +1,54 @@
-# Implementación por Sprints
+# Índice de implementación y validación
 
 [← Volver al README principal](../../README.md)
 
-**Versión del índice:** V_1_3_0
-**Actualización:** 2026-10-20
-Esta carpeta reúne la documentación de implementación sin mezclar resultados ni evidencias entre iteraciones. Las versiones históricas se conservan y se enlazan desde el índice de cada Sprint.
-
-## 1. Navegación por Sprint
-
-| Sprint | Enlace | Alcance |
-|---|---|---|
-| Sprint 1 | [Abrir índice del Sprint 1](./Sprint%201/README.md) | Gestión de vehículos, cierre de 6 SP y aprendizaje para la siguiente iteración. |
-| Sprint 2 | [Abrir índice del Sprint 2](./Sprint%202/README.md) | Gestión operativa y flota, alcance de 17 SP. |
-| Sprint 3 | [Abrir índice del Sprint 3](./Sprint%2003/README.md) | Calidad de código, automatización CI y evaluación OWASP/WCAG. |
-
-## 2. Entregables actuales del Sprint 1
-
-| Documento | Versión vigente | Historial |
-|---|---|---|
-| Informe de estado | [V_1_2_0](./Sprint%201/01%20Informe%20de%20estado%20del%20proyecto%20V_1_2_0.md) | [Versiones anteriores](./Sprint%201/README.md) |
-| Registro de impedimentos | [V_1_2_0](./Sprint%201/02%20Registro%20de%20Impedimentos%20V_1_2_0.md) | [Versiones anteriores](./Sprint%201/README.md) |
-| Revisión del Sprint | [V_1_2_0](./Sprint%201/03%20Revisi%C3%B3n%20del%20Sprint%20V_1_2_0.md) | [Versiones anteriores](./Sprint%201/README.md) |
-| Retrospectiva | [V_1_2_0](./Sprint%201/04%20Retrospectiva%20del%20Sprint%20V_1_2_0.md) | [Versiones anteriores](./Sprint%201/README.md) |
-| Registro de riesgos complementario | [V_1_2_0](./Sprint%201/05%20Registro%20de%20riesgos%20V_1_2_0.md) | [Versiones anteriores](./Sprint%201/README.md) |
-
-## 3. Entregables oficiales del Sprint 2
-
-| Documento | Versión |
+| Dato | Valor |
 |---|---|
-| [01 Informe de estado del proyecto](./Sprint%202/01%20Informe%20de%20estado%20del%20proyecto%20V_1_0_0.md) | V_1_0_0 |
-| [02 Registro de Impedimentos](./Sprint%202/02%20Registro%20de%20Impedimentos%20V_1_0_0.md) | V_1_0_0 |
-| [03 Revisión del Sprint](./Sprint%202/03%20Revisi%C3%B3n%20del%20Sprint%20V_1_0_0.md) | V_1_0_0 |
-| [04 Retrospectiva del Sprint](./Sprint%202/04%20Retrospectiva%20del%20Sprint%20V_1_0_0.md) | V_1_0_0 |
+| Proyecto | EcoLogística Huancayo (EcoLogistics) |
+| Actualización del índice | 08/11/2026 |
 
-## 4. Reglas de versionado documental
+Esta carpeta reúne la documentación de los incrementos por Sprint y la entrega transversal de Green IT. Los informes de cada Sprint son registros históricos: sus pruebas, métricas y pendientes pertenecen a la fecha en que se elaboraron. La última referencia técnica para la Inspección 04 es el índice Green IT enlazado en esta página.
 
-- Los informes, revisiones y retrospectivas de cada Sprint permanecen dentro de su carpeta correspondiente.
-- Una nueva revisión de un documento crea una nueva versión; no sustituye ni elimina las anteriores.
-- Los cambios estructurales deben mantener enlaces de ida y vuelta entre el README principal, este índice, cada índice de Sprint y sus documentos.
-- Las evidencias pertenecen al Sprint y al evento que realmente representan.
+## 1. Navegación por entregable
 
-## 5. Historial de cambios
+| Entregable | Índice | Alcance |
+|---|---|---|
+| Sprint 1 | [README del Sprint 1](./Sprint%201/README.md) | Primer incremento funcional y cierre de la primera iteración. |
+| Sprint 2 | [README del Sprint 2](./Sprint%202/README.md) | Gestión operativa y flota; registro histórico del segundo Sprint. |
+| Sprint 3 | [README del Sprint 3](./Sprint%2003/README.md) | Calidad de código, evaluación de seguridad OWASP y accesibilidad WCAG. |
+| Inspección 04 — Green IT | [README Green IT](./reduccion%20del%20impacto%20ambiental/README.md) | Paginación, consultas SQL, code splitting, APIs nativas, caché HTTP, GZip, Lighthouse CI y estimación SWDM v4. |
+
+## 2. Documentos Green IT para la entrega
+
+| Documento | Uso |
+|---|---|
+| [01 Informe de reducción del impacto ambiental](./reduccion%20del%20impacto%20ambiental/01%20Informe%20de%20reduccion%20del%20impacto%20ambiental%20V_1_0_0.md) | Explica las optimizaciones, los fragmentos antes/después, las métricas Lighthouse y el escenario SWDM v4. |
+| [02 Estándares de ingeniería de software](./reduccion%20del%20impacto%20ambiental/02%20Estandares%20Ingenier%C3%ADa%20de%20software%20V_1_0_0.md) | Relaciona el trabajo con ISO/IEC 25010, GSF, W3C WSG y prácticas de ingeniería. |
+| [03 Matriz de trazabilidad de la rúbrica](./reduccion%20del%20impacto%20ambiental/03%20Matriz%20de%20trazabilidad%20de%20la%20rubrica%20V_1_0_1.md) | Ubica cada criterio, su evidencia y sus límites para preparar la defensa. |
+| [Evidencias Green IT](./reduccion%20del%20impacto%20ambiental/evidencias/README.md) | Enumera capturas funcionales, pruebas, builds y reportes Lighthouse originales. |
+
+## 3. Documentos de Sprint 1, Sprint 2 y Sprint 3
+
+Los informes y retrospectivas se conservan dentro de la carpeta de cada Sprint. Consulta los índices individuales para encontrar la versión documental vigente de cada periodo:
+
+- [Sprint 1](./Sprint%201/README.md)
+- [Sprint 2](./Sprint%202/README.md)
+- [Sprint 3](./Sprint%2003/README.md)
+
+El Sprint 3 contiene análisis históricos de seguridad y accesibilidad de octubre de 2026. La existencia posterior de autenticación JWT en el código no significa que la matriz OWASP histórica se haya cerrado automáticamente; los controles deben volver a verificarse contra el estado actual.
+
+## 4. Versionado y criterio de lectura
+
+- Los entregables de Sprint conservan el estado registrado al cierre de cada iteración.
+- Las mejoras transversales Green IT se documentan en su propia carpeta y enlazan al código y a las evidencias.
+- El tag Git y la Release de GitHub `v1.0.0` identifican la entrega Green IT sobre `main`.
+- La publicación planificada del MVP en Jira es un registro independiente; la captura archivada muestra el estado `UNRELEASED`.
+- No se deben combinar métricas de ejecuciones distintas como si fueran una misma medición.
+
+## 5. Historial del índice
 
 | Versión | Fecha | Cambio |
 |---|---|---|
-| 1.2.0 | 2026-10-09 | Separación por Sprint, enlaces de navegación y matriz de versiones. |
-| 1.3.0 | 2026-10-20 | Incorporación del índice del Sprint 3 y enlaces a los entregables de calidad y evaluación. |
-
-<!-- SPRINT3-DOCS-START -->
-
-## 6. Entregables del Sprint 3 — Calidad y evaluación
-
-El Sprint 3 incorpora la documentación de revisión, retrospectiva, calidad de código, seguridad OWASP Top 10:2025 y accesibilidad WCAG.
-
-| Documento | Enlace |
-|---|---|
-| Índice del Sprint 3 | [README del Sprint 3](./Sprint%2003/README.md) |
-| Revisión del Sprint | [01 Revisión del Sprint V_1_0_0](./Sprint%2003/01%20Revisi%C3%B3n%20del%20Sprint%20V_1_0_0.md) |
-| Retrospectiva | [02 Retrospectiva del Sprint V_1_0_0](./Sprint%2003/02%20Retrospectiva%20del%20Sprint%20V_1_0_0.md) |
-| Calidad de código | [03 Calidad de código V_1_0_0](./Sprint%2003/03%20Calidad%20de%20c%C3%B3digo%20V_1_0_0.md) |
-| Seguridad OWASP | [04 OWASP V_1_0_1](./Sprint%2003/04%20OWASP%20V_1_0_1.md) | Matriz OWASP Top 10:2025; SEC-001 y SEC-002 abiertos; remediación pendiente. |
-| Accesibilidad WCAG | [05 WCAG V_1_0_1](./Sprint%2003/05%20WCAG%20V_1_0_1.md) |
-
-[← Volver al README principal](../../README.md) · [Abrir índice del Sprint 3](./Sprint%2003/README.md)
-
-<!-- SPRINT3-DOCS-END -->
+| V_1_2_0 | 09/10/2026 | Separación documental por Sprint y navegación inicial. |
+| V_1_3_0 | 20/10/2026 | Incorporación del índice y entregables del Sprint 3. |
+| V_1_4_0 | 08/11/2026 | Incorporación de la Inspección 04, la Release Green IT y la distinción entre resultados históricos y vigentes. |
