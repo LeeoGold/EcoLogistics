@@ -1,13 +1,15 @@
 # Inspección 04 — Green IT | EcoLogistics
 
-[← Implementación](../README.md) · [README principal](../../../README.md) · [Release `v1.0.0`](https://github.com/LeeoGold/EcoLogistics/releases/tag/v1.0.0)
+[← Implementación](../README.md) · [README principal](../../../README.md) · [Release `v1.0.0`](https://github.com/LeeoGold/EcoLogistics/releases/tag/v1.0.0) · [PR #13 integrado](https://github.com/LeeoGold/EcoLogistics/pull/13)
 
 | Dato | Valor |
 |---|---|
-| Entrega | EcoLogistics `v1.0.0 — Green IT Release` |
-| Rama publicada | `main` |
-| Commit | [`6041fe83d54367afd7a00139c1366d9f4c90c2fa`](https://github.com/LeeoGold/EcoLogistics/commit/6041fe83d54367afd7a00139c1366d9f4c90c2fa) |
-| Estado | Release publicada; Green IT Audit reportado en verde en GitHub. |
+| Entrega inicial | EcoLogistics `v1.0.0 — Green IT Release` |
+| Rama actual revisada | `main` |
+| Commit de la Release | [`6041fe83`](https://github.com/LeeoGold/EcoLogistics/commit/6041fe83d54367afd7a00139c1366d9f4c90c2fa) |
+| Corrección posterior | PR [#13](https://github.com/LeeoGold/EcoLogistics/pull/13), integrado en `main` |
+| Commit actual revisado | [`1e802404`](https://github.com/LeeoGold/EcoLogistics/commit/1e802404c1171ecaf279807b686911728a3cb468) |
+| Estado | CI y Green IT Audit aprobados en la ejecución del merge de PR #13. |
 
 ## 1. Propósito
 
@@ -19,27 +21,29 @@ El stack evaluado es React 19 + Vite 8 en frontend, FastAPI/Python en API, SQLAl
 
 | Validación | Resultado documentado | Alcance |
 |---|---:|---|
-| Backend | 80 pruebas aprobadas | Ejecución local comunicada para el cierre Green IT. |
-| Frontend | 14 pruebas aprobadas en 4 archivos | Ejecución local comunicada para el cierre Green IT. |
-| Build | Vite 8.3.5; 50 módulos transformados | Build de producción local. |
-| Lighthouse Performance | 100/100 en tres ejecuciones | Solo `/login`, Desktop, compilación de producción local. |
-| FCP / LCP medianos | 213 ms / 350 ms | Solo `/login`. |
-| TBT / CLS medianos | 0 ms / 0.000 | Solo `/login`. |
-| `total-byte-weight` | 76.99 KiB | Solo `/login`; no representa la descarga completa de toda la aplicación. |
-| GitHub Actions | Green IT Audit en verde | Estado confirmado durante el cierre de la Release. |
+| Backend | 81 pruebas aprobadas | CI del merge de PR #13; Python 3.13.18 y pytest 8.4.2. |
+| Frontend | 14 pruebas aprobadas en 4 archivos | CI del merge de PR #13. |
+| Build frontend | Aprobado | Job de compilación del workflow CI. |
+| SonarQube Cloud | Quality Gate aprobado; 0 issues nuevas | Análisis asociado a PR #13. |
+| Lighthouse CI histórico | 100/100 en tres ejecuciones | Solo `/login`, Desktop, compilación local de producción (03/11/2026). |
+| Lighthouse Chrome — seis vistas | Performance 94–100/100 | Inicio, Flota, Clientes, Conductores, Pedidos y Rutas (10/11/2026). |
+| FCP / LCP — seis vistas | 325–379 ms / 478–539 ms | Una medición por vista; informes originales HTML/JSON. |
+| TBT / CLS — seis vistas | 0 ms / 0–0.15651 | El CLS supera 0.02 en Flota, Conductores y Pedidos. |
+| Transferencia — seis vistas | 78.7–84.5 KiB | Métrica `total-byte-weight` por vista. |
+| GitHub Actions | CI y Green IT Audit aprobados | Ejecución posterior al merge de PR #13. |
 
-Los números de pruebas y build son resultados de ejecuciones locales registradas, no una ejecución reproducida por este README. Los reportes originales de Lighthouse están dentro de `evidencias/lighthouse-ci-20261103/`.
+Los reportes históricos de `/login` y la auditoría Chrome de seis vistas son mediciones distintas y se conservan por separado. Los HTML y JSON nuevos, junto con su resumen, están en [`evidencias/lighthouse-chrome-20261110/`](./evidencias/lighthouse-chrome-20261110/RESULTADOS.md).
 
 ### Workflows de GitHub Actions
 
 El repositorio separa la validación general del proyecto de la auditoría de rendimiento:
 
-| Workflow | Archivo | Función | Alcance que debe verificarse |
+| Workflow | Archivo | Función | Resultado verificado |
 |---|---|---|---|
-| CI general | [`.github/workflows/ci.yml`](../../../.github/workflows/ci.yml) | Ejecuta pytest con cobertura XML, Vitest con cobertura LCOV, build del frontend y análisis SonarQube Cloud. | El estado de cada job y el Quality Gate deben consultarse en la ejecución concreta; la existencia del YAML no demuestra que una ejecución haya finalizado correctamente. |
-| Green IT Audit | [`.github/workflows/green-audit.yml`](../../../.github/workflows/green-audit.yml) | Instala dependencias bloqueadas, genera el build de producción, ejecuta Lighthouse CI y carga sus reportes como artefacto. | El estado verde de esta auditoría se confirmó durante el cierre de `v1.0.0`; el job mide únicamente las URL configuradas en `frontend/lighthouserc.json`. |
+| CI general | [`.github/workflows/ci.yml`](../../../.github/workflows/ci.yml) | Ejecuta pytest, Vitest, build del frontend y análisis SonarQube Cloud. | [Ejecución del merge de PR #13](https://github.com/LeeoGold/EcoLogistics/actions/runs/42551297248): jobs aprobados; SonarQube Quality Gate aprobado. |
+| Green IT Audit | [`.github/workflows/green-audit.yml`](../../../.github/workflows/green-audit.yml) | Genera el build de producción y ejecuta Lighthouse CI sobre las URL configuradas. | [Ejecución posterior al merge](https://github.com/LeeoGold/EcoLogistics/actions/runs/42551297294): job completado correctamente; auditoría CI sobre `/login`. |
 
-Por tanto, no se debe presentar el estado verde de `Green IT Audit` como prueba automática de que el workflow general, SonarQube o todas las pruebas estén verdes en la misma ejecución.
+Los resultados corresponden a ejecuciones concretas de GitHub Actions. La nueva auditoría manual Chrome de seis vistas se aporta como evidencia adicional; no forma parte de las URL configuradas en `frontend/lighthouserc.json`.
 
 ## 3. Estado de las ocho áreas de optimización
 
@@ -81,9 +85,11 @@ Esto no es consumo eléctrico medido, tráfico real ni huella completa de EcoLog
 
 ## 6. Verificación correctiva posterior a `v1.0.0`
 
-En una revisión complementaria se corrigió la compatibilidad de `RouteRepository` con Python 3.13 y se añadió una prueba automatizada para la compresión GZip. La suite backend pasó con **81 pruebas** en una ejecución de revisión sobre Python 3.13.5 y pytest 9.0.2. Como `requirements-tests.txt` limita pytest a `>=8,<9`, el resultado final debe confirmarse con el workflow remoto, que instalará la versión admitida por el proyecto. La Release `v1.0.0` conserva sus resultados originales (80 pruebas); estos cambios todavía requieren validación de ambos workflows antes de publicarse como parche.
+La corrección de compatibilidad de `RouteRepository` con Python 3.13 y la prueba automatizada de GZip se integraron en `main` mediante el [PR #13](https://github.com/LeeoGold/EcoLogistics/pull/13), con merge commit [`1e802404`](https://github.com/LeeoGold/EcoLogistics/commit/1e802404c1171ecaf279807b686911728a3cb468).
 
-Consultar [04 Anexo de validación posterior a v1.0.0](./04%20Anexo%20de%20validacion%20posterior%20a%20v1.0.0.md).
+En la ejecución CI de ese merge se confirmaron **81 pruebas backend aprobadas**, **14 pruebas frontend aprobadas en cuatro archivos**, compilación frontend correcta y Quality Gate de SonarQube aprobado. El workflow `Green IT Audit` también finalizó correctamente. La Release `v1.0.0` conserva el historial de su publicación original; la rama `main` contiene la corrección posterior.
+
+Consultar [04 Anexo de validación posterior a v1.0.0](./04%20Anexo%20de%20validacion%20posterior%20a%20v1.0.0.md) y los [resultados de Lighthouse Chrome de seis vistas](./evidencias/lighthouse-chrome-20261110/RESULTADOS.md).
 
 ## 7. Documentos de esta entrega
 
@@ -91,22 +97,22 @@ Consultar [04 Anexo de validación posterior a v1.0.0](./04%20Anexo%20de%20valid
 |---|---|
 | [01 Informe de reducción del impacto ambiental](./01%20Informe%20de%20reduccion%20del%20impacto%20ambiental%20V_1_0_0.md) | Código antes/después, optimizaciones, Lighthouse y SWDM v4. |
 | [02 Estándares de ingeniería de software](./02%20Estandares%20Ingenier%C3%ADa%20de%20software%20V_1_0_0.md) | ISO/IEC 25010, GSF, W3C WSG, Clean Code, SOLID, DRY y YAGNI. |
-| [03 Matriz de trazabilidad de la rúbrica](./03%20Matriz%20de%20trazabilidad%20de%20la%20rubrica%20V_1_0_1.md) | Relación criterio → evidencia → límite → presentación sugerida. |
-| [04 Anexo de validación posterior a v1.0.0](./04%20Anexo%20de%20validacion%20posterior%20a%20v1.0.0.md) | Corrección de compatibilidad Python 3.13 y prueba automatizada GZip; pendiente de integración remota. |
-| [Evidencias](./evidencias/README.md) | Capturas, pruebas, build y reportes Lighthouse. |
+| [03 Matriz de trazabilidad de la rúbrica](./03%20Matriz%20de%20trazabilidad%20de%20la%20rubrica%20V_1_0_2.md) | Relación criterio → evidencia → límite → presentación sugerida. |
+| [04 Anexo de validación posterior a v1.0.0](./04%20Anexo%20de%20validacion%20posterior%20a%20v1.0.0.md) | Corrección Python 3.13 y prueba GZip integradas por PR #13; CI y Green IT Audit aprobados. |
+| [Evidencias](./evidencias/README.md) | Capturas, pruebas, build, Lighthouse CI y auditoría Chrome de seis vistas. |
 
 ## 8. Guion breve de presentación
 
 1. Explicar el stack real y por qué las optimizaciones MERN se adaptaron a FastAPI/SQLAlchemy/PostgreSQL.
 2. Mostrar la paginación de 12 elementos, las consultas agregadas, la lectura por bloques y el ETag/GZip en el código.
 3. Presentar el code splitting y describir la comparación de transferencia sin afirmar que FCP/LCP mejoraron en esa serie histórica.
-4. Abrir los tres reportes Lighthouse de `/login` y aclarar que no se auditó cada página autenticada.
+4. Abrir los tres reportes Lighthouse CI de `/login` y, por separado, el [RESULTADOS.md de las seis vistas](./evidencias/lighthouse-chrome-20261110/RESULTADOS.md); explicar el CLS de Flota, Conductores y Pedidos y el 404 común de `favicon.ico`.
 5. Explicar los supuestos del cálculo SWDM v4 y reconocer las dos áreas sin oportunidad identificada.
 6. Mostrar los resultados de pruebas, el workflow verde y la Release `v1.0.0`.
 
-## 8. Historial del índice
+## 9. Historial del índice
 
 | Versión | Fecha | Cambio |
 |---|---|---|
 | V_1_0_0 | 03/11/2026 | Índice de la entrega técnica inicial. |
-| V_1_0_1 | 08/11/2026 | Actualización de estado publicado, enlaces, resultados y límites de las áreas de optimización. |
+| V_1_0_1 | 08/11/2026 | Actualización de estado publicado, enlaces, resultados y límites de las áreas de optimización. |\n| V_1_0_2 | 10/11/2026 | Integración de la auditoría Chrome de seis vistas y actualización del estado de CI en `main`. |
