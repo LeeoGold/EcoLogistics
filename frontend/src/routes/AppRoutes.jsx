@@ -122,8 +122,7 @@ export default function AppRoutes() {
         return
       }
 
-      if (route === 'home' || route === '') setPublicView('home')
-      else setPublicView('home')
+      setPublicView('home')
     }
 
     window.addEventListener('hashchange', handleHashChange)
