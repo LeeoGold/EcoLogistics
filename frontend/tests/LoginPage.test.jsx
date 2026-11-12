@@ -36,7 +36,7 @@ describe('LoginPage', () => {
     fireEvent.change(screen.getByLabelText('Contraseña'), {
       target: { value: 'contraseña-prueba' },
     })
-    fireEvent.click(screen.getByRole('button', { name: 'Ingresar' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Ingresar al sistema' }))
 
     await waitFor(() => {
       expect(login).toHaveBeenCalledWith('admin', 'contraseña-prueba')
@@ -54,7 +54,7 @@ describe('LoginPage', () => {
     fireEvent.change(screen.getByLabelText('Contraseña'), {
       target: { value: 'incorrecta' },
     })
-    fireEvent.click(screen.getByRole('button', { name: 'Ingresar' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Ingresar al sistema' }))
 
     const alert = await screen.findByRole('alert')
     expect(alert.textContent).toContain('Credenciales incorrectas')

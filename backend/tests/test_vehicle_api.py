@@ -148,6 +148,28 @@ def test_paginated_vehicle_list_supports_private_etag_revalidation(client):
     assert second.headers.get("etag") == etag
 
 
+def test_operator_can_create_but_cannot_update_or_delete_vehicle(
+    operator_client, vehicle_payload
+):
+    create_response = operator_client.post("/api/vehiculos", json=vehicle_payload)
+    assert create_response.status_code == 201
+    vehicle_id = create_response.json()["vehiculo_id"]
+
+    update_payload = {**vehicle_payload, "capacidad_kg": 1500}
+    update_response = operator_client.put(
+        f"/api/vehiculos/{vehicle_id}",
+        json=update_payload,
+    )
+    assert update_response.status_code == 403
+
+    delete_response = operator_client.delete(f"/api/vehiculos/{vehicle_id}")
+    assert delete_response.status_code == 403
+
+    get_response = operator_client.get(f"/api/vehiculos/{vehicle_id}")
+    assert get_response.status_code == 200
+    assert Decimal(str(get_response.json()["capacidad_kg"])) == Decimal("1000")
+
+
 def test_vehicle_list_uses_gzip_when_response_exceeds_threshold(client, vehicle_payload):
     suffix = vehicle_payload["placa"].removeprefix("TST-")
 

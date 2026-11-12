@@ -7,13 +7,13 @@ from ..models.client import Client
 from ..models.driver import Driver
 from ..models.order import Order
 from ..models.vehicle import Vehicle
-from ..security import get_current_user
+from ..security import require_roles
 from ..http_cache import apply_private_etag
 
 router = APIRouter(
     prefix="/api/dashboard",
     tags=["Dashboard"],
-    dependencies=[Depends(get_current_user)],
+    dependencies=[Depends(require_roles("ADMINISTRADOR", "OPERADOR"))],
 )
 
 
