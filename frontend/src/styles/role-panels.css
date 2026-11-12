@@ -1,0 +1,38 @@
+/* Presentación diferenciada y señalización de permisos por rol. */
+.nav-status--admin {
+  background: #e8eefc;
+  color: #244a91;
+}
+
+.nav-status--operator {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+.dashboard-role-greeting {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: .86rem;
+}
+
+.role-permission-note {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  background: #f0f8f6;
+  color: #36564f;
+  font-size: .84rem;
+  line-height: 1.5;
+}
+
+.role-access-denied {
+  max-width: 760px;
+  margin: 10vh auto;
+}
+
+@media (max-width: 900px) {
+  .nav-status {
+    white-space: normal;
+  }
+}

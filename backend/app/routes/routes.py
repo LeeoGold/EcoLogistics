@@ -5,12 +5,12 @@ from sqlalchemy.orm import Session
 
 from ..controllers.route_controller import RouteController
 from ..db import get_db
-from ..security import get_current_user, require_roles
+from ..security import require_roles
 from ..schemas.route import RouteCreate, RouteRead
 from ..pagination import PageResponse
 from ..http_cache import apply_private_etag
 
-router = APIRouter(prefix="/api/rutas", tags=["Rutas"], dependencies=[Depends(get_current_user)])
+router = APIRouter(prefix="/api/rutas", tags=["Rutas"], dependencies=[Depends(require_roles("ADMINISTRADOR", "OPERADOR"))])
 controller = RouteController()
 
 
@@ -38,6 +38,6 @@ def get_route(ruta_id: UUID, db: Session = Depends(get_db)) -> RouteRead:
     return controller.get_route(ruta_id, db)
 
 
-@router.post("", response_model=RouteRead, status_code=status.HTTP_201_CREATED, dependencies=[Depends(require_roles("ADMINISTRADOR", "OPERADOR"))])
+@router.post("", response_model=RouteRead, status_code=status.HTTP_201_CREATED)
 def create_route(payload: RouteCreate, db: Session = Depends(get_db)) -> RouteRead:
     return controller.create_route(payload, db)

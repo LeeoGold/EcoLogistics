@@ -11,10 +11,10 @@ from ..http_cache import apply_private_etag
 
 from ..controllers.vehicle_controller import VehicleController
 from ..db import get_db
-from ..security import get_current_user, require_roles
+from ..security import require_roles
 from ..schemas.vehicle import VehicleCreate, VehicleRead, VehicleUpdate
 
-router = APIRouter(prefix="/api/vehiculos", tags=["Vehículos"], dependencies=[Depends(get_current_user)])
+router = APIRouter(prefix="/api/vehiculos", tags=["Vehículos"], dependencies=[Depends(require_roles("ADMINISTRADOR", "OPERADOR"))])
 controller = VehicleController()
 
 
@@ -50,14 +50,14 @@ def get_vehicle(vehiculo_id: UUID, db: Session = Depends(get_db)) -> VehicleRead
     return controller.get_vehicle(vehiculo_id, db)
 
 
-@router.post("", response_model=VehicleRead, status_code=status.HTTP_201_CREATED, dependencies=[Depends(require_roles("ADMINISTRADOR", "OPERADOR"))])
+@router.post("", response_model=VehicleRead, status_code=status.HTTP_201_CREATED)
 def create_vehicle(
     payload: VehicleCreate, db: Session = Depends(get_db)
 ) -> VehicleRead:
     return controller.create_vehicle(payload, db)
 
 
-@router.put("/{vehiculo_id}", response_model=VehicleRead, dependencies=[Depends(require_roles("ADMINISTRADOR", "OPERADOR"))])
+@router.put("/{vehiculo_id}", response_model=VehicleRead, dependencies=[Depends(require_roles("ADMINISTRADOR"))])
 def update_vehicle(
     vehiculo_id: UUID, payload: VehicleUpdate, db: Session = Depends(get_db)
 ) -> VehicleRead:

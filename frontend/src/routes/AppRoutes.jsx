@@ -1,4 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
+import HomePage from '../pages/HomePage'
+import '../styles/role-panels.css'
 import LoginPage from '../pages/LoginPage'
 import { ClientProvider } from '../state/ClientContext'
 import { DriverProvider } from '../state/DriverContext'
@@ -23,9 +25,24 @@ const sections = [
   { id: 'rutas', label: 'Rutas', short: 'Rutas' },
 ]
 
+const SUPPORTED_ROLES = new Set(['ADMINISTRADOR', 'OPERADOR'])
+
+function normalizeRole(role) {
+  return String(role || '').trim().toUpperCase()
+}
+
+function getHashRoute() {
+  return window.location.hash.replace(/^#\/?/, '').trim()
+}
+
 function getInitialSection() {
-  const hash = window.location.hash.replace('#/', '')
-  return sections.some((section) => section.id === hash) ? hash : 'inicio'
+  const route = getHashRoute()
+  return sections.some((section) => section.id === route) ? route : 'inicio'
+}
+
+function setHashRoute(route) {
+  const nextHash = `#/${route}`
+  if (window.location.hash !== nextHash) window.location.hash = nextHash
 }
 
 export default function AppRoutes() {
@@ -33,13 +50,22 @@ export default function AppRoutes() {
   const [authStatus, setAuthStatus] = useState('checking')
   const [currentUser, setCurrentUser] = useState(null)
   const [authMessage, setAuthMessage] = useState('')
+  const [publicView, setPublicView] = useState(() => (
+    getHashRoute() === 'login' ? 'login' : 'home'
+  ))
 
   useEffect(() => {
     let active = true
 
     async function restoreSession() {
       if (!sessionStorage.getItem(TOKEN_STORAGE_KEY)) {
-        if (active) setAuthStatus('anonymous')
+        if (active) {
+          setAuthStatus('anonymous')
+          if (getHashRoute() !== 'login') {
+            setPublicView('home')
+            if (getHashRoute() !== 'home') setHashRoute('home')
+          }
+        }
         return
       }
 
@@ -48,6 +74,13 @@ export default function AppRoutes() {
         if (active) {
           setCurrentUser(user)
           setAuthStatus('authenticated')
+          const route = getHashRoute()
+          if (!sections.some((section) => section.id === route)) {
+            setActiveSection('inicio')
+            setHashRoute('inicio')
+          } else {
+            setActiveSection(route)
+          }
         }
       } catch {
         logout()
@@ -55,6 +88,8 @@ export default function AppRoutes() {
           setCurrentUser(null)
           setAuthMessage('La sesión expiró o ya no es válida. Inicia sesión nuevamente.')
           setAuthStatus('anonymous')
+          setPublicView('home')
+          setHashRoute('home')
         }
       }
     }
@@ -67,44 +102,98 @@ export default function AppRoutes() {
 
   useEffect(() => {
     function handleHashChange() {
-      setActiveSection(getInitialSection())
+      const route = getHashRoute()
+      if (route === 'login') {
+        if (authStatus === 'authenticated') {
+          setHashRoute('inicio')
+        } else {
+          setPublicView('login')
+        }
+        return
+      }
+
+      if (sections.some((section) => section.id === route)) {
+        if (authStatus === 'authenticated') {
+          setActiveSection(route)
+        } else {
+          setPublicView('home')
+          setHashRoute('home')
+        }
+        return
+      }
+
+      setPublicView('home')
     }
 
     window.addEventListener('hashchange', handleHashChange)
     return () => window.removeEventListener('hashchange', handleHashChange)
-  }, [])
+  }, [authStatus])
 
   function handleLogin(user) {
     setCurrentUser(user)
     setAuthMessage('')
-    setActiveSection(getInitialSection())
+    setActiveSection('inicio')
     setAuthStatus('authenticated')
+    setHashRoute('inicio')
   }
 
   function handleLogout() {
     logout()
     setCurrentUser(null)
     setAuthMessage('')
+    setActiveSection('inicio')
     setAuthStatus('anonymous')
+    setPublicView('home')
+    setHashRoute('home')
+  }
+
+  function goToHome() {
+    setPublicView('home')
+    setHashRoute('home')
+  }
+
+  function goToLogin() {
+    setPublicView('login')
+    setHashRoute('login')
   }
 
   function navigate(sectionId) {
-    if (window.location.hash !== `#/${sectionId}`) {
-      window.location.hash = `/${sectionId}`
-    }
     setActiveSection(sectionId)
+    setHashRoute(sectionId)
   }
+
+  const normalizedRole = normalizeRole(currentUser?.rol)
+  const isAdmin = normalizedRole === 'ADMINISTRADOR'
+  const hasSupportedRole = SUPPORTED_ROLES.has(normalizedRole)
 
   if (authStatus === 'checking') {
     return (
-      <main style={{ padding: '32px', fontFamily: 'system-ui, sans-serif' }}>
-        Verificando sesión...
+      <main className="app-loading" role="status" aria-live="polite">
+        <span className="app-loading__mark">E</span>
+        <strong>EcoLogística Huancayo</strong>
+        <span>Preparando tu espacio de trabajo…</span>
       </main>
     )
   }
 
   if (authStatus !== 'authenticated' || !currentUser) {
-    return <LoginPage onLogin={handleLogin} message={authMessage} />
+    if (publicView === 'login') {
+      return <LoginPage onLogin={handleLogin} onBackHome={goToHome} message={authMessage} />
+    }
+    return <HomePage onLogin={goToLogin} message={authMessage} />
+  }
+
+  if (!hasSupportedRole) {
+    return (
+      <main className="container">
+        <section className="card role-access-denied" role="alert">
+          <p className="section-kicker">ACCESO RESTRINGIDO</p>
+          <h1>Tu cuenta no tiene un perfil operativo habilitado.</h1>
+          <p>Solicita al administrador que revise tu rol de acceso.</p>
+          <button type="button" onClick={handleLogout}>Cerrar sesión</button>
+        </section>
+      </main>
+    )
   }
 
   return (
@@ -122,7 +211,7 @@ export default function AppRoutes() {
                   </div>
                 </div>
 
-                <nav className="main-nav" aria-label="Navegación principal">
+                <nav className="main-nav" aria-label={isAdmin ? 'Navegación administrativa' : 'Navegación operativa'}>
                   {sections.map((section) => (
                     <button
                       key={section.id}
@@ -136,29 +225,19 @@ export default function AppRoutes() {
                   ))}
                 </nav>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <span className="nav-status">
-                    {currentUser.nombre_usuario} · {currentUser.rol}
+                <div className="app-user-menu">
+                  <span className={`nav-status ${isAdmin ? 'nav-status--admin' : 'nav-status--operator'}`} title={isAdmin ? 'Permisos de administración' : 'Permisos de operador'}>
+                    {currentUser.nombre_usuario} · {isAdmin ? 'ADMINISTRADOR' : 'OPERADOR'}
                   </span>
-                  <button
-                    type="button"
-                    onClick={handleLogout}
-                    style={{
-                      padding: '8px 10px',
-                      border: '1px solid #cbd5e1',
-                      borderRadius: '8px',
-                      background: 'transparent',
-                      cursor: 'pointer',
-                    }}
-                  >
+                  <button className="app-logout-button" type="button" onClick={handleLogout}>
                     Cerrar sesión
                   </button>
                 </div>
               </header>
 
               <div className="main-content">
-                <Suspense fallback={<p role="status" aria-live="polite">Cargando modulo...</p>}>
-                  {activeSection === 'inicio' && <DashboardPage />}
+                <Suspense fallback={<p className="app-module-loading" role="status" aria-live="polite">Cargando módulo…</p>}>
+                  {activeSection === 'inicio' && <DashboardPage currentUser={currentUser} />}
                   {activeSection === 'flota' && <VehiclesPage />}
                   {activeSection === 'clientes' && <ClientsPage />}
                   {activeSection === 'conductores' && <DriversPage />}

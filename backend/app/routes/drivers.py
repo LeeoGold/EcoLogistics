@@ -11,10 +11,10 @@ from ..http_cache import apply_private_etag
 
 from ..controllers.driver_controller import DriverController
 from ..db import get_db
-from ..security import get_current_user, require_roles
+from ..security import require_roles
 from ..schemas.driver import DriverCreate, DriverRead
 
-router = APIRouter(prefix="/api/conductores", tags=["Conductores"], dependencies=[Depends(get_current_user)])
+router = APIRouter(prefix="/api/conductores", tags=["Conductores"], dependencies=[Depends(require_roles("ADMINISTRADOR", "OPERADOR"))])
 controller = DriverController()
 
 
@@ -58,7 +58,7 @@ def get_driver(conductor_id: UUID, db: Session = Depends(get_db)) -> DriverRead:
     return controller.get_driver(conductor_id, db)
 
 
-@router.post("", response_model=DriverRead, status_code=status.HTTP_201_CREATED, dependencies=[Depends(require_roles("ADMINISTRADOR", "OPERADOR"))])
+@router.post("", response_model=DriverRead, status_code=status.HTTP_201_CREATED)
 def create_driver(
     payload: DriverCreate, db: Session = Depends(get_db)
 ) -> DriverRead:
