@@ -18,8 +18,12 @@ export default mergeConfig(
         include: [
           'src/services/apiClient.js',
           'src/services/authService.js',
+          'src/services/vehicleService.js',
           'src/pages/LoginPage.jsx',
+          'src/pages/VehiclesPage.jsx',
           'src/routes/AppRoutes.jsx',
+          'src/components/vehicles/VehicleTable.jsx',
+          'src/components/vehicles/VehicleEditForm.jsx',
         ],
       },
     },

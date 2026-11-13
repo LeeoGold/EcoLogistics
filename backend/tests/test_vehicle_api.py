@@ -3,9 +3,12 @@ from decimal import Decimal
 from uuid import UUID, uuid4
 from zoneinfo import ZoneInfo
 
+from sqlalchemy.exc import IntegrityError
+
 from app.db import SessionLocal
 from app.models.driver import Driver
 from app.models.route import DriverAssignment, Route
+from app.routes.vehicles import controller as vehicle_controller
 
 
 def test_health(client):
@@ -173,6 +176,27 @@ def test_delete_vehicle_assigned_to_route_returns_conflict(client, vehicle_paylo
             if driver_record is not None:
                 db.delete(driver_record)
             db.commit()
+
+
+def test_delete_vehicle_integrity_error_returns_conflict(
+    client, vehicle_payload, monkeypatch
+):
+    create_response = client.post("/api/vehiculos", json=vehicle_payload)
+    assert create_response.status_code == 201
+    vehicle_id = create_response.json()["vehiculo_id"]
+
+    def fail_delete(db, vehicle):
+        raise IntegrityError("DELETE", {}, Exception("foreign key conflict"))
+
+    monkeypatch.setattr(vehicle_controller.service.repository, "delete", fail_delete)
+
+    response = client.delete(f"/api/vehiculos/{vehicle_id}")
+
+    assert response.status_code == 409
+    assert response.json()["detail"] == (
+        "No se puede eliminar el vehículo porque está asociado a una ruta."
+    )
+    assert client.get(f"/api/vehiculos/{vehicle_id}").status_code == 200
 
 
 def test_delete_missing_vehicle_returns_404(client):

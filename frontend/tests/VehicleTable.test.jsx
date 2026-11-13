@@ -119,4 +119,106 @@ describe('VehicleTable por rol', () => {
 
     expect(mocks.deleteVehicle).not.toHaveBeenCalled()
   })
+
+  it('muestra un error si falla la carga inicial del listado', async () => {
+    mocks.getVehiclesPage.mockRejectedValueOnce(new Error('No se pudo consultar la flota.'))
+    render(<VehicleTable isAdmin />)
+
+    const alert = await screen.findByRole('alert')
+    expect(alert.textContent).toContain('No se pudo consultar la flota.')
+  })
+
+  it('muestra el error devuelto al intentar actualizar un vehículo', async () => {
+    mocks.updateVehicle.mockRejectedValueOnce(new Error('La actualización fue rechazada.'))
+    render(<VehicleTable isAdmin />)
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Editar vehículo HYO-123' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Guardar cambios' }))
+
+    expect(await screen.findByText('La actualización fue rechazada.')).toBeTruthy()
+  })
+
+  it('informa si el vehículo se actualizó pero falló la recarga del listado', async () => {
+    mocks.getVehiclesPage
+      .mockResolvedValueOnce(pagedVehicleResult())
+      .mockRejectedValueOnce(new Error('Error de actualización del listado.'))
+    render(<VehicleTable isAdmin />)
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Editar vehículo HYO-123' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Guardar cambios' }))
+
+    expect(await screen.findByText(
+      'El vehículo se actualizó, pero no se pudo refrescar el listado. Usa “Actualizar”.',
+    )).toBeTruthy()
+  })
+
+  it('muestra el error cuando la API rechaza la eliminación', async () => {
+    mocks.deleteVehicle.mockRejectedValueOnce(new Error('El vehículo está protegido.'))
+    render(<VehicleTable isAdmin />)
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Eliminar vehículo HYO-123' }))
+
+    expect(await screen.findByText('El vehículo está protegido.')).toBeTruthy()
+  })
+
+  it('retrocede una página al eliminar el último vehículo de una página posterior', async () => {
+    mocks.getVehiclesPage
+      .mockResolvedValueOnce({ ...pagedVehicleResult(), page: 2, total: 13, total_pages: 2 })
+      .mockResolvedValueOnce(pagedVehicleResult([]))
+    render(<VehicleTable isAdmin />)
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Eliminar vehículo HYO-123' }))
+
+    await waitFor(() => {
+      expect(mocks.getVehiclesPage).toHaveBeenNthCalledWith(2, {
+        page: 1,
+        page_size: 12,
+        q: '',
+        estado: '',
+      })
+    })
+  })
+
+  it('muestra un aviso si elimina correctamente pero falla la recarga', async () => {
+    mocks.getVehiclesPage
+      .mockResolvedValueOnce(pagedVehicleResult())
+      .mockRejectedValueOnce(new Error('No se pudo refrescar después de eliminar.'))
+    render(<VehicleTable isAdmin />)
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Eliminar vehículo HYO-123' }))
+
+    expect(await screen.findByText(
+      'El vehículo HYO-123 se eliminó, pero no se pudo refrescar el listado. Usa “Actualizar”.',
+    )).toBeTruthy()
+  })
+
+  it('permite cancelar la edición y cerrar el formulario', async () => {
+    render(<VehicleTable isAdmin />)
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Editar vehículo HYO-123' }))
+    expect(screen.getByRole('heading', { name: 'Editar vehículo · HYO-123' })).toBeTruthy()
+    fireEvent.click(screen.getAllByRole('button', { name: 'Cancelar' })[0])
+
+    expect(screen.queryByRole('heading', { name: 'Editar vehículo · HYO-123' })).toBeNull()
+  })
+
+  it('conserva en el selector un estado existente fuera de las opciones habituales', async () => {
+    const vehicleWithCustomStatus = { ...sampleVehicle, estado: 'RETIRADO' }
+    mocks.getVehiclesPage.mockResolvedValueOnce(pagedVehicleResult([vehicleWithCustomStatus]))
+    render(<VehicleTable isAdmin />)
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Editar vehículo HYO-123' }))
+
+    expect(screen.getByRole('option', { name: 'RETIRADO' })).toBeTruthy()
+  })
+
+  it('cierra la edición si se elimina el mismo vehículo que estaba abierto', async () => {
+    render(<VehicleTable isAdmin />)
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Editar vehículo HYO-123' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Eliminar vehículo HYO-123' }))
+
+    expect(await screen.findByText('Vehículo HYO-123 eliminado correctamente.')).toBeTruthy()
+    expect(screen.queryByRole('heading', { name: 'Editar vehículo · HYO-123' })).toBeNull()
+  })
 })
