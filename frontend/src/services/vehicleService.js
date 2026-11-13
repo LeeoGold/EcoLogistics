@@ -14,6 +14,21 @@ export async function createVehicle(vehicle) {
   return parseResponse(response, 'No se pudo registrar el vehículo.')
 }
 
+export async function updateVehicle(vehicleId, vehicle) {
+  const response = await apiFetch(`/api/vehiculos/${vehicleId}`, {
+    method: 'PUT',
+    body: JSON.stringify(vehicle),
+  })
+  return parseResponse(response, 'No se pudo actualizar el vehículo.')
+}
+
+export async function deleteVehicle(vehicleId) {
+  const response = await apiFetch(`/api/vehiculos/${vehicleId}`, {
+    method: 'DELETE',
+  })
+  return parseResponse(response, 'No se pudo eliminar el vehículo.')
+}
+
 export async function getVehiclesPage(params = {}) {
   const query = new URLSearchParams()
   for (const [key, value] of Object.entries({ page: 1, page_size: 12, ...params })) {

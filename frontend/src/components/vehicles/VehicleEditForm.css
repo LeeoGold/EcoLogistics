@@ -1,0 +1,78 @@
+.vehicle-edit-panel {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid #b9d9d2;
+  border-radius: 14px;
+  background: #f7fbfa;
+}
+
+.vehicle-edit-panel__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.vehicle-edit-panel__heading h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.vehicle-edit-panel__heading p:last-child {
+  margin: 6px 0 0;
+  color: #61707c;
+  font-size: .86rem;
+}
+
+.vehicle-edit-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.vehicle-edit-form__actions {
+  display: flex;
+  align-items: end;
+  justify-content: flex-end;
+  gap: 9px;
+  grid-column: 1 / -1;
+}
+
+.vehicle-edit-form__actions .secondary {
+  background: #eef2f4;
+}
+
+.vehicle-row-actions {
+  display: flex;
+  gap: 7px;
+}
+
+.vehicle-row-actions button {
+  padding: 7px 10px;
+  font-size: .78rem;
+}
+
+.vehicle-row-actions__delete {
+  background: #fef3f2;
+  color: #b42318;
+}
+
+@media (max-width: 760px) {
+  .vehicle-edit-form {
+    grid-template-columns: 1fr;
+  }
+
+  .vehicle-edit-panel__heading {
+    flex-direction: column;
+  }
+
+  .vehicle-edit-form__actions {
+    grid-column: auto;
+    justify-content: stretch;
+  }
+
+  .vehicle-edit-form__actions button {
+    flex: 1;
+  }
+}
