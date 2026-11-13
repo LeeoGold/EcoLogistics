@@ -238,7 +238,7 @@ export default function AppRoutes() {
               <div className="main-content">
                 <Suspense fallback={<p className="app-module-loading" role="status" aria-live="polite">Cargando módulo…</p>}>
                   {activeSection === 'inicio' && <DashboardPage currentUser={currentUser} />}
-                  {activeSection === 'flota' && <VehiclesPage />}
+                  {activeSection === 'flota' && <VehiclesPage currentUser={currentUser} />}
                   {activeSection === 'clientes' && <ClientsPage />}
                   {activeSection === 'conductores' && <DriversPage />}
                   {activeSection === 'pedidos' && <OrdersPage />}

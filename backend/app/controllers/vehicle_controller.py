@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from ..schemas.vehicle import VehicleCreate, VehicleRead, VehicleUpdate
 from ..services.vehicle_service import (
     VehicleDuplicatePlateError,
+    VehicleInUseError,
     VehicleNotFoundError,
     VehicleService,
 )
@@ -61,4 +62,9 @@ class VehicleController:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail="Vehículo no encontrado",
+            ) from exc
+        except VehicleInUseError as exc:
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail="No se puede eliminar el vehículo porque está asociado a una ruta.",
             ) from exc
