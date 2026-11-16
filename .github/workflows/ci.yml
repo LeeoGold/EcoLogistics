@@ -1,4 +1,4 @@
-name: CI
+﻿name: CI
 
 on:
   push:
@@ -39,6 +39,11 @@ jobs:
 
       - name: Install dependencies
         run: python -m pip install -r requirements.txt -r requirements-tests.txt
+
+      - name: Validate dependencies and Python syntax
+        run: |
+          python -m pip check
+          python -m compileall -q app
 
       - name: Run tests and generate coverage report
         run: python -m pytest --cov=app --cov-report=term-missing --cov-report=xml:coverage.xml
