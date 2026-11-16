@@ -1,4 +1,4 @@
-﻿# 01 Informe de estado del proyecto V_1_1_0
+# 01 Informe de estado del proyecto V_1_1_0
 
 [← Volver al README Principal](../../README.md)
 
@@ -176,3 +176,10 @@ No se afirma despliegue automatizado a staging ni aceptación formal del PO cuan
 | 1.1.0 | 2026-09-23 | Incorporación de Burndown/Burnup, QA, cobertura, estructura técnica, cierre del Sprint y velocidad real de 6 SP. |
 
 [← Volver al README Principal](../../README.md)
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](../README.md) · [README principal](../../../../../README.md)

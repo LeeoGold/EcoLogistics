@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useClients } from '../../state/ClientContext'
 import { useOrders } from '../../state/OrderContext'
 import { createOrder } from '../../services/orderService'
@@ -21,6 +21,8 @@ export default function OrderForm() {
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState('')
   const [messageType, setMessageType] = useState('')
+
+  useEffect(() => { void loadClients() }, [])
 
   function updateField(event) {
     const { name, value } = event.target

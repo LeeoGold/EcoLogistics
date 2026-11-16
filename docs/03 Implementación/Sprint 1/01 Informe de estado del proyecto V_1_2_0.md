@@ -1,4 +1,4 @@
-﻿# 01 Informe de estado del proyecto V_1_2_0
+# 01 Informe de estado del proyecto V_1_2_0
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
@@ -177,3 +177,10 @@ No se afirma despliegue automatizado a staging ni aceptación formal del PO cuan
 | 1.2.0 | 2026-10-09 | Normalización de navegación, numeración documental estable y revisión de referencias. |
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

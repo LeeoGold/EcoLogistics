@@ -1,0 +1,41 @@
+[
+  {
+    "url": "http://localhost:63915/login",
+    "isRepresentativeRun": false,
+    "htmlPath": "C:\\Users\\User\\EcoLogistics\\frontend\\.lighthouseci\\reports\\login-2026_11_03_22_31_25.report.html",
+    "jsonPath": "C:\\Users\\User\\EcoLogistics\\frontend\\.lighthouseci\\reports\\login-2026_11_03_22_31_25.report.json",
+    "summary": {
+      "performance": 1,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 0.82,
+      "agentic-browsing": 0.5
+    }
+  },
+  {
+    "url": "http://localhost:63915/login",
+    "isRepresentativeRun": false,
+    "htmlPath": "C:\\Users\\User\\EcoLogistics\\frontend\\.lighthouseci\\reports\\login-2026_11_03_22_31_44.report.html",
+    "jsonPath": "C:\\Users\\User\\EcoLogistics\\frontend\\.lighthouseci\\reports\\login-2026_11_03_22_31_44.report.json",
+    "summary": {
+      "performance": 1,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 0.82,
+      "agentic-browsing": 0.5
+    }
+  },
+  {
+    "url": "http://localhost:63915/login",
+    "isRepresentativeRun": true,
+    "htmlPath": "C:\\Users\\User\\EcoLogistics\\frontend\\.lighthouseci\\reports\\login-2026_11_03_22_32_00.report.html",
+    "jsonPath": "C:\\Users\\User\\EcoLogistics\\frontend\\.lighthouseci\\reports\\login-2026_11_03_22_32_00.report.json",
+    "summary": {
+      "performance": 1,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 0.82,
+      "agentic-browsing": 0.5
+    }
+  }
+]

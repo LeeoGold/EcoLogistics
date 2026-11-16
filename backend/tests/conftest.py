@@ -97,6 +97,60 @@ def client():
 
 
 @pytest.fixture()
+def operator_client():
+    """Cliente autenticado con el rol OPERADOR para validar permisos reales."""
+    username = f"test_operator_{uuid.uuid4().hex[:10]}"
+    role_created = False
+
+    with SessionLocal() as db:
+        role = db.scalar(select(Role).where(Role.nombre == "OPERADOR"))
+        if role is None:
+            role = Role(
+                nombre="OPERADOR",
+                descripcion="Rol temporal de pruebas",
+            )
+            db.add(role)
+            db.flush()
+            role_created = True
+
+        user = User(
+            nombre_usuario=username,
+            rol_id=role.rol_id,
+            password_hash=hash_password("pytest-only-temporary-password"),
+            estado="ACTIVO",
+        )
+        db.add(user)
+        db.commit()
+
+        user_id = user.usuario_id
+        role_id = role.rol_id
+        token = create_access_token(user_id)
+
+    try:
+        with TestClient(
+            app,
+            headers={"Authorization": f"Bearer {token}"},
+        ) as test_client:
+            yield test_client
+    finally:
+        with SessionLocal() as db:
+            user = db.get(User, user_id)
+            if user is not None:
+                db.delete(user)
+                db.commit()
+
+            if role_created:
+                role = db.get(Role, role_id)
+                if role is not None:
+                    remaining = db.scalar(
+                        select(User).where(User.rol_id == role_id).limit(1)
+                    )
+                    if remaining is None:
+                        db.delete(role)
+                        db.commit()
+
+
+@pytest.fixture()
 def anonymous_client():
     with TestClient(app) as test_client:
         yield test_client

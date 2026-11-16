@@ -1,5 +1,14 @@
+from datetime import date, datetime, time
 from decimal import Decimal
-from uuid import uuid4
+from uuid import UUID, uuid4
+from zoneinfo import ZoneInfo
+
+from sqlalchemy.exc import IntegrityError
+
+from app.db import SessionLocal
+from app.models.driver import Driver
+from app.models.route import DriverAssignment, Route
+from app.routes.vehicles import controller as vehicle_controller
 
 
 def test_health(client):
@@ -113,8 +122,154 @@ def test_delete_vehicle(client, vehicle_payload):
     assert get_response.status_code == 404
 
 
+def test_delete_vehicle_assigned_to_route_returns_conflict(client, vehicle_payload):
+    create_response = client.post("/api/vehiculos", json=vehicle_payload)
+    assert create_response.status_code == 201
+    vehicle_id = create_response.json()["vehiculo_id"]
+
+    suffix = uuid4().hex[:10]
+    driver = Driver(
+        nombre_completo="Conductor de prueba",
+        documento_identidad=f"DOC-{suffix}",
+        licencia=f"LIC-{suffix}",
+        categoria_licencia="A-IIa",
+        anios_experiencia=3,
+        disponibilidad_inicio=time(7, 0),
+        disponibilidad_fin=time(18, 0),
+        contacto="999999999",
+        estado="ACTIVO",
+    )
+
+    with SessionLocal() as db:
+        db.add(driver)
+        route = Route(fecha_planificada=date.today(), estado="PLANIFICADA")
+        db.add(route)
+        db.flush()
+        assignment = DriverAssignment(
+            ruta_id=route.ruta_id,
+            conductor_id=driver.conductor_id,
+            vehiculo_id=UUID(vehicle_id),
+            hora_inicio=datetime.now(ZoneInfo("America/Lima")),
+        )
+        db.add(assignment)
+        db.commit()
+        route_id = route.ruta_id
+        driver_id = driver.conductor_id
+        assignment_id = assignment.asignacion_id
+
+    try:
+        response = client.delete(f"/api/vehiculos/{vehicle_id}")
+        assert response.status_code == 409
+        assert response.json()["detail"] == (
+            "No se puede eliminar el vehículo porque está asociado a una ruta."
+        )
+        assert client.get(f"/api/vehiculos/{vehicle_id}").status_code == 200
+    finally:
+        with SessionLocal() as db:
+            assignment = db.get(DriverAssignment, assignment_id)
+            route = db.get(Route, route_id)
+            driver_record = db.get(Driver, driver_id)
+            if assignment is not None:
+                db.delete(assignment)
+            if route is not None:
+                db.delete(route)
+            if driver_record is not None:
+                db.delete(driver_record)
+            db.commit()
+
+
+def test_delete_vehicle_integrity_error_returns_conflict(
+    client, vehicle_payload, monkeypatch
+):
+    create_response = client.post("/api/vehiculos", json=vehicle_payload)
+    assert create_response.status_code == 201
+    vehicle_id = create_response.json()["vehiculo_id"]
+
+    def fail_delete(db, vehicle):
+        raise IntegrityError("DELETE", {}, Exception("foreign key conflict"))
+
+    monkeypatch.setattr(vehicle_controller.service.repository, "delete", fail_delete)
+
+    response = client.delete(f"/api/vehiculos/{vehicle_id}")
+
+    assert response.status_code == 409
+    assert response.json()["detail"] == (
+        "No se puede eliminar el vehículo porque está asociado a una ruta."
+    )
+    assert client.get(f"/api/vehiculos/{vehicle_id}").status_code == 200
+
+
 def test_delete_missing_vehicle_returns_404(client):
     response = client.delete(f"/api/vehiculos/{uuid4()}")
 
     assert response.status_code == 404
     assert response.json()["detail"] == "Vehículo no encontrado"
+
+
+def test_paginated_vehicles_returns_metadata(client):
+    response = client.get("/api/vehiculos/pagina?page=1&page_size=12")
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["page"] == 1
+    assert payload["page_size"] == 12
+    assert len(payload["items"]) <= 12
+
+
+def test_paginated_vehicle_list_supports_private_etag_revalidation(client):
+    first = client.get("/api/vehiculos/pagina?page=1&page_size=12")
+
+    assert first.status_code == 200
+    etag = first.headers.get("etag")
+    assert etag
+    assert first.headers.get("cache-control") == "private, no-cache"
+    assert "authorization" in first.headers.get("vary", "").lower()
+
+    second = client.get(
+        "/api/vehiculos/pagina?page=1&page_size=12",
+        headers={"If-None-Match": etag},
+    )
+
+    assert second.status_code == 304
+    assert second.content == b""
+    assert second.headers.get("etag") == etag
+
+
+def test_operator_can_create_but_cannot_update_or_delete_vehicle(
+    operator_client, vehicle_payload
+):
+    create_response = operator_client.post("/api/vehiculos", json=vehicle_payload)
+    assert create_response.status_code == 201
+    vehicle_id = create_response.json()["vehiculo_id"]
+
+    update_payload = {**vehicle_payload, "capacidad_kg": 1500}
+    update_response = operator_client.put(
+        f"/api/vehiculos/{vehicle_id}",
+        json=update_payload,
+    )
+    assert update_response.status_code == 403
+
+    delete_response = operator_client.delete(f"/api/vehiculos/{vehicle_id}")
+    assert delete_response.status_code == 403
+
+    get_response = operator_client.get(f"/api/vehiculos/{vehicle_id}")
+    assert get_response.status_code == 200
+    assert Decimal(str(get_response.json()["capacidad_kg"])) == Decimal("1000")
+
+
+def test_vehicle_list_uses_gzip_when_response_exceeds_threshold(client, vehicle_payload):
+    suffix = vehicle_payload["placa"].removeprefix("TST-")
+
+    for index in range(5):
+        payload = {**vehicle_payload, "placa": f"TST-{suffix}-{index}"}
+        created = client.post("/api/vehiculos", json=payload)
+        assert created.status_code == 201
+
+    response = client.get(
+        "/api/vehiculos",
+        headers={"Accept-Encoding": "gzip"},
+    )
+
+    assert response.status_code == 200
+    assert response.headers.get("content-encoding") == "gzip"
+    assert "accept-encoding" in response.headers.get("vary", "").lower()
+    assert isinstance(response.json(), list)

@@ -1,8 +1,10 @@
 from uuid import UUID
 
+from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
+from ..models.route import DriverAssignment
 from ..models.vehicle import Vehicle
 from ..repositories.vehicle_repository import VehicleRepository
 from ..schemas.vehicle import VehicleCreate, VehicleUpdate
@@ -13,6 +15,10 @@ class VehicleNotFoundError(Exception):
 
 
 class VehicleDuplicatePlateError(Exception):
+    pass
+
+
+class VehicleInUseError(Exception):
     pass
 
 
@@ -54,4 +60,16 @@ class VehicleService:
 
     def delete_vehicle(self, db: Session, vehiculo_id: UUID) -> None:
         vehicle = self.get_vehicle(db, vehiculo_id)
-        self.repository.delete(db, vehicle)
+        assignment_id = db.scalar(
+            select(DriverAssignment.asignacion_id)
+            .where(DriverAssignment.vehiculo_id == vehiculo_id)
+            .limit(1)
+        )
+        if assignment_id is not None:
+            raise VehicleInUseError
+
+        try:
+            self.repository.delete(db, vehicle)
+        except IntegrityError as exc:
+            db.rollback()
+            raise VehicleInUseError from exc

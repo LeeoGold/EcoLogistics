@@ -1,4 +1,4 @@
-﻿# Reporte de Seguridad — OWASP Top 10:2025
+# Reporte de Seguridad — OWASP Top 10:2025
 
 **Nombre del proyecto:** EcoLogística Huancayo
 **Herramienta de análisis automatizado disponible:** SonarQube Cloud

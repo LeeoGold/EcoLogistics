@@ -1,4 +1,4 @@
-﻿# 02 Registro de Impedimentos V_1_0_0
+# 02 Registro de Impedimentos V_1_0_0
 
 [← Volver al índice del Sprint 2](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
@@ -44,3 +44,10 @@ Un impedimento se considerará cerrado cuando exista evidencia verificable de la
 | Versión | Fecha | Cambio |
 |---|---|---|
 | 1.0.0 | 04/10/2026 | Registro consolidado de impedimentos técnicos, de calidad y de cierre del Sprint 2. |
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

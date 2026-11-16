@@ -162,7 +162,7 @@ def test_business_api_rejects_missing_credentials(anonymous_client, vehicle_payl
     assert create_response.status_code == 401
 
 
-def test_authenticated_user_without_operational_role_cannot_write(
+def test_authenticated_user_without_operational_role_cannot_access_business_apis(
     auth_user,
     vehicle_payload,
 ):
@@ -173,7 +173,10 @@ def test_authenticated_user_without_operational_role_cannot_write(
         headers={"Authorization": f"Bearer {token}"},
     ) as restricted_client:
         read_response = restricted_client.get("/api/vehiculos")
-        assert read_response.status_code == 200
+        assert read_response.status_code == 403
+
+        dashboard_response = restricted_client.get("/api/dashboard/resumen")
+        assert dashboard_response.status_code == 403
 
         write_response = restricted_client.post(
             "/api/vehiculos",
@@ -188,6 +191,7 @@ def test_authenticated_user_without_operational_role_cannot_write(
         "/api/pedidos",
         "/api/rutas",
         "/api/vehiculos",
+        "/api/dashboard/resumen",
     ],
 )
 def test_all_business_apis_reject_anonymous_requests(

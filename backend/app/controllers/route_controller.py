@@ -28,6 +28,9 @@ class RouteController:
     def list_routes(self, db: Session) -> list[RouteRead]:
         return self.service.list_routes(db)
 
+    def list_routes_page(self, db: Session, *, page: int, page_size: int) -> dict:
+        return self.service.list_routes_page(db, page=page, page_size=page_size)
+
     def get_route(self, ruta_id: UUID, db: Session) -> RouteRead:
         try:
             return self.service.get_route(db, ruta_id)

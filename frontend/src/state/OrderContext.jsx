@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useContext, useMemo, useState } from 'react'
 import { getOrders } from '../services/orderService'
 
 const OrderContext = createContext(null)
@@ -29,9 +29,6 @@ export function OrderProvider({ children }) {
     }
   }
 
-  useEffect(() => {
-    loadOrders()
-  }, [])
 
   function updateFilter(event) {
     const { name, value } = event.target

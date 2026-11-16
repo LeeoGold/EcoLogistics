@@ -1,4 +1,4 @@
-﻿# 05 Registro de riesgos V_1_0_0
+# 05 Registro de riesgos V_1_0_0
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
@@ -44,3 +44,10 @@ Todos los riesgos registrados para Sprint 1 mantienen un nivel de exposición **
 | 1.0.0 | 2026-09-23 | Consolidación del registro como documento complementario de gestión de riesgos del Sprint 1. |
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

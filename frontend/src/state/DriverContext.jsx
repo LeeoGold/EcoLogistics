@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useContext, useMemo, useState } from 'react'
 import { createDriver, getDrivers } from '../services/driverService'
 
 const DriverContext = createContext(null)
@@ -44,9 +44,6 @@ export function DriverProvider({ children }) {
     }
   }
 
-  useEffect(() => {
-    void loadDrivers()
-  }, [])
 
   function updateField(event) {
     const { name, value } = event.target

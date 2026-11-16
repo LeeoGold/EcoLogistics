@@ -1,4 +1,4 @@
-﻿# 03 Revisión del Sprint V_1_0_0
+# 03 Revisión del Sprint V_1_0_0
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
@@ -93,3 +93,10 @@ La revisión mantiene separados los hechos comprobados en Jira y en el repositor
 | 1.0.0 | 2026-09-23 | Consolidación de la revisión del Sprint 1 conforme a la plantilla y evidencia disponible. |
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)\n
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

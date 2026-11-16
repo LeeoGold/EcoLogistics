@@ -1,4 +1,4 @@
-﻿# Sprint 1 — Implementación
+# Sprint 1 — Implementación
 
 [← Índice de implementación](../README.md) · [README principal](../../../README.md)
 
