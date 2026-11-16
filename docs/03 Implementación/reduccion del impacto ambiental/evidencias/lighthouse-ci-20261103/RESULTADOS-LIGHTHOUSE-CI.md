@@ -1,4 +1,4 @@
-﻿# Auditoría Lighthouse CI — 03/11/2026
+# Auditoría Lighthouse CI — 03/11/2026
 
 ## Alcance
 
@@ -28,3 +28,10 @@ La auditoría corresponde únicamente a esta página y a un entorno local de pro
 ## Evidencias
 
 Se adjuntan tres informes HTML, tres informes JSON y el manifiesto generado por Lighthouse CI.
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](../README.md) · [README principal](../../../../../README.md)

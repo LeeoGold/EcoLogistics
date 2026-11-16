@@ -1,4 +1,4 @@
-﻿# 04 Retrospectiva del Sprint V_1_0_0
+# 04 Retrospectiva del Sprint V_1_0_0
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
@@ -86,3 +86,10 @@ La retrospectiva deja un conjunto de acciones verificables para Sprint 2. El foc
 | 1.0.0 | 2026-09-23 | Reformulación de la retrospectiva conforme a los cuatro ejes de la rúbrica y definición de acciones medibles. |
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)\n
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

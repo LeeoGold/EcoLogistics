@@ -1,4 +1,4 @@
-﻿# Revisión del Sprint — V_1_0_0
+# Revisión del Sprint — V_1_0_0
 
 **Nombre del proyecto:** EcoLogística Huancayo\
 **Líder del proyecto:** Kevyn Leeonardo Velasquez Palomino\

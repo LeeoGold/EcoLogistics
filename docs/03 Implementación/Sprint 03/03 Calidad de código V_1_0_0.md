@@ -1,4 +1,4 @@
-﻿# Evaluación de Calidad de Código — SonarQube
+# Evaluación de Calidad de Código — SonarQube
 
 **Nombre del proyecto:** EcoLogística Huancayo\
 **Fecha de análisis/evidencia:** 2026-10-20\

@@ -1,4 +1,4 @@
-﻿name: CI
+name: CI
 
 on:
   push:
@@ -6,6 +6,7 @@ on:
       - main
       - develop
       - feature/sprint-3-quality-evaluation
+      - feature/sprint-4-cierre
   pull_request:
     branches:
       - main

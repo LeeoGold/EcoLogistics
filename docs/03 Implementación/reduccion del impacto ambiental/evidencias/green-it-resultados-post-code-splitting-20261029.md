@@ -42,3 +42,10 @@ En el build posterior, Vite informó el JS principal como 235.76 kB sin comprimi
 El FCP/LCP principal es de aproximadamente 343–360 ms, pero el desglose de LCP en los informes posteriores refleja una demora de renderizado mucho mayor y el filmstrip presenta cuadros iniciales en blanco. Speed Index también muestra una dispersión notable entre repeticiones. Esto constituye una inconsistencia del conjunto de reportes y evita concluir que el score o la velocidad percibida global mejoraron. No se atribuye una causa concluyente sin una traza reproducible.
 
 **Conclusión técnica respaldada:** la división de código redujo el bundle principal y la transferencia inicial registrada; las pruebas y el build pasaron. **No respaldado:** ahorro energético/CO₂e cuantificado o mejora global de Performance/experiencia percibida.
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md) · [README principal](../../../../README.md)

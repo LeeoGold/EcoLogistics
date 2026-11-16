@@ -17,6 +17,7 @@ htmlcov/
 # Node
 node_modules/
 dist/
+build/
 .vite/
 
 # IDE / OS
@@ -38,3 +39,8 @@ backend/tests/.test_ecologistica.db
 
 # Generated backend coverage report
 /backend/coverage.xml
+
+# Playwright
+frontend/playwright-report/
+frontend/test-results/
+frontend/playwright/.cache/

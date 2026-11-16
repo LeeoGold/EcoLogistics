@@ -1,4 +1,4 @@
-﻿# 05 Registro de riesgos V_1_2_0
+# 05 Registro de riesgos V_1_2_0
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
@@ -35,3 +35,10 @@ Los riesgos con exposición alta deben revisarse antes de cada incremento. Duran
 | 1.2.0 | 2026-10-09 | Normalización de navegación, numeración documental estable y revisión de referencias. |
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

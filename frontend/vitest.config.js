@@ -1,4 +1,4 @@
-import { defineConfig, mergeConfig } from 'vitest/config'
+import { defineConfig, mergeConfig, configDefaults } from 'vitest/config'
 import viteConfig from './vite.config.js'
 
 export default mergeConfig(
@@ -8,6 +8,13 @@ export default mergeConfig(
       environment: 'jsdom',
       clearMocks: true,
       restoreMocks: true,
+
+      // Vitest ejecuta pruebas unitarias; Playwright gestiona las E2E.
+      exclude: [
+        ...configDefaults.exclude,
+        'e2e/**',
+      ],
+
       coverage: {
         provider: 'v8',
         reporter: [

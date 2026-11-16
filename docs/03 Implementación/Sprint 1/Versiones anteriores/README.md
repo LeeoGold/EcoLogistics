@@ -1,4 +1,4 @@
-﻿# Archivo histórico de la documentación V_1_1_0
+# Archivo histórico de la documentación V_1_1_0
 
 [← Volver al índice del Sprint 1](../README.md) · [Índice de implementación](../../README.md) · [README principal](../../../../README.md)
 

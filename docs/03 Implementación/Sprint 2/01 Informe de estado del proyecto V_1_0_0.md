@@ -1,4 +1,4 @@
-﻿# 01 Informe de estado del proyecto V_1_0_0
+# 01 Informe de estado del proyecto V_1_0_0
 
 [← Volver al índice del Sprint 2](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
@@ -105,3 +105,10 @@ El Sprint 2 cuenta con el incremento técnico principal implementado y con resul
 | Versión | Fecha | Cambio |
 |---|---|---|
 | 1.0.0 | 04/10/2026 | Consolidación del estado real del Sprint 2, resultados técnicos y pasos de cierre. |
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

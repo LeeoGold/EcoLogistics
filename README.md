@@ -1,5 +1,9 @@
 # EcoLogística Huancayo (EcoLogistics)
 
+[![CI](https://github.com/LeeoGold/EcoLogistics/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/LeeoGold/EcoLogistics/actions/workflows/ci.yml)
+[![E2E Tests](https://github.com/LeeoGold/EcoLogistics/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/LeeoGold/EcoLogistics/actions/workflows/tests.yml)
+[![Deploy Production](https://github.com/LeeoGold/EcoLogistics/actions/workflows/deploy-production.yml/badge.svg?branch=main)](https://github.com/LeeoGold/EcoLogistics/actions/workflows/deploy-production.yml)
+
 **Plataforma web para la gestión de operaciones logísticas y la planificación manual de rutas de última milla.**
 
 EcoLogística Huancayo es un proyecto académico que organiza información de clientes, pedidos, conductores, vehículos y rutas. El sistema proporciona una base operativa para gestionar asignaciones y consultar indicadores; no se presenta como un motor de optimización automática de rutas ni como una plataforma de cálculo de emisiones por recorrido.
@@ -122,3 +126,25 @@ Consulta [`DEV_SETUP.md`](DEV_SETUP.md) para preparar PostgreSQL, instalar backe
 ---
 
 **Proyecto académico — Ingeniería de Sistemas e Informática**
+
+## Sprint 4 — Cierre técnico y metodológico
+
+- [Índice del Sprint 4](docs/03%20Implementaci%C3%B3n/Sprint%204/README.md)
+- [Revisión del Sprint](docs/03%20Implementaci%C3%B3n/Sprint%204/01%20Revisi%C3%B3n%20del%20Sprint%20V_1_0_0.md)
+- [Retrospectiva](docs/03%20Implementaci%C3%B3n/Sprint%204/02%20Retrospectiva%20del%20Sprint%20V_1_0_0.md)
+- [Análisis Playwright](docs/03%20Implementaci%C3%B3n/Sprint%204/03%20Analisis%20PlayWrigth%20V_1_0_0.md)
+- [Evaluación de usabilidad SUS](docs/03%20Implementaci%C3%B3n/Sprint%204/04%20Usabilidad%20V_1_0_0.md)
+- [Evidencias E2E](docs/03%20Implementaci%C3%B3n/Sprint%204/evidencias/README.md)
+- [GitHub Actions](https://github.com/LeeoGold/EcoLogistics/actions)
+
+## Mapa de navegación documental
+
+| Área | Índice | Contenido |
+|---|---|---|
+| Inicio | [docs/01 Inicio](docs/01%20Inicio/README.md) | Visión, requisitos, usuarios y arquitectura. |
+| Planificación | [docs/02 Planificación](docs/02%20Planificaci%C3%B3n/README.md) | Scrum, Jira, riesgos y presupuesto. |
+| Implementación | [docs/03 Implementación](docs/03%20Implementaci%C3%B3n/README.md) | Sprints 1–4, Green IT y pruebas. |
+| Desarrollo | [docs/04-desarrollo](docs/04-desarrollo/README.md) | Historias de usuario y Git. |
+| Preparación local | [DEV_SETUP.md](DEV_SETUP.md) | Instalación y ejecución. |
+
+Las métricas ambientales antes/después y la estimación SWDM v4 se consultan en el [Informe ambiental Green IT](docs/03%20Implementaci%C3%B3n/reduccion%20del%20impacto%20ambiental/01%20Informe%20de%20reduccion%20del%20impacto%20ambiental%20V_1_0_0.md).

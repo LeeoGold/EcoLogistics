@@ -1,4 +1,4 @@
-﻿# 04 Retrospectiva del Sprint V_1_0_0
+# 04 Retrospectiva del Sprint V_1_0_0
 
 [← Volver al índice del Sprint 2](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
@@ -85,3 +85,10 @@ La principal mejora para el siguiente Sprint será mover parte de la validación
 | Versión | Fecha | Cambio |
 |---|---|---|
 | 1.0.0 | 04/10/2026 | Retrospectiva consolidada con aprendizajes, aciertos, oportunidades de mejora y plan de acción. |
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

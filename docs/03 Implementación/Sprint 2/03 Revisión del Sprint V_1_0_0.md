@@ -1,4 +1,4 @@
-﻿# 03 Revisión del Sprint V_1_0_0
+# 03 Revisión del Sprint V_1_0_0
 
 [← Volver al índice del Sprint 2](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
@@ -95,3 +95,10 @@ El Sprint 2 presenta un incremento técnico funcional y verificable. La revisió
 | Versión | Fecha | Cambio |
 |---|---|---|
 | 1.0.0 | 04/10/2026 | Consolidación de historias implementadas, resultados técnicos, demo y pendientes de cierre. |
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

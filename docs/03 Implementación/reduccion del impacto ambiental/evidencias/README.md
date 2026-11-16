@@ -90,3 +90,8 @@ El cálculo toma la diferencia de transferencia de `/login`, 0.300 kWh/GB y 494 
 - Mantener separados los informes históricos de code splitting y la auditoría LHCI final.
 - No subir credenciales, tokens, archivos `.env`, bases de datos locales ni información personal.
 - No presentar capturas de `docs/` como activos rasterizados usados por la aplicación.
+
+
+## Navegación de retorno
+
+[README principal](../../../../README.md)

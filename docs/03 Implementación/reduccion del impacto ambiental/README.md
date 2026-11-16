@@ -116,3 +116,9 @@ Consultar [04 Anexo de validación posterior a v1.0.0](./04%20Anexo%20de%20valid
 |---|---|---|
 | V_1_0_0 | 03/11/2026 | Índice de la entrega técnica inicial. |
 | V_1_0_1 | 08/11/2026 | Actualización de estado publicado, enlaces, resultados y límites de las áreas de optimización. |\n| V_1_0_2 | 10/11/2026 | Integración de la auditoría Chrome de seis vistas y actualización del estado de CI en `main`. |
+
+## 5. Informe de impacto ambiental y comparación antes/después
+
+La tabla cuantitativa completa de métricas técnicas y ambientales antes/después se encuentra en el [Informe de reducción del impacto ambiental](./01%20Informe%20de%20reduccion%20del%20impacto%20ambiental%20V_1_0_0.md). Este informe es la fuente única de las cifras comparativas y de los supuestos SWDM v4.
+
+[README principal](../../../README.md) · [Índice de implementación](../README.md)

@@ -32,3 +32,10 @@ Este incremento implementa planificación manual y persistencia de asignaciones.
 ## Verificación
 
 La suite añade pruebas para crear y listar rutas, actualizar el estado del pedido, validar capacidad, validar disponibilidad horaria, rechazar conductores inactivos, rechazar vehículos no disponibles, gestionar identificadores inexistentes, impedir pedidos repetidos y detectar asignaciones incompatibles.
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md) · [README principal](../../README.md)

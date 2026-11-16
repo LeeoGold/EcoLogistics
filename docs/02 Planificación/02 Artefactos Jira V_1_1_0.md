@@ -170,3 +170,10 @@ Este documento constituye la evidencia documental de la configuración realizada
 | 1.1.0 | 2026-09-23 | Incorporación del resultado final del Sprint, velocidad y evidencias de implementación. |
 
 [← Volver al README Principal](../../README.md)
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

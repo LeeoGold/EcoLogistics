@@ -1,4 +1,4 @@
-﻿# 01 Transformando a ágil V_1_0_0
+# 01 Transformando a ágil V_1_0_0
 
 [← Volver al README Principal](../../README.md)
 
@@ -522,3 +522,10 @@ La transformación mantiene como fuentes de verdad los documentos existentes de 
 ## 9. Nota de planificación
 
 Los Story Points son estimaciones relativas utilizadas para planificación Agile. No representan horas ni costo monetario.
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

@@ -1,4 +1,4 @@
-﻿# 03 Revisión del Sprint V_1_2_0
+# 03 Revisión del Sprint V_1_2_0
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
@@ -69,3 +69,10 @@ El Sprint 1 produjo un incremento funcional verificable en el módulo de vehícu
 | 1.2.0 | 2026-10-09 | Normalización de navegación, numeración documental estable y revisión de referencias. |
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

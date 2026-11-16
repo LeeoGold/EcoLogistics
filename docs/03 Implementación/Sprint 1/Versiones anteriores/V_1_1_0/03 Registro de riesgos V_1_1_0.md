@@ -1,4 +1,4 @@
-﻿# 03 Registro de riesgos V_1_1_0
+# 03 Registro de riesgos V_1_1_0
 
 [← Volver al README Principal](../../README.md)
 
@@ -34,3 +34,10 @@ Los riesgos con exposición alta deben revisarse antes de cada incremento. Duran
 | 1.1.0 | 2026-09-23 | Incorporación de evaluación P×I, riesgos de implementación y seguimiento de resultados del Sprint 1. |
 
 [← Volver al README Principal](../../README.md)
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](../README.md) · [README principal](../../../../../README.md)

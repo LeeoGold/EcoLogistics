@@ -16,6 +16,7 @@ Esta carpeta reúne la documentación de los incrementos por Sprint y la entrega
 | Sprint 1 | [README del Sprint 1](./Sprint%201/README.md) | Primer incremento funcional y cierre de la primera iteración. |
 | Sprint 2 | [README del Sprint 2](./Sprint%202/README.md) | Gestión operativa y flota; registro histórico del segundo Sprint. |
 | Sprint 3 | [README del Sprint 3](./Sprint%2003/README.md) | Calidad de código, evaluación de seguridad OWASP y accesibilidad WCAG. |
+| Sprint 4 | [README del Sprint 4](./Sprint%204/README.md) | Playwright E2E, usabilidad SUS, CI/CD y cierre. |
 | Inspección 04 — Green IT | [README Green IT](./reduccion%20del%20impacto%20ambiental/README.md) | Paginación, consultas SQL, code splitting, APIs nativas, caché HTTP, GZip, Lighthouse CI y estimación SWDM v4. |
 
 ## 2. Documentos Green IT para la entrega
@@ -52,3 +53,9 @@ El Sprint 3 contiene análisis históricos de seguridad y accesibilidad de octub
 | V_1_2_0 | 09/10/2026 | Separación documental por Sprint y navegación inicial. |
 | V_1_3_0 | 20/10/2026 | Incorporación del índice y entregables del Sprint 3. |
 | V_1_4_0 | 08/11/2026 | Incorporación de la Inspección 04, la Release Green IT y la distinción entre resultados históricos y vigentes. |
+
+## Navegación cruzada
+
+- [Informe de impacto ambiental](./reduccion%20del%20impacto%20ambiental/01%20Informe%20de%20reduccion%20del%20impacto%20ambiental%20V_1_0_0.md)
+- [Cierre del Sprint 4](./Sprint%204/README.md)
+- [README principal](../../README.md)
