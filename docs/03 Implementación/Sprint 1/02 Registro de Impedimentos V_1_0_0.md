@@ -1,4 +1,4 @@
-﻿# 02 Registro de Impedimentos V_1_0_0
+# 02 Registro de Impedimentos V_1_0_0
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
@@ -37,3 +37,10 @@ La experiencia mostró que el proyecto depende de disponer de un entorno reprodu
 | 1.0.0 | 2026-09-23 | Consolidación del registro conforme a la plantilla del Sprint 1, incluyendo impacto, prioridad, trazabilidad y resolución. |
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)\n
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

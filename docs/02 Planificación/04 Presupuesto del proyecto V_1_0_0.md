@@ -87,3 +87,10 @@ La inversión de infraestructura se mantiene moderada y se plantea como OPEX aco
 4. No se incluyen impuestos, costos legales ni contratación empresarial.
 5. Las tarifas horarias son supuestos académicos para estimación.
 6. Los costos reales de proveedores deberán validarse antes de contratar servicios.
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

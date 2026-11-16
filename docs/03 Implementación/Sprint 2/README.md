@@ -1,4 +1,4 @@
-﻿# Sprint 2 — Gestión operativa y flota
+# Sprint 2 — Gestión operativa y flota
 
 [← Índice de implementación](../README.md) · [README principal](../../../README.md)
 

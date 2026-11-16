@@ -111,3 +111,10 @@ git push
 - No mezclar una funcionalidad no probada directamente en `main`.
 - Cada commit debe describir el cambio real; ejecutar pruebas antes de integrar.
 - Mantener `.env` local y excluido del repositorio.
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md) · [README principal](../../README.md)

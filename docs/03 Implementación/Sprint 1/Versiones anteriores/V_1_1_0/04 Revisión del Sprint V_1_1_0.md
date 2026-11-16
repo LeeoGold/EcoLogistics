@@ -1,4 +1,4 @@
-﻿# 04 Revisión del Sprint V_1_1_0
+# 04 Revisión del Sprint V_1_1_0
 
 [← Volver al README Principal](../../README.md)
 
@@ -64,3 +64,10 @@ El Sprint 1 produjo un incremento funcional verificable en el módulo de vehícu
 | 1.1.0 | 2026-09-23 | Incorporación de resultados de QA, Burndown/Burnup, estado real de aceptación y velocidad final. |
 
 [← Volver al README Principal](../../README.md)
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](../README.md) · [README principal](../../../../../README.md)

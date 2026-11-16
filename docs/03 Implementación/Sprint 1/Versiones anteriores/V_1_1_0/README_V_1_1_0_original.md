@@ -1,4 +1,4 @@
-﻿# Implementación del Sprint 1
+# Implementación del Sprint 1
 
 [← Volver al README Principal](../../README.md)
 
@@ -86,3 +86,10 @@ En esta entrega de Sprint 1, el uso de IA se refleja principalmente en la organi
 | 1.1.0 | 2026-09-23 | Consolidación del cierre, métricas, evidencias, trazabilidad y preparación del flujo de ingeniería aumentada con IA. |
 
 [← Volver al README Principal](../../README.md)
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](../README.md) · [README principal](../../../../../README.md)

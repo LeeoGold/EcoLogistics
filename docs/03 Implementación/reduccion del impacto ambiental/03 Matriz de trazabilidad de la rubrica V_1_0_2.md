@@ -123,3 +123,10 @@ La documentación utiliza Markdown, tablas, código delimitado y enlaces relativ
 ## 6. Verificación posterior a la Release
 
 La revisión posterior a `v1.0.0` corrige compatibilidad con Python 3.13 y agrega una prueba de GZip; no modifica las cifras históricas atribuidas a la Release original. La suite backend obtuvo 81 pruebas aprobadas en Python 3.13.5 con pytest 9.0.2; el workflow usa pytest `>=8,<9`, así que CI debe confirmar el mismo resultado con su dependencia declarada. Ver [Anexo 04](./04%20Anexo%20de%20validacion%20posterior%20a%20v1.0.0.md). La publicación de esta corrección queda condicionada a la validación de CI general y Green IT Audit.
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md) · [README principal](../../../README.md)

@@ -88,3 +88,10 @@ Durante Sprint 1 se materializaron situaciones relacionadas con conectividad y d
 | 1.1.0 | 2026-09-23 | Incorporación de riesgos específicos de implementación, evaluación P×I y seguimiento del Sprint 1. |
 
 [← Volver al README Principal](../../README.md)
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

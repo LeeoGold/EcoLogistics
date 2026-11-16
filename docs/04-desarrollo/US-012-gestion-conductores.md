@@ -50,3 +50,10 @@ La interfaz no implementa edición ni eliminación, ya que esos endpoints no for
 5. Probar una hora de inicio igual o posterior a la hora de fin.
 6. Buscar por parte del nombre y filtrar por `ACTIVO`.
 7. Regresar al dashboard y verificar el contador de activos.
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md) · [README principal](../../README.md)

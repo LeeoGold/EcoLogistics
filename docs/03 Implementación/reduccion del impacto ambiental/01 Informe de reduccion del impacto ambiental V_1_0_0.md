@@ -14,7 +14,29 @@
 
 ---
 
-## 1. Propósito y alcance
+## Resumen comparativo antes/después de la refactorización
+
+La siguiente comparación corresponde a la serie histórica de **code splitting sobre `/login`**. Se utilizan los resultados archivados de la línea base y de la medición posterior.
+
+| Métrica | Antes | Después | Variación |
+|---|---:|---:|---|
+| Lighthouse Performance | 100 | 95 | −5 puntos; no mejoró. |
+| FCP | 342.95 ms | 360.10 ms | +17.15 ms (+5.00 %). |
+| LCP | 342.95 ms | 360.10 ms | +17.15 ms (+5.00 %). |
+| TBT | 0 ms | 0 ms | Sin variación. |
+| CLS | 0.000 | 0.000 | Sin variación. |
+| Transferencia total | 83,811 B | 77,706 B | −6,105 B (−7.28 %). |
+| JavaScript principal | 272.07 kB | 235.76 kB | −36.31 kB (−13.3 % aprox.). |
+| Energía SWDM v4 por carga | 0.0000251433 kWh | 0.0000233118 kWh | Ahorro modelado de 7.28 %. |
+| Emisiones SWDM v4 por carga | 0.01242079 gCO₂e | 0.01151603 gCO₂e | Ahorro modelado de 7.28 %. |
+| Energía anual ilustrativa (500,000 cargas) | 12.57165 kWh | 11.65590 kWh | Ahorro modelado de 0.91575 kWh. |
+| Emisiones anuales ilustrativas (500,000 cargas) | 6.21040 kgCO₂e | 5.75801 kgCO₂e | Ahorro modelado aproximado de 0.45238 kgCO₂e. |
+
+**Interpretación:** se redujeron la transferencia y el tamaño del JavaScript principal. Sin embargo, Lighthouse Performance pasó de 100 a 95 y FCP/LCP aumentaron. Por ello, no se afirma una mejora universal del rendimiento. La reducción de energía y emisiones corresponde a una estimación SWDM derivada del menor volumen transferido.
+
+**Limitaciones:** SWDM v4 proporciona estimaciones, no mediciones eléctricas ni emisiones observadas. La proyección de 500,000 cargas de `/login` es hipotética y no representa tráfico real. La auditoría de seis vistas del 10/11/2026 es independiente y no sustituye una comparación antes/después por vista.
+
+---## 1. Propósito y alcance
 
 Este informe documenta las optimizaciones Green IT realizadas en EcoLogistics, sus pruebas y la estimación ambiental basada en Sustainable Web Design Model (SWDM) v4. Se distinguen tres tipos de evidencia:
 
@@ -461,3 +483,10 @@ Consultar `evidencias/README.md`. Los reportes HTML/JSON originales de Lighthous
 |---|---|---|
 | V_1_0_0 | 03/11/2026 | Consolidación de paginación, consultas SQL, ETag, GZip, LHCI, estimación SWDM v4 y límites de aplicabilidad. |
 | Actualización de estado | 08/11/2026 | Se registra la publicación en `main`, el tag/Release `v1.0.0` y la ejecución verde de GitHub Actions; no se alteran las mediciones del 03/11. |
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md) · [README principal](../../../README.md)

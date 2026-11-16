@@ -1,4 +1,4 @@
-﻿# 05 Retrospectiva del Sprint V_1_1_0
+# 05 Retrospectiva del Sprint V_1_1_0
 
 [← Volver al README principal](../../README.md)
 
@@ -69,3 +69,10 @@ El Sprint 1 dejó una base técnica utilizable y permitió identificar mejoras c
 [← Volver al README principal](../../README.md)
 
 [← Volver al README Principal](../../README.md)
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](../README.md) · [README principal](../../../../../README.md)

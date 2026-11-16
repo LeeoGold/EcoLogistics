@@ -1,4 +1,4 @@
-﻿# 02 Registro de Impedimentos V_1_2_0
+# 02 Registro de Impedimentos V_1_2_0
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
@@ -29,3 +29,10 @@ La experiencia mostró que el proyecto depende de disponer de un entorno reprodu
 | 1.2.0 | 2026-10-09 | Normalización de navegación, numeración documental estable y revisión de referencias. |
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

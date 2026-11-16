@@ -20,3 +20,8 @@ La Release de GitHub `v1.0.0 — Green IT Release` es otro registro: corresponde
 - [Repositorio EcoLogistics](https://github.com/LeeoGold/EcoLogistics)
 
 Si se necesita demostrar la publicación planificada en Jira, será necesario actualizar ese registro en Jira y guardar una nueva captura auténtica; la documentación no debe cambiar el estado de la captura existente.
+
+
+## Navegación de retorno
+
+[Índice superior](../README.md)

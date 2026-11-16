@@ -77,3 +77,10 @@ dist/assets/index-D_yQUNb5.js   272.07 kB Ôöé gzip: 80.02 kB
 - Este archivo conserva datos de estado antes de las optimizaciones Green IT en el commit local indicado al comienzo.
 - No representa medición directa de consumo eléctrico ni de CO2e.
 - Mantener el archivo original después de implementar cambios y generar un segundo registro identificado como `despues`, con el mismo protocolo y entorno.
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md) · [README principal](../../../../README.md)

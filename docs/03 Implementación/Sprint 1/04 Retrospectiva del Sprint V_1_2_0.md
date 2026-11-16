@@ -1,4 +1,4 @@
-﻿# 04 Retrospectiva del Sprint V_1_2_0
+# 04 Retrospectiva del Sprint V_1_2_0
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
@@ -70,3 +70,10 @@ El Sprint 1 dejó una base técnica utilizable y permitió identificar mejoras c
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

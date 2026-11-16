@@ -229,3 +229,10 @@ No se debe reutilizar una etiqueta publicada para contenido diferente. Si se pre
 |---|---|---|
 | V_1_0_0 | 03/11/2026 | Estándares y matriz ajustados al stack real, numeración y significado vigente de WSG, estados de implementación y guía de desarrollo verde. |
 | Actualización de estado | 08/11/2026 | Se confirma la publicación `v1.0.0`, el commit de `main` y el resultado verde del workflow remoto; se corrigen instrucciones de versionado para no crear la etiqueta dos veces. |
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md) · [README principal](../../../README.md)

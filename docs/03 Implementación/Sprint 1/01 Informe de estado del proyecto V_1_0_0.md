@@ -1,4 +1,4 @@
-﻿# 01 Informe de estado del proyecto V_1_0_0
+# 01 Informe de estado del proyecto V_1_0_0
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)
 
@@ -163,3 +163,10 @@ No se afirma despliegue automatizado a staging ni aceptación formal del Product
 | 1.0.0 | 2026-09-23 | Consolidación del informe final del Sprint 1 conforme a la plantilla de implementación y a la evidencia disponible. |
 
 [← Volver al índice del Sprint 1](./README.md) · [Índice de implementación](../README.md) · [README principal](../../../README.md)\n
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md)

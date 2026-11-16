@@ -1,0 +1,63 @@
+name: E2E Tests
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - feature/sprint-4-cierre
+  pull_request:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: e2e-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  playwright-e2e:
+    name: Playwright E2E (Chromium, Firefox y WebKit)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install locked frontend dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers and system dependencies
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Run End-to-End suite
+        run: npm run test:e2e
+        env:
+          CI: true
+          E2E_USE_API_MOCKS: 'true'
+
+      - name: Upload Playwright HTML report and diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-e2e-report-${{ github.run_number }}
+          path: |
+            frontend/playwright-report/
+            frontend/test-results/
+          if-no-files-found: warn
+          retention-days: 14

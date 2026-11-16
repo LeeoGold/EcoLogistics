@@ -72,3 +72,10 @@ Esta medición acredita el comportamiento observado en las seis pantallas durant
 ---
 
 **Integridad:** los archivos JSON y HTML fueron copiados desde el ZIP recibido sin editar el contenido de los informes. Los valores resumidos de este documento se extrajeron de los JSON originales.
+
+
+---
+
+## Navegación
+
+[README principal](../../../../../README.md)

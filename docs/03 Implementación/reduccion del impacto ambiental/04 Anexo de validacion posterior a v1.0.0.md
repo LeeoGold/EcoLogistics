@@ -197,3 +197,10 @@ La Release y etiqueta `v1.0.0` se mantienen como registro de la entrega original
 - La prueba GZip demuestra el comportamiento del middleware en el backend de pruebas; no mide por sí sola el ahorro real de transferencia en producción.
 
 - La ejecución remota de CI y Green IT Audit para el merge de PR #13 está registrada en la sección 5. La Release `v1.0.0` sigue siendo el artefacto original, anterior a esa corrección.
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md) · [README principal](../../../README.md)

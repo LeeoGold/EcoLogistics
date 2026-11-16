@@ -56,3 +56,10 @@ Esta línea base mide únicamente una carga de `/login` sin iniciar sesión. No 
 - `network-antes.png`
 
 Conservar los reportes originales y no sobrescribirlos con los resultados posteriores. Ejecutar la medición posterior sobre la misma ruta y con la misma configuración Lighthouse; repetir Network por separado con `No throttling` y caché desactivada.
+
+
+---
+
+## Navegación
+
+[Índice de esta sección](README.md) · [README principal](../../../../README.md)
