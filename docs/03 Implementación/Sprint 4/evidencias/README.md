@@ -20,7 +20,7 @@ Las pruebas utilizan interceptación de red para simular las respuestas de la AP
 
 ## 3. Estado de evidencia remota
 
-No se declara una ejecución remota satisfactoria hasta que `tests.yml` termine con conclusión `success` en GitHub Actions.
+**Ejecución remota verificada:** `tests.yml` terminó con conclusión `success` el 16/11/2026. El artifact `playwright-e2e-report-2` (reporte HTML y diagnósticos) se encuentra disponible en [la ejecución de GitHub Actions](https://github.com/LeeoGold/EcoLogistics/actions/runs/43893234055) con retención de 14 días.
 
 ## 4. Navegación
 

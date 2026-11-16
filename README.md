@@ -1,5 +1,9 @@
 # EcoLogística Huancayo (EcoLogistics)
 
+[![CI](https://github.com/LeeoGold/EcoLogistics/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/LeeoGold/EcoLogistics/actions/workflows/ci.yml)
+[![E2E Tests](https://github.com/LeeoGold/EcoLogistics/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/LeeoGold/EcoLogistics/actions/workflows/tests.yml)
+[![Deploy Production](https://github.com/LeeoGold/EcoLogistics/actions/workflows/deploy-production.yml/badge.svg?branch=main)](https://github.com/LeeoGold/EcoLogistics/actions/workflows/deploy-production.yml)
+
 **Plataforma web para la gestión de operaciones logísticas y la planificación manual de rutas de última milla.**
 
 EcoLogística Huancayo es un proyecto académico que organiza información de clientes, pedidos, conductores, vehículos y rutas. El sistema proporciona una base operativa para gestionar asignaciones y consultar indicadores; no se presenta como un motor de optimización automática de rutas ni como una plataforma de cálculo de emisiones por recorrido.

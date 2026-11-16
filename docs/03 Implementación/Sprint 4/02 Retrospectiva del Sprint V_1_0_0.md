@@ -11,7 +11,7 @@
 
 - La automatización debe verificarse en más de un motor de navegador: una suite que pasó en Chromium también se ejecutó correctamente en Firefox y WebKit.
 - Las pruebas E2E con interceptación de red son útiles para repetir recorridos de interfaz, pero no deben describirse como validación del backend o de PostgreSQL. Los controles de autorización del servidor requieren pruebas de API separadas.
-- El resultado local no confirma por sí solo que GitHub Actions funcione. El workflow `tests.yml` necesita una ejecución remota satisfactoria y su artefacto descargable antes de declararse cerrado.
+- La ejecución local debe complementarse con una verificación remota: en este Sprint, `tests.yml` terminó con conclusión `success` en GitHub Actions y publicó el artifact del reporte HTML y diagnósticos. Esta evidencia se registró mediante el enlace directo a la ejecución.
 - Al integrar documentación con nombres de carpetas acentuados, conviene resolver la ruta real con PowerShell en lugar de asumir que el nombre Unicode del ZIP se representa idénticamente en todos los entornos.
 - Los finales de línea CRLF pueden aparecer en `git diff --check` como advertencias `^M`. Normalizar los archivos de forma controlada evita que esos avisos oculten problemas reales.
 - Las métricas de usabilidad y rendimiento tienen que proceder de participantes y mediciones reales; no se deben completar con datos simulados.
@@ -57,8 +57,8 @@
 
 | Acción | Responsable | Criterio medible de cierre | Plazo |
 |---|---|---|---|
-| Publicar la rama de Sprint 4 y crear un PR hacia `main`. | Líder/mantenedor del repositorio | PR visible con descripción, diff revisado y checks adjuntos. | Antes del cierre del Sprint 4. |
-| Verificar el workflow `E2E Tests`. | Responsable de calidad | Conclusión `success`, 21 ejecuciones aprobadas y artefacto de reporte disponible. | Antes de la entrega. |
+| Promover la integración de Sprint 4 de `develop` a `main`. | Líder/mantenedor del repositorio | PR de `develop` → `main` revisado y fusionado con checks aprobados; el [PR #16](https://github.com/LeeoGold/EcoLogistics/pull/16) ya integró el trabajo en `develop`. | Antes del cierre del Sprint 4. |
+| Verificar el workflow `E2E Tests`. | Responsable de calidad | **Completado:** ejecución remota con conclusión `success` y artifact `playwright-e2e-report-2` disponible en [GitHub Actions](https://github.com/LeeoGold/EcoLogistics/actions/runs/43893234055). | 16/11/2026. |
 | Aplicar SUS a cinco o más participantes y calcular cada resultado. | Responsable de evaluación UX | Matriz con diez respuestas completas por participante, fórmula aplicada y promedio revisado. | Antes de la entrega. |
 | Configurar los destinos y secretos de despliegue y ejecutar el workflow. | Mantenedor con acceso al hosting | Los dos servicios aceptan el deploy y sus health checks responden correctamente. | Antes de declarar CI/CD completo. |
 | Medir métricas de carga y API en el entorno publicado. | Responsable técnico | TTFB, FCP, LCP y latencias registradas con ruta, fecha y herramienta. | Antes de cerrar el informe Playwright. |
@@ -66,7 +66,7 @@
 
 ## Cierre de la retrospectiva
 
-El avance principal del Sprint 4 es la automatización de los recorridos críticos de navegador, con resultado local satisfactorio en tres motores. La siguiente mejora es cerrar la trazabilidad y convertir los resultados locales en evidencias remotas y de campo: ejecución E2E en Actions, evaluación SUS con participantes, despliegue y mediciones reales. Hasta completar esas comprobaciones, el cierre técnico se considera en curso.
+El avance principal del Sprint 4 es la automatización de los recorridos críticos de navegador, con 21/21 aprobadas en la ejecución local y la ejecución remota E2E completada con conclusión `success` y artifact disponible. El PR #16 integró el trabajo en `develop`; queda promoverlo a `main`. El cierre metodológico y operativo continúa en curso hasta completar la evaluación SUS con participantes reales, el despliegue de producción, las métricas medidas en el entorno desplegado y la evidencia de demostración ante stakeholders.
 
 ## Navegación
 

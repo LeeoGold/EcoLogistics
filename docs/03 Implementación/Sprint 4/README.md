@@ -23,6 +23,11 @@
 - [Despliegue de producción](../../../.github/workflows/deploy-production.yml)
 - [Green IT Audit](../../../.github/workflows/green-audit.yml)
 
+## Integración y ejecuciones remotas
+
+- [PR #16 — integración del Sprint 4 en `develop`](https://github.com/LeeoGold/EcoLogistics/pull/16) — fusionado el 16/11/2026. La promoción a `main` se tramita mediante un PR independiente `develop` → `main`.
+- [CI](https://github.com/LeeoGold/EcoLogistics/actions/runs/43893234056) — conclusión `success`.
+- [E2E Tests](https://github.com/LeeoGold/EcoLogistics/actions/runs/43893234055) — conclusión `success`; artifact `playwright-e2e-report-2` disponible.
 ## Alcance de las evidencias
 
 Los resultados locales de Playwright (21/21) se describen como ejecución local. El workflow remoto, los resultados SUS y el despliegue se consideran verificados únicamente después de completar sus respectivas ejecuciones y conservar evidencia.

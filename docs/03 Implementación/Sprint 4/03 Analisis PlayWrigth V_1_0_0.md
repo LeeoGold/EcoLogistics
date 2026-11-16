@@ -77,7 +77,7 @@ Por esa razón, esta suite verifica la experiencia de navegador y la visibilidad
 \text{Éxito} = \frac{21}{21} \times 100 = 100\%
 \]
 
-La salida de consola de la ejecución muestra las 21 pruebas aprobadas y finaliza con `21 passed (1.2m)`. Esta cifra corresponde a la ejecución local comunicada durante el cierre del Sprint 4; no debe presentarse como resultado de GitHub Actions hasta que el workflow remoto se ejecute correctamente.
+La salida de consola local muestra las 21 pruebas aprobadas y finaliza con `21 passed (1.2m)`. Por separado, el workflow remoto [E2E Tests — ejecución del 16/11/2026](https://github.com/LeeoGold/EcoLogistics/actions/runs/43893234055) terminó con conclusión `success`. GitHub Actions publicó el artifact `playwright-e2e-report-2`, que incluye el reporte HTML y diagnósticos durante el periodo de retención de 14 días. La conclusión remota acredita la ejecución del workflow; no convierte los mocks de API en pruebas contra PostgreSQL.
 
 ### 5.1 Comando de reproducción
 
@@ -114,7 +114,7 @@ No se ha registrado todavía una medición cuantitativa reproducible de TTFB, FC
 
 El workflow `tests.yml` ejecuta la suite Playwright en GitHub Actions cuando se realiza `push` a `main`, `develop` o `feature/sprint-4-cierre`, ante `pull_request` hacia `main` o `develop`, y manualmente mediante `workflow_dispatch`.
 
-El flujo instala las dependencias bloqueadas con `npm ci`, instala Chromium, Firefox y WebKit, ejecuta `npm run test:e2e` y almacena el reporte HTML y diagnósticos como artefacto durante 14 días. El estado remoto debe registrarse después de la primera ejecución del workflow.
+El flujo instala las dependencias bloqueadas con `npm ci`, instala Chromium, Firefox y WebKit, ejecuta `npm run test:e2e` y almacena el reporte HTML y diagnósticos como artefacto durante 14 días. La ejecución remota verificada terminó con `success`: [abrir ejecución y descargar artifact](https://github.com/LeeoGold/EcoLogistics/actions/runs/43893234055).
 
 ## 8. Conclusión
 
