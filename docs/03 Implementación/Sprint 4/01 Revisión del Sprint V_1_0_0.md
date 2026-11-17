@@ -13,11 +13,11 @@ El registro de Jira versionado en el repositorio describe la configuración inic
 
 | Entregable técnico | Criterios verificados | Evidencia disponible | Estado de trazabilidad |
 |---|---|---|---|
-| Suite End-to-End con Playwright | Siete escenarios de interfaz ejecutados en Chromium, Firefox y WebKit. Incluye página pública, acceso directo a módulo sin sesión, login válido, login inválido, cierre de sesión y visibilidad de acciones por rol. | Ejecución local: 21/21 pruebas aprobadas (7 por navegador). Ejecución remota `E2E Tests`: conclusión `success`; el reporte HTML y diagnósticos se guardaron como artifact. | Commit `2b2b42c`; [PR #16](https://github.com/LeeoGold/EcoLogistics/pull/16) integrado en `develop` mediante el merge `a11451e`. La promoción de `develop` hacia `main` sigue pendiente. |
+| Suite End-to-End con Playwright | Siete escenarios de interfaz ejecutados en Chromium, Firefox y WebKit. Incluye página pública, acceso directo a módulo sin sesión, login válido, login inválido, cierre de sesión y visibilidad de acciones por rol. | Ejecución local: 21/21 pruebas aprobadas (7 por navegador). Ejecución remota `E2E Tests`: conclusión `success`; el reporte HTML y diagnósticos se guardaron como artifact. | Commit `2b2b42c`; [PR #16](https://github.com/LeeoGold/EcoLogistics/pull/16) integrado en `develop` mediante el merge `a11451e`. El Sprint 4 quedó integrado en `main` mediante los PR #17 y #18. La rama `develop` se conservó en la línea base anterior, sin incorporar los cambios del Sprint 4. |
 | Automatización E2E en GitHub Actions | Workflow `tests.yml` instala dependencias y Chromium, Firefox y WebKit, ejecuta la suite y conserva reportes como artefactos. | [Ejecución remota exitosa](https://github.com/LeeoGold/EcoLogistics/actions/runs/43893234055); artifact `playwright-e2e-report-2` disponible durante 14 días desde su generación. | Verificado en GitHub Actions: `success`. |
 | Informe técnico de Playwright | Se documentaron arquitectura, escenarios, resultados, comandos de reproducción y límites de las simulaciones API. | [Análisis Playwright](./03%20Analisis%20PlayWrigth%20V_1_0_0.md). | Documento versionado en `develop` por el [PR #16](https://github.com/LeeoGold/EcoLogistics/pull/16). |
 | Evaluación cuantitativa de usabilidad | Se definió el instrumento SUS, tareas previas, escala y método de puntuación. | [Informe e instrumento SUS](./04%20Usabilidad%20V_1_0_0.md). | La aplicación a participantes y sus resultados se registrarán después de recolectar respuestas reales. |
-| Despliegue continuo | Se preparó un workflow condicionado a que CI y E2E terminen correctamente y a que se configuren los destinos de despliegue y sus secretos. | `.github/workflows/deploy-production.yml`. | No se declara despliegue operativo hasta configurar hosting, secretos y comprobar los health checks. |
+| Despliegue continuo | Workflow `deploy-production.yml` condicionado a CI y E2E. | Frontend y backend publicados en Render; backend conectado a Neon; health checks de ambos servicios aprobados en GitHub Actions. | [Deploy Production #2, intento 2](https://github.com/LeeoGold/EcoLogistics/actions/runs/43914369638), conclusión `success`. |
 
 **Referencia de la versión funcional previa:** el PR [#15 — acciones administrativas de edición y eliminación de vehículos](https://github.com/LeeoGold/EcoLogistics/pull/15) fue integrado en `main` mediante el merge commit [`68dd466`](https://github.com/LeeoGold/EcoLogistics/commit/68dd46611cde924540f9ca23d9a728ba2ae5e6c5). Este PR es parte de la línea base anterior y no se atribuye como incremento del Sprint 4.
 
@@ -49,21 +49,36 @@ Enlaces de verificación:
 - [Pull Request #15 — línea base de flota](https://github.com/LeeoGold/EcoLogistics/pull/15)
 - [Informe de Playwright](./03%20Analisis%20PlayWrigth%20V_1_0_0.md)
 
-## Verificaciones completadas al 16 de noviembre de 2026
+## Verificaciones completadas al 17 de noviembre de 2026
 
-- La rama `feature/sprint-4-cierre` fue publicada y el [PR #16](https://github.com/LeeoGold/EcoLogistics/pull/16) quedó integrado en `develop` mediante el merge [`a11451e`](https://github.com/LeeoGold/EcoLogistics/commit/a11451eea98ef51a24512f170d3c4ea4313bc289). `main` todavía conserva su línea base anterior; la promoción `develop` → `main` requiere un PR separado.
-- El workflow [CI](https://github.com/LeeoGold/EcoLogistics/actions/runs/43893234056) terminó con conclusión `success`.
-- El workflow [E2E Tests](https://github.com/LeeoGold/EcoLogistics/actions/runs/43893234055) terminó con conclusión `success`; el artifact `playwright-e2e-report-2` está disponible en esa ejecución.
-- El README principal contiene los enlaces a los cuatro entregables; se añadieron badges para CI, E2E y Deploy Production.
+- El trabajo del Sprint 4 está en `main`. El [PR #17](https://github.com/LeeoGold/EcoLogistics/pull/17) integró correcciones documentales y el [PR #18](https://github.com/LeeoGold/EcoLogistics/pull/18) integró el pipeline de pruebas. La rama `develop` permanece en la línea base anterior (`68dd466`), conforme a la decisión de mantener el cierre del Sprint 4 solo en `main`.
+- En el commit `9f54aae`, los workflows [CI](https://github.com/LeeoGold/EcoLogistics/actions/runs/43914010994), [Tests and E2E](https://github.com/LeeoGold/EcoLogistics/actions/runs/43914010828) y [Green IT Audit](https://github.com/LeeoGold/EcoLogistics/actions/runs/43914010837) terminaron con conclusión `success`.
+- El workflow [Deploy Production #2](https://github.com/LeeoGold/EcoLogistics/actions/runs/43914369638), en su segundo intento, terminó con conclusión `success`. Se aprobaron la validación E2E, los cuatro secretos, la activación de los Deploy Hooks de backend y frontend, y los health checks de ambos servicios.
+- El frontend se encuentra publicado en [https://ecologistics-frontend.onrender.com](https://ecologistics-frontend.onrender.com) y el backend en [https://ecologistics.onrender.com](https://ecologistics.onrender.com). La ruta pública `/health` respondió HTTP 200 con el estado esperado.
+- Se comprobó manualmente el inicio de sesión en producción con los perfiles `ADMINISTRADOR` y `OPERADOR`, así como la presentación de opciones según el rol. No se incluyen credenciales en la documentación.
+- Se corrigió CORS para permitir el origen público del frontend y conservar el origen local de Vite.
+- La medición puntual del 17/11/2026 desde Chrome DevTools registró TTFB 25,5 ms, FCP 136 ms, LCP 136 ms y respuesta HTTP 200 de `/health` en 252,6 ms. Es una sola muestra de la página pública; no representa un promedio ni una medición de latencia de una operación de negocio.
+- El informe SUS conserva el instrumento, pero no presenta resultados porque aún requiere respuestas de cinco participantes reales.
+
+## Evidencia de despliegue y rendimiento
+
+| Evidencia | Resultado | Alcance |
+|---|---|---|
+| Frontend público | [Abrir aplicación](https://ecologistics-frontend.onrender.com) | Render Static Site |
+| Backend público | [Abrir API](https://ecologistics.onrender.com) | Render Web Service |
+| Health check backend | [HTTP 200](https://ecologistics.onrender.com/health) | Comprobación puntual de disponibilidad |
+| CI/CD | [Deploy Production #2](https://github.com/LeeoGold/EcoLogistics/actions/runs/43914369638) — `success` | E2E, Deploy Hooks y health checks aprobados |
+| Web Vitals observados | TTFB 25,5 ms; FCP 136 ms; LCP 136 ms | Una navegación a la página pública, Chrome DevTools |
+| Respuesta de API observada | HTTP 200; 252,6 ms | Una solicitud GET a `/health`; no mide consulta SQL ni operación autenticada |
+
 
 ## Pendientes
 
-1. Abrir un nuevo Pull Request de `develop` hacia `main`, revisar sus checks y fusionarlo solo cuando estén aprobados.
-2. Aplicar el cuestionario SUS a un mínimo de cinco participantes reales, conservar sus diez respuestas por persona, calcular puntajes individuales y promedio global y actualizar el informe `04 Usabilidad`.
-3. Configurar frontend y backend en un proveedor de hosting, añadir los cuatro GitHub Secrets requeridos por `deploy-production.yml` y comprobar una publicación real mediante los health checks. El workflow no se debe considerar operativo antes de esa comprobación.
-4. Medir y registrar TTFB, FCP, LCP y tiempo de respuesta de API contra el entorno desplegado; los tiempos de respuestas simuladas no representan latencia del backend.
-5. Realizar o registrar la demostración ante stakeholders y documentar la retroalimentación recibida, sin afirmar aceptación si no existe evidencia.
-6. Vincular los entregables del Sprint 4 con historias o tareas reales del backlog/Jira y sus PR/commits. No inventar códigos de HU retrospectivamente.
+1. Aplicar el cuestionario SUS a un mínimo de cinco participantes reales, conservar las diez respuestas originales de cada uno, calcular los puntajes individuales y el promedio global, e interpretar el resultado frente al umbral de 68 puntos. No se deben inventar respuestas.
+2. Completar mediciones repetidas de rendimiento y disponibilidad. Los valores actuales son una muestra puntual; falta observar uptime durante un intervalo y ejecutar una comprobación controlada de resiliencia ante fallos de red.
+3. Registrar, si existió, la demostración ante stakeholders y su retroalimentación. La comprobación manual realizada por el mantenedor en producción no equivale por sí sola a aceptación formal de stakeholders.
+4. Vincular los entregables con historias o tareas reales del backlog/Jira, únicamente si existe ese registro verificable. No inventar códigos de HU retrospectivamente.
+
 
 ## Navegación
 
