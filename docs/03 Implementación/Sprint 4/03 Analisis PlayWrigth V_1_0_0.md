@@ -95,32 +95,48 @@ npm run test:e2e:report
 
 ## 6. Rendimiento, disponibilidad y resiliencia
 
-La suite inicial confirma que el frontend puede arrancar bajo el servidor Vite gestionado por Playwright y completar los recorridos funcionales descritos en los tres navegadores. El escenario de credenciales incorrectas verifica una respuesta HTTP simulada `401`; las rutas API no simuladas reciben una respuesta simulada `404`.
+### 6.1 Medición puntual en el entorno publicado
 
-No se ha registrado todavía una medición cuantitativa reproducible de TTFB, FCP, LCP ni latencia de API. Tampoco se ha medido uptime de un entorno desplegado, ni se ha ejecutado una prueba de caída real de red. Estos indicadores quedan pendientes de medición en un entorno de despliegue; no se deben completar con cifras estimadas o datos inventados.
+El 17/11/2026 se realizó una medición desde Chrome DevTools sobre una navegación a la página pública de [EcoLogística Huancayo](https://ecologistics-frontend.onrender.com). Se utilizaron Navigation Timing, Paint Timing, Largest Contentful Paint y una solicitud `fetch` al endpoint público `/health` del backend.
 
-| Indicador solicitado | Estado de evidencia |
-|---|---|
-| TTFB | Pendiente de medición instrumentada |
-| FCP | Pendiente de medición instrumentada |
-| LCP | Pendiente de medición instrumentada |
-| Tiempo de respuesta de API | Pendiente de medición contra API real; los tiempos mock no representan latencia del backend |
-| Estado HTTP de autenticación inválida | `401` simulado y comprobado mediante escenario E2E |
-| Uptime del entorno desplegado | Pendiente de despliegue y observación |
-| Reporte HTML | Generado localmente por Playwright; conservar como evidencia de ejecución |
-| Trazas, capturas y videos de fallo | Configurados para conservarse cuando exista un fallo |
+| Indicador | Resultado observado | Fuente / alcance |
+|---|---:|---|
+| TTFB | 25,5 ms | `responseStart - requestStart` de la navegación al frontend |
+| FCP | 136 ms | Evento `first-contentful-paint` de la navegación |
+| LCP | 136 ms | Último evento LCP observado durante la ventana de captura de la medición |
+| Estado HTTP de API | 200 | GET `https://ecologistics.onrender.com/health` |
+| Latencia de API | 252,6 ms | Una solicitud GET a `/health`, medida con `performance.now()` |
+
+Estos valores corresponden a una sola muestra desde un navegador y una ubicación de red no controlada. No son promedios, percentiles ni garantías de rendimiento. La solicitud de API se hizo al endpoint de salud, que confirma que la aplicación responde; no mide una consulta a PostgreSQL ni una operación de negocio autenticada.
+
+### 6.2 Disponibilidad y resiliencia verificadas
+
+- El endpoint [GET /health](https://ecologistics.onrender.com/health) respondió HTTP 200 con el JSON de estado esperado durante la comprobación manual.
+- El workflow [Deploy Production #2](https://github.com/LeeoGold/EcoLogistics/actions/runs/43914369638), en el segundo intento, terminó en `success`. Los pasos `Wait for backend health check` y `Wait for frontend health check` finalizaron correctamente después de activar ambos Deploy Hooks.
+- Se confirmó manualmente el acceso al frontend publicado y el inicio de sesión con los perfiles de administrador y operador; la presentación de opciones se ajusta al rol.
+- No se ha medido uptime durante un periodo continuo ni se ha ejecutado una prueba controlada de pérdida de conectividad o recuperación de red. Esos dos indicadores siguen pendientes y no se sustituyen por la comprobación puntual de `/health`.
+- En la consola del navegador se observó una solicitud a `/favicon.ico` con HTTP 404. Es un recurso estático no encontrado y no impidió cargar la página ni consumir la API.
+
 
 ## 7. Automatización continua
 
-El workflow `tests.yml` ejecuta la suite Playwright en GitHub Actions cuando se realiza `push` a `main`, `develop` o `feature/sprint-4-cierre`, ante `pull_request` hacia `main` o `develop`, y manualmente mediante `workflow_dispatch`.
+El workflow `tests.yml` ejecuta pruebas de backend, pruebas de frontend y Playwright E2E en Chromium, Firefox y WebKit. En la integración del PR #18, el workflow [Tests and E2E](https://github.com/LeeoGold/EcoLogistics/actions/runs/43914010828) terminó con conclusión `success` y publicó artefactos de backend, frontend y Playwright.
 
-El flujo instala las dependencias bloqueadas con `npm ci`, instala Chromium, Firefox y WebKit, ejecuta `npm run test:e2e` y almacena el reporte HTML y diagnósticos como artefacto durante 14 días. La ejecución remota verificada terminó con `success`: [abrir ejecución y descargar artifact](https://github.com/LeeoGold/EcoLogistics/actions/runs/43893234055).
+El workflow `ci.yml` terminó con conclusión `success` en [CI del commit de cierre](https://github.com/LeeoGold/EcoLogistics/actions/runs/43914010994). La auditoría [Green IT Audit](https://github.com/LeeoGold/EcoLogistics/actions/runs/43914010837) también terminó con `success`.
+
+El workflow `deploy-production.yml` valida E2E antes de publicar. La ejecución [Deploy Production #2](https://github.com/LeeoGold/EcoLogistics/actions/runs/43914369638), en el segundo intento, terminó con conclusión `success`. Se aprobaron la validación de los cuatro secretos, la activación de `BACKEND_DEPLOY_HOOK_URL` y `FRONTEND_DEPLOY_HOOK_URL`, y los health checks definidos por `BACKEND_HEALTHCHECK_URL` y `FRONTEND_HEALTHCHECK_URL`.
+
+Los artefactos de prueba se conservan durante 14 días por configuración del workflow. La ejecución E2E utiliza mocks para las respuestas de API; la comprobación manual del sistema desplegado y las pruebas de API del backend constituyen evidencias separadas.
+
 
 ## 8. Conclusión
 
-La implementación inicial de Playwright quedó integrada y ejecutada localmente con 100 % de éxito: 21 de 21 pruebas aprobadas en Chromium, Firefox y WebKit. Se verificaron los recorridos públicos, autenticación y presentación de permisos del módulo de flota. La evidencia es reproducible mediante `npm run test:e2e`.
+La suite Playwright está implementada para Chromium, Firefox y WebKit, con siete escenarios por navegador y 21/21 aprobaciones en la ejecución local documentada. El workflow remoto de pruebas también terminó con `success` y almacenó reportes como artefactos. Las respuestas mock de la suite mantienen su alcance de validación de interfaz y no se presentan como pruebas contra PostgreSQL.
 
-El alcance debe interpretarse junto con sus límites: las respuestas de API fueron simuladas en esta suite, la autorización del servidor se cubre con pruebas backend separadas y las métricas Web Vitals, latencia real, resiliencia de red y uptime requieren una medición adicional sobre un entorno desplegado.
+El sistema se encuentra publicado: frontend en [Render](https://ecologistics-frontend.onrender.com) y backend en [Render](https://ecologistics.onrender.com), con PostgreSQL en Neon. La ejecución de [Deploy Production #2](https://github.com/LeeoGold/EcoLogistics/actions/runs/43914369638) confirmó los Deploy Hooks y los health checks de ambos servicios. Se validó manualmente el acceso con los perfiles de administrador y operador.
+
+La medición puntual del 17/11/2026 registró TTFB 25,5 ms, FCP 136 ms, LCP 136 ms y respuesta HTTP 200 de `/health` en 252,6 ms. Son datos de una sola muestra, no promedios. El uptime continuo y la resiliencia ante fallos de red siguen sin medición. La evaluación SUS requiere aún cinco participantes reales y sus respuestas originales.
+
 
 ---
 

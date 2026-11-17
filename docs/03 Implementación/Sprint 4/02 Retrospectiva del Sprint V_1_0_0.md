@@ -3,7 +3,7 @@
 **Nombre del Proyecto:** EcoLogística Huancayo (EcoLogistics)<br>
 **Líder del Proyecto:** Kevyn Leeonardo Velasquez Palomino<br>
 **Versión documental:** V_1_0_0<br>
-**Alcance:** Reflexión del trabajo de automatización E2E y preparación del cierre técnico del Sprint 4.
+**Alcance:** Reflexión individual del trabajo de automatización, despliegue y cierre técnico del Sprint 4.
 
 [← Volver al README principal](../../../README.md) · [Índice del Sprint 4](README.md)
 
@@ -15,6 +15,8 @@
 - Al integrar documentación con nombres de carpetas acentuados, conviene resolver la ruta real con PowerShell en lugar de asumir que el nombre Unicode del ZIP se representa idénticamente en todos los entornos.
 - Los finales de línea CRLF pueden aparecer en `git diff --check` como advertencias `^M`. Normalizar los archivos de forma controlada evita que esos avisos oculten problemas reales.
 - Las métricas de usabilidad y rendimiento tienen que proceder de participantes y mediciones reales; no se deben completar con datos simulados.
+- Configurar CORS con el origen exacto del frontend publicado es imprescindible para que el navegador pueda consumir la API; un `Failed to fetch` puede deberse a CORS y no a credenciales incorrectas.
+- El workflow de despliegue debe comprobar tanto los secretos como las URLs de salud después de activar los Deploy Hooks.
 
 ## ¿Qué estamos haciendo bien?
 
@@ -55,18 +57,22 @@
 
 ### Acciones a realizar
 
-| Acción | Responsable | Criterio medible de cierre | Plazo |
+| Acción | Responsable | Criterio medible de cierre | Estado al 17/11/2026 |
 |---|---|---|---|
-| Promover la integración de Sprint 4 de `develop` a `main`. | Líder/mantenedor del repositorio | PR de `develop` → `main` revisado y fusionado con checks aprobados; el [PR #16](https://github.com/LeeoGold/EcoLogistics/pull/16) ya integró el trabajo en `develop`. | Antes del cierre del Sprint 4. |
-| Verificar el workflow `E2E Tests`. | Responsable de calidad | **Completado:** ejecución remota con conclusión `success` y artifact `playwright-e2e-report-2` disponible en [GitHub Actions](https://github.com/LeeoGold/EcoLogistics/actions/runs/43893234055). | 16/11/2026. |
-| Aplicar SUS a cinco o más participantes y calcular cada resultado. | Responsable de evaluación UX | Matriz con diez respuestas completas por participante, fórmula aplicada y promedio revisado. | Antes de la entrega. |
-| Configurar los destinos y secretos de despliegue y ejecutar el workflow. | Mantenedor con acceso al hosting | Los dos servicios aceptan el deploy y sus health checks responden correctamente. | Antes de declarar CI/CD completo. |
-| Medir métricas de carga y API en el entorno publicado. | Responsable técnico | TTFB, FCP, LCP y latencias registradas con ruta, fecha y herramienta. | Antes de cerrar el informe Playwright. |
-| Revisar navegación documental. | Responsable documental | README principal enlaza los cuatro documentos; cada documento retorna al README; enlaces comprobados. | Antes de la entrega. |
+| Integrar el trabajo de Sprint 4 en `main` y conservar `develop` en su línea base previa. | Mantenedor del repositorio | PR #17 y PR #18 fusionados; `develop` permanece en `68dd466`. | **Completado.** |
+| Ejecutar pruebas automatizadas y conservar reportes. | Responsable de calidad | CI, Tests and E2E y Green IT Audit en `success`; pruebas E2E en Chromium, Firefox y WebKit. | **Completado.** |
+| Configurar despliegue de backend y frontend. | Mantenedor con acceso a Render y GitHub | Dos Deploy Hooks activados por Actions y dos health checks aprobados. | **Completado:** [Deploy Production #2](https://github.com/LeeoGold/EcoLogistics/actions/runs/43914369638). |
+| Validar acceso por perfiles en producción. | Responsable de validación | Login de administrador y operador y opciones de interfaz según el rol. | **Comprobado manualmente.** |
+| Registrar métricas de rendimiento iniciales. | Responsable técnico | TTFB, FCP, LCP y respuesta HTTP/latencia de `/health` anotados con fecha, ruta y herramienta. | **Completado como muestra puntual:** 25,5 ms; 136 ms; 136 ms; HTTP 200 en 252,6 ms. |
+| Aplicar SUS a cinco o más participantes. | Responsable de evaluación UX | Cinco formularios completos, diez respuestas cada uno, puntajes individuales y promedio global. | **Pendiente de participantes reales.** |
+| Completar medición de disponibilidad y resiliencia. | Responsable técnico | Uptime observado durante un intervalo y prueba de manejo de fallo de red documentada. | **Pendiente.** |
+| Registrar demostración y comentarios de stakeholders, si se realiza. | Líder del proyecto | Evidencia de la demostración y comentarios reales, sin atribuir aceptación no documentada. | **Pendiente de evidencia formal.** |
+
 
 ## Cierre de la retrospectiva
 
-El avance principal del Sprint 4 es la automatización de los recorridos críticos de navegador, con 21/21 aprobadas en la ejecución local y la ejecución remota E2E completada con conclusión `success` y artifact disponible. El PR #16 integró el trabajo en `develop`; queda promoverlo a `main`. El cierre metodológico y operativo continúa en curso hasta completar la evaluación SUS con participantes reales, el despliegue de producción, las métricas medidas en el entorno desplegado y la evidencia de demostración ante stakeholders.
+El Sprint 4 cuenta con pruebas automatizadas aprobadas, artefactos conservados, frontend y backend publicados, base PostgreSQL conectada y despliegue automatizado validado mediante GitHub Actions. La comprobación manual de los perfiles de administrador y operador se realizó en el entorno público. La medición inicial de rendimiento se registró como muestra puntual. El cierre cuantitativo de usabilidad sigue condicionado a recolectar respuestas de cinco participantes reales; tampoco se afirma uptime continuo, resiliencia ante fallos de red ni aceptación formal de stakeholders sin evidencia adicional.
+
 
 ## Navegación
 
