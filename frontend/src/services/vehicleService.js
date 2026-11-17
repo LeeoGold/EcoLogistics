@@ -32,7 +32,11 @@ export async function deleteVehicle(vehicleId) {
 export async function getVehiclesPage(params = {}) {
   const query = new URLSearchParams()
   for (const [key, value] of Object.entries({ page: 1, page_size: 12, ...params })) {
-    if (value !== undefined && value !== null && value !== '') query.set(key, String(value))
+    const normalizedValue = String(value ?? '')
+
+    if (normalizedValue.length === 0) continue
+
+    query.set(key, normalizedValue)
   }
   const response = await apiFetch(`/api/vehiculos/pagina?${query.toString()}`)
   return parseResponse(response, 'No se pudo consultar la página solicitada.')
