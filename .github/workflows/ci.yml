@@ -1,4 +1,4 @@
-﻿name: CI
+name: CI
 
 on:
   push:
@@ -16,12 +16,12 @@ permissions:
   contents: read
 
 jobs:
-    backend-tests:
-      name: Backend tests (SQLite aislada)
-      runs-on: ubuntu-latest
-      permissions:
-        contents: read
-        id-token: write
+  backend-tests:
+    name: Backend tests (SQLite aislada)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     defaults:
       run:
         working-directory: backend
