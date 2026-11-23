@@ -1,0 +1,8 @@
+tipo,PV_S/,EV_S/,AC_S/,SV_S/,CV_S/,SPI,CPI,nota
+acumulado_periodo_anterior,10500.0,9600.0,10200.0,-900.0,-600.0,0.9142857142857143,0.9411764705882353,Supuesto académico simulado
+periodo_actual,3843.84,3787.58,4400.0,-56.26000000000022,-612.4200000000001,0.9853635947385947,0.8608136363636364,Supuesto académico simulado
+acumulado_corte_actual,14343.84,13387.58,14600.0,-956.2600000000002,-1212.42,0.9333330544679806,0.9169575342465753,Supuesto académico simulado
+BAC,15937.6,,,,,,,Presupuesto referencial de docs/02 Planificación/04 Presupuesto del proyecto V_1_0_0.md
+EAC_1,,,,,,,,17380.957574109736
+EAC_2,,,,,,,,18622.46010778783
+EAC_3,,,,,,,,17579.598291089067

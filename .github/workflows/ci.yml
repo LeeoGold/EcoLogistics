@@ -19,6 +19,9 @@ jobs:
   backend-tests:
     name: Backend tests (SQLite aislada)
     runs-on: ubuntu-latest
+      permissions:
+        contents: read
+        id-token: write
     defaults:
       run:
         working-directory: backend
@@ -67,10 +70,11 @@ jobs:
         run: test -s coverage/lcov.info
         working-directory: frontend
 
+      - name: Authenticate to SonarQube Cloud
+        uses: SonarSource/sonarqube-auth-action@v1
+
       - name: SonarQube Cloud analysis
         uses: SonarSource/sonarqube-scan-action@v8.3.0
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   frontend-build:
     name: Frontend build
