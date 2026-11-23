@@ -16,9 +16,9 @@ permissions:
   contents: read
 
 jobs:
-  backend-tests:
-    name: Backend tests (SQLite aislada)
-    runs-on: ubuntu-latest
+    backend-tests:
+      name: Backend tests (SQLite aislada)
+      runs-on: ubuntu-latest
       permissions:
         contents: read
         id-token: write
